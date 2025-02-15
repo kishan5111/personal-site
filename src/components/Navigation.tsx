@@ -1,3 +1,4 @@
+
 import { useNavigate, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Home, Briefcase, BookOpen, MessageSquare, Github, Linkedin, Sun, Moon, Menu } from "lucide-react";
@@ -22,6 +23,11 @@ const Navigation = () => {
     { path: "/blog", label: "Blog", icon: BookOpen, color: "text-pink-500" },
     { path: "/contact", label: "Contact", icon: MessageSquare, color: "text-cyan-500" },
   ];
+
+  // Early return with a basic loading state if theme is not yet initialized
+  if (typeof theme === 'undefined') {
+    return <div className="fixed top-0 left-0 right-0 z-50 glass px-6 py-4" />;
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass px-6 py-4">
