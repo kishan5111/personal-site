@@ -32,6 +32,56 @@ This is just a basic example of how to write code blocks in your blog posts.
     `,
     date: "2024-02-20",
   },
+  {
+    id: "2",
+    title: "Deep Learning with PyTorch",
+    content: `# Deep Learning with PyTorch
+
+Learn how to build neural networks using PyTorch:
+
+\`\`\`python
+import torch
+import torch.nn as nn
+
+class NeuralNetwork(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.layers = nn.Sequential(
+            nn.Linear(784, 128),
+            nn.ReLU(),
+            nn.Linear(128, 10)
+        )
+    
+    def forward(self, x):
+        return self.layers(x)
+\`\`\`
+
+This model can be used for MNIST classification.
+`,
+    date: "2024-02-21",
+  },
+  {
+    id: "3",
+    title: "Natural Language Processing Basics",
+    content: `# Introduction to NLP
+
+Here's how to get started with basic NLP tasks:
+
+\`\`\`python
+from transformers import pipeline
+
+# Create a sentiment analysis pipeline
+classifier = pipeline("sentiment-analysis")
+
+# Analyze some text
+result = classifier("I love working with transformers!")
+print(result)  # [{'label': 'POSITIVE', 'score': 0.9998}]
+\`\`\`
+
+This example shows how to use Hugging Face transformers for sentiment analysis.
+`,
+    date: "2024-02-22",
+  },
 ];
 
 const Blog = () => {

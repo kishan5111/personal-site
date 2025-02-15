@@ -1,7 +1,7 @@
 
 import { useNavigate, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Home, Briefcase, FileText, Calendar, MessageSquare, Github, Linkedin, Twitter, BookOpen } from "lucide-react";
+import { Home, Briefcase, FileText, Calendar, MessageSquare, Github, Linkedin, Twitter, BookOpen, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
 
@@ -39,12 +39,12 @@ const Navigation = () => {
         </div>
         <div className="flex items-center space-x-4">
           <Button
-            variant="outline"
-            size="sm"
+            variant="ghost"
+            size="icon"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="px-4"
+            className="rounded-full"
           >
-            {theme === "dark" ? "Light Mode" : "Dark Mode"}
+            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <Github className="h-5 w-5" />
