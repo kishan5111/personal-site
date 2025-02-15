@@ -1,6 +1,8 @@
 
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faKaggle } from '@fortawesome/free-brands-svg-icons';
 
 const Contact = () => {
   return (
@@ -58,7 +60,7 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className="p-2 glass rounded-full hover:text-primary transition-colors"
               >
-                <span className="w-6 h-6 border-2 font-bold text-xl inline-flex items-center justify-center">K</span>
+                <FontAwesomeIcon icon={faKaggle} className="h-6 w-6" />
               </a>
             </div>
           </div>
