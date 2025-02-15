@@ -1,7 +1,7 @@
 
 import { useNavigate, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Home, Briefcase, FileText, Calendar, MessageSquare, Github, Linkedin, Twitter, BookOpen, Sun, Moon } from "lucide-react";
+import { Home, Briefcase, FileText, Calendar, MessageSquare, Github, Linkedin, Kaggle, BookOpen, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
 
@@ -52,8 +52,8 @@ const Navigation = () => {
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <Linkedin className="h-5 w-5" />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-            <Twitter className="h-5 w-5" />
+          <a href="https://kaggle.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+            <Kaggle className="h-5 w-5" />
           </a>
         </div>
       </div>

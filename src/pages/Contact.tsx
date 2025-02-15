@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Kaggle } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -53,12 +53,12 @@ const Contact = () => {
                 <Linkedin className="h-6 w-6" />
               </a>
               <a 
-                href="https://twitter.com"
+                href="https://kaggle.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 glass rounded-full hover:text-primary transition-colors"
               >
-                <Twitter className="h-6 w-6" />
+                <Kaggle className="h-6 w-6" />
               </a>
             </div>
           </div>
