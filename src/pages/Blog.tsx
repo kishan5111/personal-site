@@ -44,6 +44,19 @@ const Blog = () => {
     }
   };
 
+  const CustomCodeBlock = ({ children, className, ...props }: any) => {
+    const language = /language-(\w+)/.exec(className || "");
+    return language ? (
+      <SyntaxHighlighter language={language[1].toLowerCase()}>
+        {String(children).replace(/\n$/, "")}
+      </SyntaxHighlighter>
+    ) : (
+      <code className={className} {...props}>
+        {children}
+      </code>
+    );
+  };
+
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <motion.div
@@ -91,22 +104,7 @@ const Blog = () => {
             </div>
             {preview ? (
               <div className="prose prose-sm md:prose-base lg:prose-lg dark:prose-invert max-w-none">
-                <ReactMarkdown
-                  components={{
-                    code: ({ node, inline, className, children, ...props }) => {
-                      const match = /language-(\w+)/.exec(className || "");
-                      return !inline && match ? (
-                        <SyntaxHighlighter language={match[1]} PreTag="div">
-                          {String(children).replace(/\n$/, "")}
-                        </SyntaxHighlighter>
-                      ) : (
-                        <code className={className} {...props}>
-                          {children}
-                        </code>
-                      );
-                    },
-                  }}
-                >
+                <ReactMarkdown components={{ code: CustomCodeBlock }}>
                   {currentPost.content}
                 </ReactMarkdown>
               </div>
@@ -135,22 +133,7 @@ const Blog = () => {
                   {post.date}
                 </time>
                 <div className="prose prose-sm md:prose-base lg:prose-lg dark:prose-invert max-w-none">
-                  <ReactMarkdown
-                    components={{
-                      code: ({ node, inline, className, children, ...props }) => {
-                        const match = /language-(\w+)/.exec(className || "");
-                        return !inline && match ? (
-                          <SyntaxHighlighter language={match[1]} PreTag="div">
-                            {String(children).replace(/\n$/, "")}
-                          </SyntaxHighlighter>
-                        ) : (
-                          <code className={className} {...props}>
-                            {children}
-                          </code>
-                        );
-                      },
-                    }}
-                  >
+                  <ReactMarkdown components={{ code: CustomCodeBlock }}>
                     {post.content}
                   </ReactMarkdown>
                 </div>
