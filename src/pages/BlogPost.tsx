@@ -1,17 +1,13 @@
 
-import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-interface BlogPost {
-  id: string;
-  title: string;
-  content: string;
-  date: string;
-}
-
-// Temporary mock data - replace this with your backend API call
-const mockPosts: BlogPost[] = [
+// Using the same mock data temporarily - in real app, this would come from your backend
+const mockPosts = [
   {
     id: "1",
     title: "Getting Started with Machine Learning",
@@ -83,14 +79,31 @@ This example shows how to use Hugging Face transformers for sentiment analysis.
   },
 ];
 
-const Blog = () => {
-  const [posts] = useState<BlogPost[]>(mockPosts);
+const BlogPost = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
+  const post = mockPosts.find(p => p.id === id);
 
-  const getPreviewContent = (content: string) => {
-    const firstParagraph = content.split('\n')[0];
-    return firstParagraph.replace(/^#\s+/, ''); // Remove heading markup
+  const CustomCodeBlock = ({ children, className, ...props }: any) => {
+    const language = /language-(\w+)/.exec(className || "");
+    return language ? (
+      <SyntaxHighlighter language={language[1].toLowerCase()}>
+        {String(children).replace(/\n$/, "")}
+      </SyntaxHighlighter>
+    ) : (
+      <code className={className} {...props}>
+        {children}
+      </code>
+    );
   };
+
+  if (!post) {
+    return (
+      <div className="min-h-screen container mx-auto px-4 py-12">
+        <h1>Blog post not found</h1>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
@@ -99,29 +112,27 @@ const Blog = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl font-bold mb-8">Blog</h1>
-        <div className="grid gap-8">
-          {posts.map((post) => (
-            <motion.article
-              key={post.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="glass rounded-lg p-6 cursor-pointer transition-all duration-200 hover:shadow-lg"
-              onClick={() => navigate(`/blog/${post.id}`)}
-            >
-              <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
-              <time className="text-sm text-muted-foreground mb-4 block">
-                {post.date}
-              </time>
-              <p className="text-muted-foreground">
-                {getPreviewContent(post.content)}
-              </p>
-            </motion.article>
-          ))}
-        </div>
+        <Button
+          variant="ghost"
+          className="mb-8 flex items-center gap-2"
+          onClick={() => navigate("/blog")}
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to Blog
+        </Button>
+        
+        <article className="prose prose-sm md:prose-base lg:prose-lg dark:prose-invert max-w-none">
+          <h1>{post.title}</h1>
+          <time className="text-sm text-muted-foreground block mb-8">
+            {post.date}
+          </time>
+          <ReactMarkdown components={{ code: CustomCodeBlock }}>
+            {post.content}
+          </ReactMarkdown>
+        </article>
       </motion.div>
     </div>
   );
 };
 
-export default Blog;
+export default BlogPost;

@@ -11,6 +11,7 @@ import Portfolio from "./pages/Portfolio";
 import Resume from "./pages/Resume";
 import Timeline from "./pages/Timeline";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -31,6 +32,7 @@ const App = () => (
               <Route path="/resume" element={<Resume />} />
               <Route path="/timeline" element={<Timeline />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
