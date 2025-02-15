@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, BarChart } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -58,7 +58,7 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className="p-2 glass rounded-full hover:text-primary transition-colors"
               >
-                <BarChart className="h-6 w-6" />
+                <span className="w-6 h-6 border-2 font-bold text-xl inline-flex items-center justify-center">K</span>
               </a>
             </div>
           </div>
