@@ -3,6 +3,7 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { motion } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 interface BlogPost {
   id: string;
@@ -86,6 +87,7 @@ This example shows how to use Hugging Face transformers for sentiment analysis.
 
 const Blog = () => {
   const [posts] = useState<BlogPost[]>(mockPosts);
+  const [expandedPost, setExpandedPost] = useState<string | null>(null);
 
   const CustomCodeBlock = ({ children, className, ...props }: any) => {
     const language = /language-(\w+)/.exec(className || "");
@@ -98,6 +100,11 @@ const Blog = () => {
         {children}
       </code>
     );
+  };
+
+  const getPreviewContent = (content: string) => {
+    const firstParagraph = content.split('\n')[0];
+    return firstParagraph.replace(/^#\s+/, ''); // Remove heading markup
   };
 
   return (
@@ -114,17 +121,39 @@ const Blog = () => {
               key={post.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="glass rounded-lg p-6"
+              className="glass rounded-lg p-6 cursor-pointer transition-all duration-200 hover:shadow-lg"
+              onClick={() => setExpandedPost(expandedPost === post.id ? null : post.id)}
             >
-              <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
-              <time className="text-sm text-muted-foreground mb-4 block">
-                {post.date}
-              </time>
-              <div className="prose prose-sm md:prose-base lg:prose-lg dark:prose-invert max-w-none">
-                <ReactMarkdown components={{ code: CustomCodeBlock }}>
-                  {post.content}
-                </ReactMarkdown>
+              <div className="flex justify-between items-start">
+                <div>
+                  <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
+                  <time className="text-sm text-muted-foreground mb-4 block">
+                    {post.date}
+                  </time>
+                </div>
+                {expandedPost === post.id ? (
+                  <ChevronUp className="h-6 w-6 text-muted-foreground" />
+                ) : (
+                  <ChevronDown className="h-6 w-6 text-muted-foreground" />
+                )}
               </div>
+              
+              {expandedPost === post.id ? (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="prose prose-sm md:prose-base lg:prose-lg dark:prose-invert max-w-none mt-4"
+                >
+                  <ReactMarkdown components={{ code: CustomCodeBlock }}>
+                    {post.content}
+                  </ReactMarkdown>
+                </motion.div>
+              ) : (
+                <p className="text-muted-foreground mt-2">
+                  {getPreviewContent(post.content)}
+                </p>
+              )}
             </motion.article>
           ))}
         </div>
