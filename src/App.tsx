@@ -8,8 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Index from "./pages/Index";
 import Portfolio from "./pages/Portfolio";
-import Resume from "./pages/Resume";
-import Timeline from "./pages/Timeline";
+import Work from "./pages/Work";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
@@ -29,8 +28,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/portfolio" element={<Portfolio />} />
-              <Route path="/resume" element={<Resume />} />
-              <Route path="/timeline" element={<Timeline />} />
+              <Route path="/work" element={<Work />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
