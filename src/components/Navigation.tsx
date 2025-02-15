@@ -1,18 +1,21 @@
 
 import { useNavigate, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Home, Briefcase, FileText, Calendar, MessageSquare, Github, Linkedin, Twitter } from "lucide-react";
+import { Home, Briefcase, FileText, Calendar, MessageSquare, Github, Linkedin, Twitter, BookOpen, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const Navigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { theme, setTheme } = useTheme();
 
   const navItems = [
-    { path: "/", label: "Home", icon: Home },
-    { path: "/portfolio", label: "Portfolio", icon: Briefcase },
-    { path: "/resume", label: "Resume", icon: FileText },
-    { path: "/timeline", label: "Timeline", icon: Calendar },
-    { path: "/contact", label: "Contact", icon: MessageSquare },
+    { path: "/", label: "Home", icon: Home, color: "text-blue-500" },
+    { path: "/portfolio", label: "Portfolio", icon: Briefcase, color: "text-purple-500" },
+    { path: "/resume", label: "Resume", icon: FileText, color: "text-green-500" },
+    { path: "/timeline", label: "Timeline", icon: Calendar, color: "text-orange-500" },
+    { path: "/blog", label: "Blog", icon: BookOpen, color: "text-pink-500" },
+    { path: "/contact", label: "Contact", icon: MessageSquare, color: "text-cyan-500" },
   ];
 
   return (
@@ -25,7 +28,7 @@ const Navigation = () => {
               onClick={() => navigate(item.path)}
               className={cn(
                 "flex items-center space-x-2 text-sm font-medium transition-colors hover:text-primary",
-                location.pathname === item.path ? "text-primary" : "text-muted-foreground"
+                location.pathname === item.path ? item.color : "text-muted-foreground"
               )}
             >
               <item.icon className="h-4 w-4" />
@@ -34,6 +37,12 @@ const Navigation = () => {
           ))}
         </div>
         <div className="flex items-center space-x-4">
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="text-muted-foreground hover:text-primary transition-colors"
+          >
+            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </button>
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <Github className="h-5 w-5" />
           </a>
