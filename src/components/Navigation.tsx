@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKaggle } from '@fortawesome/free-brands-svg-icons';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Navigation = () => {
@@ -15,6 +15,11 @@ const Navigation = () => {
   const { theme, setTheme } = useTheme();
   const isMobile = useIsMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const navItems = [
     { path: "/", label: "Home", icon: Home, color: "text-blue-500" },
@@ -24,9 +29,9 @@ const Navigation = () => {
     { path: "/contact", label: "Contact", icon: MessageSquare, color: "text-cyan-500" },
   ];
 
-  // Early return with a basic loading state if theme is not yet initialized
-  if (typeof theme === 'undefined') {
-    return <div className="fixed top-0 left-0 right-0 z-50 glass px-6 py-4" />;
+  // Don't render anything until component is mounted (to avoid hydration issues)
+  if (!mounted) {
+    return null;
   }
 
   return (
