@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Send } from "lucide-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -33,20 +32,15 @@ const Contact = () => {
               Feel free to reach out if you're interested in collaborating or discussing new opportunities. I'm always excited to connect with fellow developers and explore interesting projects.
             </p>
             
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <a 
-                  href={`mailto:${email}`}
-                  className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors"
-                >
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-lg bg-secondary/50">
+                <div className="flex items-center space-x-3 text-muted-foreground">
                   <Mail className="h-5 w-5" />
                   <span>{email}</span>
-                </a>
+                </div>
                 <Button
-                  variant="outline"
-                  size="sm"
                   onClick={handleEmailClick}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 w-full sm:w-auto"
                 >
                   <Send className="h-4 w-4" />
                   Send Email
