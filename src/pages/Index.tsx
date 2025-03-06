@@ -28,10 +28,6 @@ const Index = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="max-w-2xl"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Hi, I'm Kishan Vavdara
-          </h1>
-          
           <div className="space-y-6">
             <div>
               <h2 className="text-xl font-semibold text-primary mb-2">About Me</h2>
