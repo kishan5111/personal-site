@@ -8,6 +8,16 @@ const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <div className="flex flex-col items-center gap-12">
+        {/* Main Title */}
+        <motion.h1 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4"
+        >
+          Kishan Vavdara
+        </motion.h1>
+        
         {/* About Me content section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
