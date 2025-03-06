@@ -7,13 +7,13 @@ import { Link } from "react-router-dom";
 const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
-      <div className="flex flex-col gap-12">
+      <div className="flex flex-col items-center gap-12">
         {/* About Me content section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-3xl"
+          className="max-w-3xl text-center"
         >
           <div className="space-y-6">
             <div>
@@ -55,7 +55,7 @@ const Index = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="max-w-3xl"
+          className="max-w-3xl text-center"
         >
           <div className="space-y-6">
             <div>
