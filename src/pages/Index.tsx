@@ -7,21 +7,25 @@ import { Link } from "react-router-dom";
 const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
-      <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24">
+      <div className="flex flex-col gap-12">
+        {/* Top profile section */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-56 h-56 md:w-64 md:h-64 relative"
+          className="w-56 h-56 self-start"
         >
-          <img
-            src="/lovable-uploads/c1c2be73-5b68-4934-906f-3202d2d8265d.png"
-            alt="Profile"
-            className="rounded-full w-full h-full object-cover shadow-lg border-4 border-primary/20"
-          />
-          <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse" />
+          <div className="relative">
+            <img
+              src="/lovable-uploads/c1c2be73-5b68-4934-906f-3202d2d8265d.png"
+              alt="Profile"
+              className="rounded-full w-full h-full object-cover shadow-lg border-4 border-primary/20"
+            />
+            <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse" />
+          </div>
         </motion.div>
         
+        {/* Content section */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
