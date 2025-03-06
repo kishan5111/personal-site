@@ -9,10 +9,10 @@ const Index = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-56 h-56 md:w-64 md:h-64 relative" // Made image larger
+          className="w-56 h-56 md:w-64 md:h-64 relative"
         >
           <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=300&h=300"
+            src="/lovable-uploads/c1c2be73-5b68-4934-906f-3202d2d8265d.png"
             alt="Profile"
             className="rounded-full w-full h-full object-cover shadow-lg border-4 border-primary/20"
           />
