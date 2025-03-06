@@ -28,18 +28,18 @@ const Contact = () => {
             
             <div className="space-y-4">
               <a 
-                href="mailto:contact@example.com"
+                href="mailto:kishanvavdara51@gmail.com"
                 className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="h-5 w-5" />
-                <span>contact@example.com</span>
+                <span>kishanvavdara51@gmail.com</span>
               </a>
             </div>
             
             <h3 className="text-xl font-semibold mt-8 mb-4">Connect with me</h3>
             <div className="flex space-x-4">
               <a 
-                href="https://github.com"
+                href="https://github.com/kishan5111"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 glass rounded-full hover:text-primary transition-colors"
@@ -47,7 +47,7 @@ const Contact = () => {
                 <Github className="h-6 w-6" />
               </a>
               <a 
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/kishan-vavdara-55680b190/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 glass rounded-full hover:text-primary transition-colors"
@@ -55,7 +55,7 @@ const Contact = () => {
                 <Linkedin className="h-6 w-6" />
               </a>
               <a 
-                href="https://kaggle.com"
+                href="https://www.kaggle.com/kishanvavdara"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 glass rounded-full hover:text-primary transition-colors"
