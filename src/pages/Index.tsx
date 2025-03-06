@@ -1,5 +1,8 @@
 
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -28,41 +31,60 @@ const Index = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Hi, I'm Kishan Vavdara
           </h1>
+          
           <div className="space-y-6">
-            <p className="text-lg md:text-xl text-muted-foreground">
-              A passionate Machine Learning Engineer with a drive for innovation and excellence. 
-              Through the power of AI and deep learning, I transform complex data into actionable insights 
-              that shape the future of technology.
-            </p>
+            <div>
+              <h2 className="text-xl font-semibold text-primary mb-2">About Me</h2>
+              <p className="text-lg text-muted-foreground">
+                Hey there! I'm Kishan Vavdara 👋. I'm currently working as a freelance data/ML engineer, 
+                specializing in training, optimizing, and deploying VLMs (vision language models) and LLMs. 
+                I transitioned into ML after completing my undergraduate studies in biotechnology (where I was a gold medalist!), 
+                through self-study and online courses.
+              </p>
+            </div>
             
-            <p className="text-lg md:text-xl text-muted-foreground">
-              With expertise in deep learning, computer vision, and natural language processing, 
-              I've contributed to groundbreaking projects that push the boundaries of what's possible 
-              with artificial intelligence.
+            <p className="text-lg text-muted-foreground">
+              I'm also an active participant in Kaggle competitions, sharing datasets, models, and notebooks. 
+              I've published gold-medal-winning notebooks on fine-tuning and deploying LLaMA models using TPUs and GPUs, 
+              as well as on training neural networks from scratch. Through my contributions, I recently became a 4x Kaggle Expert.
             </p>
 
-            <div className="space-y-4 mt-8">
-              <div className="flex items-center space-x-4">
-                <div className="h-1 w-12 bg-primary rounded" />
-                <span className="text-sm font-medium">Deep Learning Expert</span>
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="h-1 w-12 bg-primary rounded" />
-                <span className="text-sm font-medium">Computer Vision Specialist</span>
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="h-1 w-12 bg-primary rounded" />
-                <span className="text-sm font-medium">NLP Solutions Architect</span>
-              </div>
+            <div>
+              <h2 className="text-xl font-semibold text-primary mb-2">Interests</h2>
+              <p className="text-lg text-muted-foreground">
+                My current interests and learning goals include AI agents, GPU coding (CUDA, CUTLASS, and cuTE), 
+                and the application of AI in neuroscience and biology, which I intend to explore in depth.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-primary mb-2">Lifestyle</h2>
+              <p className="text-lg text-muted-foreground">
+                I believe in finding balance, so I enjoy practicing yoga and meditation, and I'm even trying to learn 
+                the violin (wish me luck!). Weekends are for exploring new projects and ideas, or just relaxing with friends.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-primary mb-2">Let's Connect!</h2>
+              <p className="text-lg text-muted-foreground">
+                If you're interested in discussing AI, innovation, or potential collaborations, 
+                please feel free to get in touch—I'd love to connect!
+              </p>
             </div>
 
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="mt-8 text-lg text-primary font-medium"
+              className="pt-4"
             >
-              Let's build the future of AI together
+              <Link to="/contact">
+                <Button className="group">
+                  Let's connect and chat about all things AI and beyond!
+                  <ChevronRight className="transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
