@@ -13,7 +13,7 @@ const Index = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
         >
           Kishan Vavdara
         </motion.h1>
@@ -27,7 +27,7 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl font-semibold text-primary mb-2">About Me</h2>
+              <h2 className="text-xl font-semibold mb-2">About Me</h2>
               <p className="text-lg text-muted-foreground">
                 Hey there! I'm Kishan Vavdara 👋. I'm currently working as a freelance data/ML engineer, 
                 specializing in training, optimizing, and deploying VLMs (vision language models) and LLMs. 
@@ -69,7 +69,7 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl font-semibold text-primary mb-2">Interests</h2>
+              <h2 className="text-xl font-semibold mb-2">Interests</h2>
               <p className="text-lg text-muted-foreground">
                 My current interests and learning goals include AI agents, GPU coding (CUDA, CUTLASS, and cuTE), 
                 and the application of AI in neuroscience and biology, which I intend to explore in depth.
@@ -77,7 +77,7 @@ const Index = () => {
             </div>
 
             <div>
-              <h2 className="text-xl font-semibold text-primary mb-2">Outside of work</h2>
+              <h2 className="text-xl font-semibold mb-2">Outside of work</h2>
               <p className="text-lg text-muted-foreground">
                 I believe in finding balance, so I enjoy practicing yoga and meditation, and I'm even trying to learn 
                 the violin (wish me luck!). Weekends are for exploring new projects and ideas, or just relaxing with friends.
@@ -85,7 +85,7 @@ const Index = () => {
             </div>
 
             <div>
-              <h2 className="text-xl font-semibold text-primary mb-2">Let's Connect!</h2>
+              <h2 className="text-xl font-semibold mb-2">Let's Connect!</h2>
               <p className="text-lg text-muted-foreground">
                 If you're interested in discussing AI, innovation, or potential collaborations, 
                 please feel free to get in touch—I'd love to connect!
