@@ -7,30 +7,13 @@ import { Link } from "react-router-dom";
 const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
-      <div className="flex flex-col md:flex-row gap-12 md:gap-16">
-        {/* Left profile section */}
+      <div className="flex flex-col gap-12">
+        {/* About Me content section */}
         <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="w-56 h-56 shrink-0"
-        >
-          <div className="relative">
-            <img
-              src="/lovable-uploads/c1c2be73-5b68-4934-906f-3202d2d8265d.png"
-              alt="Profile"
-              className="rounded-full w-full h-full object-cover shadow-lg border-4 border-primary/20"
-            />
-            <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse" />
-          </div>
-        </motion.div>
-        
-        {/* Right content section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex-1"
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl"
         >
           <div className="space-y-6">
             <div>
@@ -48,7 +31,33 @@ const Index = () => {
               I've published gold-medal-winning notebooks on fine-tuning and deploying LLaMA models using TPUs and GPUs, 
               as well as on training neural networks from scratch. Through my contributions, I recently became a 4x Kaggle Expert.
             </p>
-
+          </div>
+        </motion.div>
+        
+        {/* Photo in rectangular frame */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="max-w-2xl mx-auto"
+        >
+          <div className="relative overflow-hidden rounded-lg shadow-xl border-4 border-primary/20">
+            <img
+              src="/lovable-uploads/48b5603b-8a05-4dc8-88bb-a3d94d00d307.png"
+              alt="Kishan playing violin"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        </motion.div>
+        
+        {/* Additional sections */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="max-w-3xl"
+        >
+          <div className="space-y-6">
             <div>
               <h2 className="text-xl font-semibold text-primary mb-2">Interests</h2>
               <p className="text-lg text-muted-foreground">
@@ -76,7 +85,7 @@ const Index = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.7 }}
               className="pt-4"
             >
               <Link to="/contact">
