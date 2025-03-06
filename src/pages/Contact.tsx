@@ -1,10 +1,17 @@
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Send } from "lucide-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKaggle } from '@fortawesome/free-brands-svg-icons';
+import { Button } from "@/components/ui/button";
 
 const Contact = () => {
+  const email = "kishanvavdara@gmail.com";
+  
+  const handleEmailClick = () => {
+    window.location.href = `mailto:${email}`;
+  };
+
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <motion.div
@@ -27,13 +34,24 @@ const Contact = () => {
             </p>
             
             <div className="space-y-4">
-              <a 
-                href="mailto:kishanvavdara51@gmail.com"
-                className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Mail className="h-5 w-5" />
-                <span>kishanvavdara51@gmail.com</span>
-              </a>
+              <div className="flex items-center gap-4">
+                <a 
+                  href={`mailto:${email}`}
+                  className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <Mail className="h-5 w-5" />
+                  <span>{email}</span>
+                </a>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleEmailClick}
+                  className="flex items-center gap-2"
+                >
+                  <Send className="h-4 w-4" />
+                  Send Email
+                </Button>
+              </div>
             </div>
             
             <h3 className="text-xl font-semibold mt-8 mb-4">Connect with me</h3>
