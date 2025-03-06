@@ -7,13 +7,13 @@ import { Link } from "react-router-dom";
 const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
-      <div className="flex flex-col gap-12">
-        {/* Top profile section */}
+      <div className="flex flex-col md:flex-row gap-12 md:gap-16">
+        {/* Left profile section */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-56 h-56 self-start"
+          className="w-56 h-56 shrink-0"
         >
           <div className="relative">
             <img
@@ -25,12 +25,12 @@ const Index = () => {
           </div>
         </motion.div>
         
-        {/* Content section */}
+        {/* Right content section */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="max-w-2xl"
+          className="flex-1"
         >
           <div className="space-y-6">
             <div>
