@@ -54,7 +54,7 @@ const Index = () => {
             </div>
 
             <div>
-              <h2 className="text-xl font-semibold text-primary mb-2">Lifestyle</h2>
+              <h2 className="text-xl font-semibold text-primary mb-2">Outside of work</h2>
               <p className="text-lg text-muted-foreground">
                 I believe in finding balance, so I enjoy practicing yoga and meditation, and I'm even trying to learn 
                 the violin (wish me luck!). Weekends are for exploring new projects and ideas, or just relaxing with friends.
