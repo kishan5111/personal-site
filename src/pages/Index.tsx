@@ -8,15 +8,19 @@ const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <div className="flex flex-col items-start gap-12 max-w-5xl mx-auto">
-        {/* Main Title - aligned to the left */}
-        <motion.h1 
+        {/* Banner Image instead of text title */}
+        <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-4 font-opensans text-gray-800 dark:text-gray-200"
+          className="w-full"
         >
-          Kishan Vavdara
-        </motion.h1>
+          <img 
+            src="/lovable-uploads/cd7c1e65-9bfa-4999-a6f1-e25a74f0bfbe.png" 
+            alt="Kishan Vavdara - Machine Learning Engineer" 
+            className="w-full rounded-lg shadow-lg" 
+          />
+        </motion.div>
         
         {/* About Me content section */}
         <motion.div 
