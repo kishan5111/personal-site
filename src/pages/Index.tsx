@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
@@ -21,41 +22,15 @@ const Index = () => {
           />
         </motion.div>
 
-        {/* Welcome Message */}
+        {/* Welcome Message - Left aligned */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-biro text-4xl md:text-5xl lg:text-6xl text-primary w-full text-center"
+          className="font-biro text-3xl md:text-4xl lg:text-5xl text-primary text-left"
         >
           Welcome to my world of AI & ML
         </motion.h1>
-        
-        {/* About Me content section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="w-full"
-        >
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-xl font-semibold mb-2">About Me</h2>
-              <p className="text-lg text-muted-foreground">
-                <span className="font-bold">Hey there!</span> I'm Kishan. I'm currently working as a freelance data/ML engineer, 
-                specializing in training, optimizing, and deploying VLMs (vision language models) and LLMs. 
-                I transitioned into ML after completing my undergraduate studies in biotechnology (where I was a gold medalist!), 
-                through self-study and online courses.
-              </p>
-            </div>
-            
-            <p className="text-lg text-muted-foreground">
-              I'm also an active participant in Kaggle competitions, sharing datasets, models, and notebooks. 
-              I've published gold-medal-winning notebooks on fine-tuning and deploying LLaMA models using TPUs and GPUs, 
-              as well as on training neural networks from scratch. Through my contributions, I recently became a 4x Kaggle Expert.
-            </p>
-          </div>
-        </motion.div>
         
         {/* Photo in rectangular frame */}
         <motion.div 
