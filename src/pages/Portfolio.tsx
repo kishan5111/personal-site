@@ -7,8 +7,6 @@ const Portfolio = () => {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-12">Portfolio</h1>
-      
       {/* Achievements Section */}
       <section className="mb-16">
         <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">Achievements</h2>
