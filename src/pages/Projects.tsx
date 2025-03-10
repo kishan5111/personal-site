@@ -9,6 +9,58 @@ const Projects = () => {
     <div className="container mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold mb-12">Work</h1>
       
+      {/* Work Experience Section */}
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">Work Experience</h2>
+        
+        <div className="border rounded-lg p-6 mb-8">
+          <h3 className="text-2xl font-semibold mb-2">Freelance ML Engineer</h3>
+          <p className="text-muted-foreground mb-4">Remote • Dec 2023 - Present</p>
+          
+          <ul className="list-disc pl-5 space-y-3 mb-6">
+            <li>
+              Optimized and fine-tuned ML models (CatBoost, LightGBM, XGBoost) and transformer models (DeBERTa, 
+              RoBERTa) to extract relevant answers from YouTube subtitles, achieving a 0.908 AUC score and 
+              improving inference speed by 40%.
+            </li>
+            <li>
+              Developed and fine-tuned transformer-based models, including CryptoBERT and DeBERTa (small, base, large), 
+              achieving a binary AUC score of 0.918 through hyperparameter tuning.
+            </li>
+            <li>
+              Engineered a 300k-sample training dataset and processed over 103 million records using advanced 
+              sampling and preprocessing techniques.
+            </li>
+            <li>
+              Integrated multimodal models like ImageBind, Moondream, and VITA, combining text, image, and audio 
+              data to achieve relevance scores up to 0.6839 with audio-enhanced pipelines.
+            </li>
+            <li>
+              Designed and deployed a FastAPI-based inference application with dynamic padding and quantization, 
+              reducing latency to ~0.18 seconds per video for real-time performance.
+            </li>
+            <li>
+              Automated deployment across 50+ cloud instances using Ansible, managing creation, deletion, and 
+              configuration for high availability and scalability.
+            </li>
+          </ul>
+          
+          <div className="mb-4">
+            <span className="font-medium">Skills:</span> 
+            <div className="flex flex-wrap gap-2 mt-2">
+              <span className="px-2 py-1 bg-primary/10 rounded-md text-sm">PyTorch</span>
+              <span className="px-2 py-1 bg-primary/10 rounded-md text-sm">TensorFlow</span>
+              <span className="px-2 py-1 bg-primary/10 rounded-md text-sm">CatBoost</span>
+              <span className="px-2 py-1 bg-primary/10 rounded-md text-sm">XGBoost</span>
+              <span className="px-2 py-1 bg-primary/10 rounded-md text-sm">LightGBM</span>
+              <span className="px-2 py-1 bg-primary/10 rounded-md text-sm">Transformer Models</span>
+              <span className="px-2 py-1 bg-primary/10 rounded-md text-sm">FastAPI</span>
+              <span className="px-2 py-1 bg-primary/10 rounded-md text-sm">Ansible</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* Achievements Section */}
       <section className="mb-16">
         <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">Achievements</h2>
