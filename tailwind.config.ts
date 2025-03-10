@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -23,6 +22,7 @@ export default {
         sans: ["Inter", "system-ui", "sans-serif"],
         body: ["DM Sans", "system-ui", "sans-serif"],
         opensans: ["Open Sans", "system-ui", "sans-serif"],
+        biro: ["Biro Script Plus Sloppy", "cursive"],
       },
       colors: {
         border: "hsl(var(--border))",

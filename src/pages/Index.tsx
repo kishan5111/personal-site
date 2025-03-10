@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
@@ -8,7 +7,7 @@ const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <div className="flex flex-col items-start gap-12 max-w-5xl mx-auto">
-        {/* Banner Image - borderless to blend with background */}
+        {/* Banner Image */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -21,6 +20,16 @@ const Index = () => {
             className="w-full" 
           />
         </motion.div>
+
+        {/* Welcome Message */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="font-biro text-4xl md:text-5xl lg:text-6xl text-primary w-full text-center"
+        >
+          Welcome to my world of AI & ML
+        </motion.h1>
         
         {/* About Me content section */}
         <motion.div 

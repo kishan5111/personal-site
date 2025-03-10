@@ -19,15 +19,26 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    // Load Open Sans font
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap';
-    document.head.appendChild(link);
-    
-    return () => {
-      document.head.removeChild(link);
+    // Load fonts
+    const loadFonts = async () => {
+      const openSansLink = document.createElement('link');
+      openSansLink.rel = 'stylesheet';
+      openSansLink.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap';
+      
+      const biroLink = document.createElement('link');
+      biroLink.rel = 'stylesheet';
+      biroLink.href = 'https://fonts.cdnfonts.com/css/biro-script-plus-28';
+      
+      document.head.appendChild(openSansLink);
+      document.head.appendChild(biroLink);
+      
+      return () => {
+        document.head.removeChild(openSansLink);
+        document.head.removeChild(biroLink);
+      };
     };
+    
+    loadFonts();
   }, []);
 
   return (
