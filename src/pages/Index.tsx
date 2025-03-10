@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
@@ -21,12 +22,12 @@ const Index = () => {
           />
         </motion.div>
 
-        {/* Welcome Message - more sloppy and handwritten, bigger */}
+        {/* Welcome Message - more sloppy and handwritten appearance */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-2xl text-gray-900 dark:text-gray-100 text-left font-biro font-bold italic transform -rotate-1"
+          className="text-3xl text-gray-900 dark:text-gray-100 text-left font-biro font-bold italic transform -rotate-2 tracking-wide"
         >
           Welcome!
         </motion.p>
