@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <div className="flex flex-col items-start gap-12 max-w-5xl mx-auto">
-        {/* Banner Image - updated with new image */}
+        {/* Banner Image - borderless to blend with background */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -18,7 +18,7 @@ const Index = () => {
           <img 
             src="/lovable-uploads/0c091e16-50c2-42a3-a4ad-5ba37dd27f89.png" 
             alt="Kishan Vavdara - Machine Learning Engineer" 
-            className="w-full rounded-lg shadow-lg" 
+            className="w-full" 
           />
         </motion.div>
         
