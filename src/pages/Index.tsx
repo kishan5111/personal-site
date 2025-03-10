@@ -22,15 +22,15 @@ const Index = () => {
           />
         </motion.div>
 
-        {/* Welcome Message - Left aligned */}
-        <motion.h1
+        {/* Welcome Message - small and light */}
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-biro text-3xl md:text-4xl lg:text-5xl text-black dark:text-white text-left"
+          className="text-sm text-gray-500 text-left"
         >
-          Welcome to my corner of Internet
-        </motion.h1>
+          welcome
+        </motion.p>
         
         {/* Description */}
         <motion.div 
@@ -40,7 +40,7 @@ const Index = () => {
           className="w-full space-y-6"
         >
           <p className="text-lg text-muted-foreground">
-            <span className="font-bold">Hey there!</span> I'm Kishan. I'm currently working as a freelance data/ML engineer, 
+            <span className="font-bold">Hey there!</span> I'm Kishan. This is my little corner on the Internet — make yourself at home! I'm currently working as a freelance data/ML engineer, 
             specializing in training, optimizing, and deploying VLMs (vision language models) and LLMs. 
             I transitioned into ML after completing my undergraduate studies in biotechnology (where I was a gold medalist!), 
             through self-study and online courses.
