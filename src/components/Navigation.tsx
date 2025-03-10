@@ -23,7 +23,7 @@ const Navigation = () => {
 
   const navItems = [
     { path: "/", label: "Home", icon: Home, color: "text-blue-500" },
-    { path: "/portfolio", label: "Portfolio", icon: Briefcase, color: "text-purple-500" },
+    { path: "/projects", label: "Projects", icon: Briefcase, color: "text-purple-500" },
     { path: "/work", label: "Work", icon: Briefcase, color: "text-green-500" },
     { path: "/blog", label: "Blog", icon: BookOpen, color: "text-pink-500" },
     { path: "/contact", label: "Contact", icon: MessageSquare, color: "text-cyan-500" },

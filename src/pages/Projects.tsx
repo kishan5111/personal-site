@@ -22,7 +22,7 @@ const projects = [
   // Add more projects as needed
 ];
 
-const Portfolio = () => {
+const Projects = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <motion.div
@@ -30,7 +30,7 @@ const Portfolio = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl font-bold mb-8">Portfolio</h1>
+        <h1 className="text-4xl font-bold mb-8">Projects</h1>
         <p className="text-muted-foreground mb-12 max-w-2xl">
           Here are some of my recent projects in machine learning and deep learning.
           Each project represents a unique challenge and learning experience.
@@ -94,4 +94,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default Projects;
