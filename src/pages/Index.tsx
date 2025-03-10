@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
-      <div className="flex flex-col items-center gap-12 max-w-5xl mx-auto">
-        {/* Main Title */}
+      <div className="flex flex-col items-start gap-12 max-w-5xl mx-auto">
+        {/* Main Title - aligned to the left */}
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -29,7 +29,7 @@ const Index = () => {
             <div>
               <h2 className="text-xl font-semibold mb-2">About Me</h2>
               <p className="text-lg text-muted-foreground">
-                Hey there! I'm Kishan Vavdara 👋. I'm currently working as a freelance data/ML engineer, 
+                Hey there! I'm Kishan. I'm currently working as a freelance data/ML engineer, 
                 specializing in training, optimizing, and deploying VLMs (vision language models) and LLMs. 
                 I transitioned into ML after completing my undergraduate studies in biotechnology (where I was a gold medalist!), 
                 through self-study and online courses.
