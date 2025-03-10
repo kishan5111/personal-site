@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <div className="flex flex-col items-start gap-12 max-w-5xl mx-auto">
-        {/* Banner Image instead of text title */}
+        {/* Banner Image - updated with new image */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -16,7 +16,7 @@ const Index = () => {
           className="w-full"
         >
           <img 
-            src="/lovable-uploads/cd7c1e65-9bfa-4999-a6f1-e25a74f0bfbe.png" 
+            src="/lovable-uploads/0c091e16-50c2-42a3-a4ad-5ba37dd27f89.png" 
             alt="Kishan Vavdara - Machine Learning Engineer" 
             className="w-full rounded-lg shadow-lg" 
           />
