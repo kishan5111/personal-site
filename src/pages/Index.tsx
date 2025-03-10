@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
@@ -26,7 +27,7 @@ const Index = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-biro text-3xl md:text-4xl lg:text-5xl text-primary text-left"
+          className="font-biro text-3xl md:text-4xl lg:text-5xl text-black dark:text-white text-left"
         >
           Welcome to my world of AI & ML
         </motion.h1>
