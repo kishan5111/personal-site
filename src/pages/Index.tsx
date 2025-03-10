@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
@@ -32,6 +31,27 @@ const Index = () => {
           Welcome to my world of AI & ML
         </motion.h1>
         
+        {/* Description */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full space-y-6"
+        >
+          <p className="text-lg text-muted-foreground">
+            <span className="font-bold">Hey there!</span> I'm Kishan. I'm currently working as a freelance data/ML engineer, 
+            specializing in training, optimizing, and deploying VLMs (vision language models) and LLMs. 
+            I transitioned into ML after completing my undergraduate studies in biotechnology (where I was a gold medalist!), 
+            through self-study and online courses.
+          </p>
+          
+          <p className="text-lg text-muted-foreground">
+            I'm also an active participant in Kaggle competitions, sharing datasets, models, and notebooks. 
+            I've published gold-medal-winning notebooks on fine-tuning and deploying LLaMA models using TPUs and GPUs, 
+            as well as on training neural networks from scratch. Through my contributions, I recently became a 4x Kaggle Expert.
+          </p>
+        </motion.div>
+
         {/* Photo in rectangular frame */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
