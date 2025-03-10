@@ -29,7 +29,7 @@ const Index = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="font-biro text-3xl md:text-4xl lg:text-5xl text-black dark:text-white text-left"
         >
-          Welcome to my world of AI & ML
+          Welcome to my corner of Internet
         </motion.h1>
         
         {/* Description */}
