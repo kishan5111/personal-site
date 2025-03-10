@@ -1,4 +1,5 @@
-import { ExternalLink } from "lucide-react";
+
+import { ExternalLink, Github } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Projects = () => {
