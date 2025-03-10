@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +12,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import CompetitionDetail from "./pages/CompetitionDetail";
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
@@ -42,6 +42,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/projects" element={<Projects />} />
+                <Route path="/competition/:id" element={<CompetitionDetail />} />
                 <Route path="/work" element={<Work />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<BlogPost />} />

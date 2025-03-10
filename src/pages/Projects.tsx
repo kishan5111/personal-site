@@ -1,150 +1,55 @@
-
-import { ExternalLink, Github, Trophy, Medal, BookOpen } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ExternalLink } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Projects = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-12 border-b pb-4">Projects</h1>
+      <h1 className="text-4xl font-bold mb-12">Work</h1>
       
       {/* Competitions Section */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-primary">Competitions</h2>
+        <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">Competitions</h2>
         
-        {/* LMSYS Competition */}
-        <div className="mb-12 border-b pb-8">
-          <h3 className="text-2xl font-semibold mb-2">LMSYS - Chatbot Arena Human Preference Predictions</h3>
-          <p className="text-sm text-muted-foreground mb-3">July - September 2024</p>
-          <p className="mb-4">Secured 21st place (Silver Medal) out of 1,849 teams by predicting human preferences in chatbot interactions.</p>
-          
-          <h4 className="font-medium mb-3 mt-6">Notebooks:</h4>
-          <ol className="space-y-6 ml-1">
-            <li className="border rounded-md p-4">
-              <div className="font-medium">LMSYS - Llama-3 [TPU Train] (July 2024)</div>
-              <p className="text-sm my-2">Fine-tuned and sharded the Llama-3 8B model on Kaggle TPUs with a custom pipeline, earning a gold medal and over 700 copies.</p>
-              <p className="text-sm mb-2"><span className="font-medium">Tools:</span> Torch_XLA, Transformers, PEFT, Scikit-learn, PyTorch</p>
-              <a 
-                href="https://www.kaggle.com/code/kishanvavdara/lmsys-llama-3-tpu-train"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary text-sm flex items-center gap-1 hover:underline"
-              >
-                <ExternalLink className="h-3 w-3" />
-                <span>Code - lmsys-llama-3-tpu-train</span>
-              </a>
-            </li>
-            
-            <li className="border rounded-md p-4">
-              <div className="font-medium">Inference - Llama-3 8B (August 2024)</div>
-              <p className="text-sm my-2">Performed parallel inference on a fine-tuned Llama-3 8B model using dual T4 GPUs, processing 25k samples in under 5 hours. Earned a gold medal, over 1,000 copies, and ranked among the highest-upvoted notebooks in the competition.</p>
-              <p className="text-sm mb-2"><span className="font-medium">Tools:</span> PyTorch, Transformers, Threading, PEFT</p>
-              <a 
-                href="https://www.kaggle.com/code/kishanvavdara/inference-llama-3-8b"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary text-sm flex items-center gap-1 hover:underline"
-              >
-                <ExternalLink className="h-3 w-3" />
-                <span>Code - inference-llama-3-8b</span>
-              </a>
-            </li>
-            
-            <li className="border rounded-md p-4">
-              <div className="font-medium">21st Place [Human Bias] 2 x Gemma 9B [4096 len] (September 2024)</div>
-              <p className="text-sm my-2">Combined two fine-tuned Gemma 9B models with preprocessing, feature engineering, and post-processing, achieving inference for 25k samples in under 9 hours on Tesla T4 GPUs.</p>
-              <a 
-                href="https://www.kaggle.com/code/kishanvavdara/21st-place-human-bias-2-x-gemma-9b-4096-len"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary text-sm flex items-center gap-1 hover:underline"
-              >
-                <ExternalLink className="h-3 w-3" />
-                <span>Code - 21st-place-human-bias-2-x-gemma-9b-4096-len</span>
-              </a>
-            </li>
-          </ol>
-          
-          <div className="mt-4">
-            <a 
-              href="https://www.kaggle.com/competitions/lmsys-chatbot-arena/discussion/527627"
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-primary text-sm flex items-center gap-1 hover:underline"
-            >
-              <BookOpen className="h-3 w-3" />
-              <span>Competition Writeup: Discussion</span>
-            </a>
+        <div className="grid gap-8">
+          {/* LMSYS Competition */}
+          <div 
+            onClick={() => navigate('/competition/lmsys')}
+            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors"
+          >
+            <h3 className="text-2xl font-semibold mb-2">LMSYS - Chatbot Arena Human Preference Predictions</h3>
+            <p className="text-muted-foreground mb-2">July - September 2024</p>
+            <p className="mb-2">Secured 21st place (Silver Medal) out of 1,849 teams</p>
           </div>
-        </div>
-        
-        {/* LLM Prompt Recovery Competition */}
-        <div className="mb-12 border-b pb-8">
-          <h3 className="text-2xl font-semibold mb-2">LLM Prompt Recovery Competition</h3>
-          <p className="text-sm text-muted-foreground mb-3">March 2024</p>
-          <p className="mb-4">Ranked 120th (Bronze Medal) out of 2,175 teams by recovering prompts used to transform given texts.</p>
           
-          <h4 className="font-medium mb-3 mt-6">Notebook:</h4>
-          <ol className="space-y-6 ml-1">
-            <li className="border rounded-md p-4">
-              <div className="font-medium">Gemma 7b-it-quant Inference on Multi-GPU</div>
-              <p className="text-sm my-2">Implemented inference with the quantized Gemma-7b-it model on dual T4 GPUs for efficient prompting and submission.</p>
-              <a 
-                href="https://www.kaggle.com/code/kishanvavdara/gemma-7b-it-quant-inference-on-multi-gpu"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary text-sm flex items-center gap-1 hover:underline"
-              >
-                <ExternalLink className="h-3 w-3" />
-                <span>Code - gemma-7b-it-quant-inference-on-multi-gpu</span>
-              </a>
-            </li>
-          </ol>
-        </div>
-        
-        {/* Open Problems Competition */}
-        <div className="mb-12 border-b pb-8">
-          <h3 className="text-2xl font-semibold mb-2">Open Problems Competition</h3>
-          <p className="text-sm text-muted-foreground mb-3">November - December 2023</p>
-          <p className="mb-4">Contributed two standout notebooks in the Open Problems Single-Cell Perturbations competition:</p>
+          {/* LLM Prompt Recovery Competition */}
+          <div 
+            onClick={() => navigate('/competition/llm-prompt')}
+            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors"
+          >
+            <h3 className="text-2xl font-semibold mb-2">LLM Prompt Recovery Competition</h3>
+            <p className="text-muted-foreground mb-2">March 2024</p>
+            <p className="mb-2">Ranked 120th (Bronze Medal) out of 2,175 teams</p>
+          </div>
           
-          <h4 className="font-medium mb-3 mt-6">Notebooks:</h4>
-          <ol className="space-y-6 ml-1">
-            <li className="border rounded-md p-4">
-              <div className="font-medium">Neural Net Regression (November 2023)</div>
-              <p className="text-sm my-2">Trained and performed inference with a neural network to achieve a high score. Earned a gold medal and over 200 copies.</p>
-              <a 
-                href="https://www.kaggle.com/code/kishanvavdara/neural-network-regression"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary text-sm flex items-center gap-1 hover:underline"
-              >
-                <ExternalLink className="h-3 w-3" />
-                <span>Code - neural-network-regression</span>
-              </a>
-            </li>
-            
-            <li className="border rounded-md p-4">
-              <div className="font-medium">NLP Regression (December 2023)</div>
-              <p className="text-sm my-2">Utilized SMILES molecular data to generate embeddings and trained models including Conv1D, LSTM, and neural networks, earning a silver medal.</p>
-              <a 
-                href="https://www.kaggle.com/code/kishanvavdara/nlp-regression"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary text-sm flex items-center gap-1 hover:underline"
-              >
-                <ExternalLink className="h-3 w-3" />
-                <span>Code - nlp-regression</span>
-              </a>
-            </li>
-          </ol>
+          {/* Open Problems Competition */}
+          <div 
+            onClick={() => navigate('/competition/open-problems')}
+            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors"
+          >
+            <h3 className="text-2xl font-semibold mb-2">Open Problems Competition</h3>
+            <p className="text-muted-foreground mb-2">November - December 2023</p>
+            <p className="mb-2">Multiple gold and silver medal notebooks</p>
+          </div>
         </div>
       </section>
       
       {/* Projects Section */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 text-primary">Personal Projects</h2>
+        <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">Personal Projects</h2>
         
-        <div className="space-y-8">
+        <div className="grid gap-8">
           {/* Gemini for YouTube Videos */}
           <div className="border rounded-md p-6">
             <h3 className="text-xl font-semibold mb-2">Gemini for YouTube Videos</h3>
