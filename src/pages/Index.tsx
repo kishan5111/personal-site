@@ -29,7 +29,7 @@ const Index = () => {
             <div>
               <h2 className="text-xl font-semibold mb-2">About Me</h2>
               <p className="text-lg text-muted-foreground">
-                Hey there! I'm Kishan. I'm currently working as a freelance data/ML engineer, 
+                <span className="font-bold">Hey there!</span> I'm Kishan. I'm currently working as a freelance data/ML engineer, 
                 specializing in training, optimizing, and deploying VLMs (vision language models) and LLMs. 
                 I transitioned into ML after completing my undergraduate studies in biotechnology (where I was a gold medalist!), 
                 through self-study and online courses.
