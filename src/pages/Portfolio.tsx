@@ -1,5 +1,5 @@
 
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Briefcase, Trophy, GraduationCap, BookOpen, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Portfolio = () => {
@@ -37,6 +37,87 @@ const Portfolio = () => {
           >
             <h3 className="text-2xl font-semibold mb-2">Open Problems Competition</h3>
             <p className="mb-2">Multiple gold and silver medal notebooks</p>
+          </div>
+        </div>
+      </section>
+      
+      {/* My Journey Timeline Section */}
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">My Journey</h2>
+        
+        <div className="relative border-l border-primary ml-6 mt-8 space-y-12">
+          {/* Freelance Experience */}
+          <div className="relative pl-8">
+            <span className="absolute flex items-center justify-center w-10 h-10 bg-primary/20 rounded-full -left-5 ring-4 ring-background">
+              <Briefcase className="w-5 h-5 text-primary" />
+            </span>
+            <div className="flex items-center gap-2 text-lg text-primary font-semibold mb-2">
+              <span>Freelance</span>
+              <span className="flex items-center gap-1 text-sm font-normal text-muted-foreground">
+                <Calendar className="w-3 h-3" /> Dec 2023 - Present · 9 mos
+              </span>
+            </div>
+            <h3 className="text-xl font-medium mb-2">Machine Learning Engineer</h3>
+            <p className="text-muted-foreground">Started getting work from connection, working as a freelance Machine Learning Engineer.</p>
+          </div>
+          
+          {/* Kaggle */}
+          <div className="relative pl-8">
+            <span className="absolute flex items-center justify-center w-10 h-10 bg-primary/20 rounded-full -left-5 ring-4 ring-background">
+              <Trophy className="w-5 h-5 text-primary" />
+            </span>
+            <div className="flex items-center gap-2 text-lg text-primary font-semibold mb-2">
+              <span>Kaggle</span>
+              <span className="flex items-center gap-1 text-sm font-normal text-muted-foreground">
+                <Calendar className="w-3 h-3" /> Oct 2023 - Present · 11 mos
+              </span>
+            </div>
+            <h3 className="text-xl font-medium mb-2">Kaggle Machine Learning and Data Science Competitor</h3>
+            <p className="text-muted-foreground">Started contributing in Kaggle competitions, discussions, and code sharing.</p>
+          </div>
+          
+          {/* Self Study */}
+          <div className="relative pl-8">
+            <span className="absolute flex items-center justify-center w-10 h-10 bg-primary/20 rounded-full -left-5 ring-4 ring-background">
+              <BookOpen className="w-5 h-5 text-primary" />
+            </span>
+            <div className="flex items-center gap-2 text-lg text-primary font-semibold mb-2">
+              <span>Self Study</span>
+              <span className="flex items-center gap-1 text-sm font-normal text-muted-foreground">
+                <Calendar className="w-3 h-3" /> Nov 2022 - Sep 2023
+              </span>
+            </div>
+            <h3 className="text-xl font-medium mb-2">Learning Machine Learning</h3>
+            <ul className="list-disc ml-5 text-muted-foreground space-y-1">
+              <li>Google Data Analytics Professional Certificate | Coursera (Nov 2022 - Feb 2023)</li>
+              <li>Deep Learning A-Z 2023 | Udemy (Apr 2023 - June 2023)</li>
+              <li>Tensorflow Developer Certificate Bootcamp | Udemy (Jun 2023 - Sep 2023)</li>
+            </ul>
+          </div>
+          
+          {/* Education */}
+          <div className="relative pl-8">
+            <span className="absolute flex items-center justify-center w-10 h-10 bg-primary/20 rounded-full -left-5 ring-4 ring-background">
+              <GraduationCap className="w-5 h-5 text-primary" />
+            </span>
+            <div className="flex items-center gap-2 text-lg text-primary font-semibold mb-2">
+              <span>Gujarat University</span>
+              <span className="flex items-center gap-1 text-sm font-normal text-muted-foreground">
+                <Calendar className="w-3 h-3" /> Apr 2019 - Jun 2022
+              </span>
+            </div>
+            <h3 className="text-xl font-medium mb-2">BSc, Biotechnology (Gold Medalist)</h3>
+            <p className="text-muted-foreground">
+              Undergraduate studies at Gujarat University.
+              <a 
+                href="https://psc.shayonainstitute.edu.in/public/asset/images/Latest-Updates/pscGold%20Medals_GSC%20GNR%20Students_71st%20Convocation_GU_B.Sc.%20Sem%206_March%202022_05%2001%202023%20%281%29.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary ml-1 hover:underline"
+              >
+                View Certificate
+              </a>
+            </p>
           </div>
         </div>
       </section>
