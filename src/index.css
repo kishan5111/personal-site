@@ -64,46 +64,54 @@
   }
 }
 
-#leaves {
+/* Blinds Background Styling */
+#blinds {
   position: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-  bottom: -20px;
-  right: -700px;
-  width: 1600px;
-  height: 1400px;
-  background-image: url("/leaves.png");
-  filter: url(#wind);
-  animation: billow 8s ease-in-out infinite;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.25;
+  overflow: hidden;
 }
 
-.dark #leaves {
+.shutters {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.shutter {
+  height: 8.33%; /* 100% / 12 */
+  width: 100%;
+  background-color: #FFD580; /* Warm yellow */
   opacity: 0.1;
 }
 
-@keyframes billow {
-  0% {
-    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
-  }
+.dark .shutter {
+  opacity: 0.05;
+}
 
-  25% {
-    transform: perspective(400px) rotateX(1deg) rotateY(2deg) scale(1.02);
-  }
+.vertical {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
 
-  50% {
-    transform: perspective(400px) rotateX(-4deg) rotateY(-2deg) scale(0.97);
-  }
+.bar {
+  width: 1px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
 
-  75% {
-    transform: perspective(400px) rotateX(1deg) rotateY(-1deg) scale(1.04);
-  }
-
-  100% {
-    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
-  }
+.dark .bar {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .glass {
