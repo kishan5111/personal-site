@@ -13,8 +13,6 @@ import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import CompetitionDetail from "./pages/CompetitionDetail";
-import AdminDashboard from "./pages/AdminDashboard";
-import AnalyticsTracker from "./components/AnalyticsTracker";
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
@@ -116,7 +114,6 @@ const App = () => {
           
           <BrowserRouter>
             <Navigation />
-            <AnalyticsTracker />
             <div className="pt-20">
               <Routes>
                 <Route path="/" element={<Index />} />
@@ -125,7 +122,6 @@ const App = () => {
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<BlogPost />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/admin" element={<AdminDashboard />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
