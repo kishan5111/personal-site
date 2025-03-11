@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -108,10 +109,10 @@ const CompetitionDetail = () => {
       <Button
         variant="ghost"
         className="mb-8"
-        onClick={() => navigate('/projects')}
+        onClick={() => navigate('/portfolio')}
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
-        Back to Projects
+        Back to Portfolio
       </Button>
 
       <h1 className="text-4xl font-bold mb-4 text-primary">{competition.title}</h1>
