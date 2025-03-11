@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 48 100% 97%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -60,6 +60,19 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans font-medium tracking-tight text-gray-800 dark:text-gray-200;
   }
+}
+
+/* Light theme sunlight effect */
+.light body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background: radial-gradient(circle at right, rgba(255, 236, 173, 0.7) 0%, rgba(255, 243, 208, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .glass {
