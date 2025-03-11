@@ -8,6 +8,7 @@ const AnalyticsTracker = () => {
 
   useEffect(() => {
     // Track page view when location changes
+    console.log('Location changed to:', location.pathname);
     trackPageView(location.pathname);
   }, [location.pathname]);
 

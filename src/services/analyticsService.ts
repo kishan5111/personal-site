@@ -44,12 +44,17 @@ export const trackPageView = async (page: string): Promise<void> => {
       sessionId
     };
     
+    // Console log to check data being sent
+    console.log('Tracking page view:', pageView);
+    
     const { error } = await supabase
       .from('page_views')
       .insert([pageView]);
       
     if (error) {
       console.error('Error tracking page view:', error);
+    } else {
+      console.log('Successfully tracked page view');
     }
   } catch (err) {
     console.error('Failed to track page view:', err);
@@ -59,6 +64,8 @@ export const trackPageView = async (page: string): Promise<void> => {
 // Get visitor summary statistics
 export const getVisitorSummary = async (): Promise<VisitorSummary | null> => {
   try {
+    console.log('Fetching visitor summary...');
+    
     // Get all page views
     const { data: pageViews, error } = await supabase
       .from('page_views')
@@ -69,7 +76,10 @@ export const getVisitorSummary = async (): Promise<VisitorSummary | null> => {
       return null;
     }
     
+    console.log('Received page views data:', pageViews);
+    
     if (!pageViews || pageViews.length === 0) {
+      console.log('No page views data available');
       return {
         totalVisits: 0,
         uniqueVisitors: 0,
@@ -94,12 +104,15 @@ export const getVisitorSummary = async (): Promise<VisitorSummary | null> => {
       visitsByDate[date] = (visitsByDate[date] || 0) + 1;
     });
     
-    return {
+    const summary = {
       totalVisits: pageViews.length,
       uniqueVisitors: uniqueSessionIds.size,
       pageViews: pageViewCounts,
       visitsByDate
     };
+    
+    console.log('Generated summary:', summary);
+    return summary;
   } catch (err) {
     console.error('Failed to get visitor summary:', err);
     return null;
