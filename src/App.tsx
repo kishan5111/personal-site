@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -44,6 +45,11 @@ const App = () => {
     };
     
     loadFonts();
+    
+    // Add animation-ready class after initial load
+    setTimeout(() => {
+      document.body.classList.add('animation-ready');
+    }, 100);
   }, []);
 
   return (
@@ -52,6 +58,19 @@ const App = () => {
         <TooltipProvider>
           <Toaster />
           <Sonner />
+          
+          {/* Background elements */}
+          <div id="dappled-light" aria-hidden="true">
+            <div id="progressive-blur">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div id="glow"></div>
+            <div id="glow-bounce"></div>
+            <div className="perspective"></div>
+          </div>
           
           {/* Blinds background */}
           <div id="blinds" aria-hidden="true">
@@ -65,6 +84,32 @@ const App = () => {
               <div className="bar"></div>
             </div>
           </div>
+          
+          {/* SVG filter for animations */}
+          <svg style={{ width: 0, height: 0, position: 'absolute' }} aria-hidden="true">
+            <defs>
+              <filter id="wind" x="-20%" y="-20%" width="140%" height="140%">
+                <feTurbulence type="fractalNoise" numOctaves="2" seed="1">
+                  <animate 
+                    attributeName="baseFrequency" 
+                    dur="16s" 
+                    keyTimes="0;0.33;0.66;1"
+                    values="0.005 0.003;0.01 0.009;0.008 0.004;0.005 0.003" 
+                    repeatCount="indefinite" 
+                  />
+                </feTurbulence>
+                <feDisplacementMap in="SourceGraphic">
+                  <animate 
+                    attributeName="scale" 
+                    dur="20s" 
+                    keyTimes="0;0.25;0.5;0.75;1" 
+                    values="45;55;75;55;45"
+                    repeatCount="indefinite" 
+                  />
+                </feDisplacementMap>
+              </filter>
+            </defs>
+          </svg>
           
           <BrowserRouter>
             <Navigation />
