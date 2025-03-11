@@ -23,6 +23,7 @@ export default {
         body: ["DM Sans", "system-ui", "sans-serif"],
         opensans: ["Open Sans", "system-ui", "sans-serif"],
         biro: ["Biro Script Plus Sloppy", "cursive"],
+        biroStandard: ["biro_script_standardRgus", "cursive"],
       },
       colors: {
         border: "hsl(var(--border))",

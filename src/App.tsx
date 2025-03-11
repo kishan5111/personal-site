@@ -29,12 +29,18 @@ const App = () => {
       biroLink.rel = 'stylesheet';
       biroLink.href = 'https://fonts.cdnfonts.com/css/biro-script-plus-28';
       
+      const biroStandardLink = document.createElement('link');
+      biroStandardLink.rel = 'stylesheet';
+      biroStandardLink.href = 'https://fonts.cdnfonts.com/css/biro-script-standard';
+      
       document.head.appendChild(openSansLink);
       document.head.appendChild(biroLink);
+      document.head.appendChild(biroStandardLink);
       
       return () => {
         document.head.removeChild(openSansLink);
         document.head.removeChild(biroLink);
+        document.head.removeChild(biroStandardLink);
       };
     };
     

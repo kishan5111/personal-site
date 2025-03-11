@@ -22,12 +22,17 @@ const Index = () => {
           />
         </motion.div>
 
-        {/* Welcome Message - more sloppy and handwritten appearance */}
+        {/* Welcome Message with specific font styling */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-3xl text-gray-900 dark:text-gray-100 text-left font-biro font-bold italic transform -rotate-2 tracking-wide"
+          className="text-left font-biroStandard"
+          style={{ 
+            fontSize: "1.2rem",
+            padding: "0px",
+            border: "none"
+          }}
         >
           Welcome!
         </motion.p>
