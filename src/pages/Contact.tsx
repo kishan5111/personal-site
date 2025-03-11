@@ -34,19 +34,19 @@ const Contact = () => {
             </p>
             
             <div className="space-y-4">
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <a 
                   href={`mailto:${email}`}
-                  className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors"
+                  className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors break-all"
                 >
-                  <Mail className="h-5 w-5" />
+                  <Mail className="h-5 w-5 shrink-0" />
                   <span>{email}</span>
                 </a>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={handleEmailClick}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 whitespace-nowrap"
                 >
                   <Send className="h-4 w-4" />
                   Send Email
