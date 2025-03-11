@@ -37,10 +37,17 @@ const App = () => {
       document.head.appendChild(biroLink);
       document.head.appendChild(biroStandardLink);
       
+      // Add toggle script
+      const toggleScript = document.createElement('script');
+      toggleScript.src = '/src/toggle.js';
+      toggleScript.type = 'text/javascript';
+      document.body.appendChild(toggleScript);
+      
       return () => {
         document.head.removeChild(openSansLink);
         document.head.removeChild(biroLink);
         document.head.removeChild(biroStandardLink);
+        document.body.removeChild(toggleScript);
       };
     };
     
@@ -49,37 +56,60 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
         <TooltipProvider>
           <Toaster />
           <Sonner />
           
-          {/* Leaves background with SVG filter */}
-          <div id="leaves" aria-hidden="true">
-            <svg style={{ width: 0, height: 0, position: 'absolute' }}>
-              <defs>
-                <filter id="wind" x="-20%" y="-20%" width="140%" height="140%">
-                  <feTurbulence type="fractalNoise" numOctaves="2" seed="1">
-                    <animate 
-                      attributeName="baseFrequency" 
-                      dur="16s" 
-                      keyTimes="0;0.33;0.66;1"
-                      values="0.005 0.003;0.01 0.009;0.008 0.004;0.005 0.003" 
-                      repeatCount="indefinite" 
-                    />
-                  </feTurbulence>
-                  <feDisplacementMap in="SourceGraphic">
-                    <animate 
-                      attributeName="scale" 
-                      dur="20s" 
-                      keyTimes="0;0.25;0.5;0.75;1" 
-                      values="45;55;75;55;45"
-                      repeatCount="indefinite" 
-                    />
-                  </feDisplacementMap>
-                </filter>
-              </defs>
-            </svg>
+          {/* Dappled light effect */}
+          <div id="dappled-light" aria-hidden="true">
+            <div id="glow"></div>
+            <div id="glow-bounce"></div>
+            <div className="perspective">
+              <div id="leaves">
+                <svg style={{ width: 0, height: 0, position: 'absolute' }}>
+                  <defs>
+                    <filter id="wind" x="-20%" y="-20%" width="140%" height="140%">
+                      <feTurbulence type="fractalNoise" numOctaves="2" seed="1">
+                        <animate 
+                          attributeName="baseFrequency" 
+                          dur="16s" 
+                          keyTimes="0;0.33;0.66;1"
+                          values="0.005 0.003;0.01 0.009;0.008 0.004;0.005 0.003" 
+                          repeatCount="indefinite" 
+                        />
+                      </feTurbulence>
+                      <feDisplacementMap in="SourceGraphic">
+                        <animate 
+                          attributeName="scale" 
+                          dur="20s" 
+                          keyTimes="0;0.25;0.5;0.75;1" 
+                          values="45;55;75;55;45"
+                          repeatCount="indefinite" 
+                        />
+                      </feDisplacementMap>
+                    </filter>
+                  </defs>
+                </svg>
+              </div>
+              <div id="blinds">
+                <div className="shutters">
+                  {Array(20).fill(0).map((_, i) => (
+                    <div key={i} className="shutter"></div>
+                  ))}
+                </div>
+                <div className="vertical">
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                </div>
+              </div>
+            </div>
+            <div id="progressive-blur">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
           
           <BrowserRouter>
