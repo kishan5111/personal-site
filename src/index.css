@@ -56,9 +56,53 @@
   }
   body {
     @apply bg-background text-foreground font-body;
+    position: relative;
+    overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans font-medium tracking-tight text-gray-800 dark:text-gray-200;
+  }
+}
+
+#leaves {
+  position: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  bottom: -20px;
+  right: -700px;
+  width: 1600px;
+  height: 1400px;
+  background-image: url("/leaves.png");
+  filter: url(#wind);
+  animation: billow 8s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+.dark #leaves {
+  opacity: 0.1;
+}
+
+@keyframes billow {
+  0% {
+    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
+  }
+
+  25% {
+    transform: perspective(400px) rotateX(1deg) rotateY(2deg) scale(1.02);
+  }
+
+  50% {
+    transform: perspective(400px) rotateX(-4deg) rotateY(-2deg) scale(0.97);
+  }
+
+  75% {
+    transform: perspective(400px) rotateX(1deg) rotateY(-1deg) scale(1.04);
+  }
+
+  100% {
+    transform: perspective(400px) rotateX(0deg) rotateY(0deg) scale(1);
   }
 }
 
