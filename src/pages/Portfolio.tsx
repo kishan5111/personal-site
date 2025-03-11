@@ -24,7 +24,7 @@ const Portfolio = () => {
               </span>
             </div>
             <h3 className="text-xl font-medium mb-2">Machine Learning Engineer</h3>
-            <p className="text-muted-foreground">Started getting work from connection, working as a freelance Machine Learning Engineer.</p>
+            <p className="text-muted-foreground">Began working as a freelance Machine Learning Engineer, securing projects through professional connections.</p>
           </div>
           
           {/* Kaggle */}
