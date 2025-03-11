@@ -1,72 +1,25 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Scaling } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 const Index = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  // Handle responsive image sizing
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Choose appropriate SVG dimensions
-  const getBannerDimensions = () => {
-    if (windowWidth < 640) {
-      return { width: 600, height: 225 }; // Mobile
-    } else if (windowWidth < 1024) {
-      return { width: 1000, height: 375 }; // Tablet
-    } else {
-      return { width: 1400, height: 525 }; // Desktop
-    }
-  };
-
-  const getPhotoDimensions = () => {
-    if (windowWidth < 640) {
-      return { width: 400, height: 300 }; // Mobile
-    } else if (windowWidth < 1024) {
-      return { width: 700, height: 525 }; // Tablet
-    } else {
-      return { width: 1200, height: 900 }; // Desktop
-    }
-  };
-
-  const bannerDimensions = getBannerDimensions();
-  const photoDimensions = getPhotoDimensions();
-
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <div className="flex flex-col items-start gap-12 max-w-5xl mx-auto">
-        {/* Banner Image using SVG */}
+        {/* Banner Image */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="w-full"
         >
-          <svg 
-            width={bannerDimensions.width} 
-            height={bannerDimensions.height} 
-            viewBox="0 0 1400 525" 
-            className="w-full h-auto"
-            role="img"
-            aria-label="Kishan Vavdara - Machine Learning Engineer"
-          >
-            <image 
-              href="/lovable-uploads/0c091e16-50c2-42a3-a4ad-5ba37dd27f89.png" 
-              width="100%" 
-              height="100%" 
-              preserveAspectRatio="xMidYMid slice"
-            />
-          </svg>
+          <img 
+            src="/lovable-uploads/0c091e16-50c2-42a3-a4ad-5ba37dd27f89.png" 
+            alt="Kishan Vavdara - Machine Learning Engineer" 
+            className="w-full" 
+          />
         </motion.div>
 
         {/* Welcome Message with specific font styling */}
@@ -105,7 +58,7 @@ const Index = () => {
           </p>
         </motion.div>
 
-        {/* Photo in rectangular frame using SVG */}
+        {/* Photo in rectangular frame */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -113,21 +66,11 @@ const Index = () => {
           className="w-full max-w-3xl mx-auto"
         >
           <div className="relative overflow-hidden rounded-lg shadow-xl border-4 border-primary/20">
-            <svg 
-              width={photoDimensions.width} 
-              height={photoDimensions.height} 
-              viewBox="0 0 1200 900" 
-              className="w-full h-auto"
-              role="img"
-              aria-label="Kishan playing violin"
-            >
-              <image 
-                href="/lovable-uploads/48b5603b-8a05-4dc8-88bb-a3d94d00d307.png" 
-                width="100%" 
-                height="100%" 
-                preserveAspectRatio="xMidYMid slice"
-              />
-            </svg>
+            <img
+              src="/lovable-uploads/48b5603b-8a05-4dc8-88bb-a3d94d00d307.png"
+              alt="Kishan playing violin"
+              className="w-full h-auto object-cover"
+            />
           </div>
         </motion.div>
         
