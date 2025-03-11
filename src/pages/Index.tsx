@@ -27,7 +27,7 @@ const Index = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-left font-biroStandard"
+          className="text-left font-biroStandard text-gray-900 dark:text-white"
           style={{ 
             fontSize: "1.2rem",
             padding: "0px",
@@ -44,14 +44,14 @@ const Index = () => {
           transition={{ duration: 0.5 }}
           className="w-full space-y-6"
         >
-          <p className="text-lg text-muted-foreground">
-            <span className="font-bold">Hey there!</span> I'm Kishan. This is my little corner on the Internet — make yourself at home! I'm currently working as a freelance data/ML engineer, 
+          <p className="text-lg text-gray-700 dark:text-gray-300">
+            <span className="font-bold text-gray-900 dark:text-white">Hey there!</span> I'm Kishan. This is my little corner on the Internet — make yourself at home! I'm currently working as a freelance data/ML engineer, 
             specializing in training, optimizing, and deploying VLMs (vision language models) and LLMs. 
             I transitioned into ML after completing my undergraduate studies in biotechnology (where I was a gold medalist!), 
             through self-study and online courses.
           </p>
           
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-gray-700 dark:text-gray-300">
             I'm also an active participant in Kaggle competitions, sharing datasets, models, and notebooks. 
             I've published gold-medal-winning notebooks on fine-tuning and deploying LLaMA models using TPUs and GPUs, 
             as well as on training neural networks from scratch. Through my contributions, I recently became a 4x Kaggle Expert.
@@ -83,24 +83,24 @@ const Index = () => {
         >
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl font-semibold mb-2">Interests</h2>
-              <p className="text-lg text-muted-foreground">
+              <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Interests</h2>
+              <p className="text-lg text-gray-700 dark:text-gray-300">
                 My current interests and learning goals include AI agents, GPU coding (CUDA, CUTLASS, and cuTE), 
                 and the application of AI in neuroscience and biology, which I intend to explore in depth.
               </p>
             </div>
 
             <div>
-              <h2 className="text-xl font-semibold mb-2">Outside of work</h2>
-              <p className="text-lg text-muted-foreground">
+              <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Outside of work</h2>
+              <p className="text-lg text-gray-700 dark:text-gray-300">
                 I believe in finding balance, so I enjoy practicing yoga and meditation, and I'm even trying to learn 
                 the violin (wish me luck!). Weekends are for exploring new projects and ideas, or just relaxing with friends.
               </p>
             </div>
 
             <div>
-              <h2 className="text-xl font-semibold mb-2">Let's Connect!</h2>
-              <p className="text-lg text-muted-foreground">
+              <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Let's Connect!</h2>
+              <p className="text-lg text-gray-700 dark:text-gray-300">
                 If you're interested in discussing AI, innovation, or potential collaborations, 
                 please feel free to get in touch—I'd love to connect!
               </p>
