@@ -7,40 +7,6 @@ const Portfolio = () => {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      {/* Achievements Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">Achievements</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* LMSYS Competition */}
-          <div 
-            onClick={() => navigate('/competition/lmsys')}
-            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full"
-          >
-            <h3 className="text-2xl font-semibold mb-2">LMSYS - Chatbot Arena Human Preference Predictions</h3>
-            <p className="mb-2">Secured 21st place (Silver Medal) out of 1,849 teams</p>
-          </div>
-          
-          {/* LLM Prompt Recovery Competition */}
-          <div 
-            onClick={() => navigate('/competition/llm-prompt')}
-            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full"
-          >
-            <h3 className="text-2xl font-semibold mb-2">LLM Prompt Recovery Competition</h3>
-            <p className="mb-2">Ranked 120th (Bronze Medal) out of 2,175 teams</p>
-          </div>
-          
-          {/* Open Problems Competition */}
-          <div 
-            onClick={() => navigate('/competition/open-problems')}
-            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full"
-          >
-            <h3 className="text-2xl font-semibold mb-2">Open Problems Competition</h3>
-            <p className="mb-2">Multiple gold and silver medal notebooks</p>
-          </div>
-        </div>
-      </section>
-      
       {/* My Journey Timeline Section */}
       <section className="mb-16">
         <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">My Journey</h2>
@@ -118,6 +84,40 @@ const Portfolio = () => {
                 View Certificate
               </a>
             </p>
+          </div>
+        </div>
+      </section>
+      
+      {/* Achievements Section */}
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">Achievements</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* LMSYS Competition */}
+          <div 
+            onClick={() => navigate('/competition/lmsys')}
+            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full"
+          >
+            <h3 className="text-2xl font-semibold mb-2">LMSYS - Chatbot Arena Human Preference Predictions</h3>
+            <p className="mb-2">Secured 21st place (Silver Medal) out of 1,849 teams</p>
+          </div>
+          
+          {/* LLM Prompt Recovery Competition */}
+          <div 
+            onClick={() => navigate('/competition/llm-prompt')}
+            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full"
+          >
+            <h3 className="text-2xl font-semibold mb-2">LLM Prompt Recovery Competition</h3>
+            <p className="mb-2">Ranked 120th (Bronze Medal) out of 2,175 teams</p>
+          </div>
+          
+          {/* Open Problems Competition */}
+          <div 
+            onClick={() => navigate('/competition/open-problems')}
+            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full"
+          >
+            <h3 className="text-2xl font-semibold mb-2">Open Problems Competition</h3>
+            <p className="mb-2">Multiple gold and silver medal notebooks</p>
           </div>
         </div>
       </section>
