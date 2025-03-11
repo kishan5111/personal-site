@@ -2,7 +2,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { BookOpen } from "lucide-react";
 
+/*
 interface BlogPost {
   id: string;
   title: string;
@@ -119,6 +121,26 @@ const Blog = () => {
             </motion.article>
           ))}
         </div>
+      </motion.div>
+    </div>
+  );
+};
+*/
+
+const Blog = () => {
+  return (
+    <div className="min-h-screen container mx-auto px-4 py-12 flex flex-col items-center justify-center">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center"
+      >
+        <BookOpen className="h-24 w-24 mx-auto mb-6 text-primary" />
+        <h1 className="text-4xl font-bold mb-4">Blog</h1>
+        <p className="text-xl text-muted-foreground">
+          Exciting content coming soon! I'm currently working on sharing my machine learning journey, insights, and tutorials.
+        </p>
       </motion.div>
     </div>
   );

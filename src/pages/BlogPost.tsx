@@ -1,10 +1,12 @@
 
 import { useParams, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowLeft, BookOpen } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+/*
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 // Using the same mock data temporarily - in real app, this would come from your backend
 const mockPosts = [
@@ -130,6 +132,38 @@ const BlogPost = () => {
             {post.content}
           </ReactMarkdown>
         </article>
+      </motion.div>
+    </div>
+  );
+};
+*/
+
+const BlogPost = () => {
+  const navigate = useNavigate();
+
+  return (
+    <div className="min-h-screen container mx-auto px-4 py-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Button
+          variant="ghost"
+          className="mb-8 flex items-center gap-2"
+          onClick={() => navigate("/blog")}
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to Blog
+        </Button>
+        
+        <div className="flex flex-col items-center justify-center py-12 text-center">
+          <BookOpen className="h-24 w-24 mb-6 text-primary" />
+          <h1 className="text-4xl font-bold mb-4">Coming Soon</h1>
+          <p className="text-xl text-muted-foreground max-w-2xl">
+            This blog post is currently under development. I'm working on creating valuable content about machine learning, deep learning, and data science. Check back soon!
+          </p>
+        </div>
       </motion.div>
     </div>
   );
