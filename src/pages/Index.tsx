@@ -8,18 +8,21 @@ const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <div className="flex flex-col items-start gap-12 max-w-5xl mx-auto">
-        {/* Banner Image */}
+        {/* Banner Image - Modified to blend with background */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="w-full"
         >
-          <img 
-            src="/lovable-uploads/a1907995-2300-41bc-abe6-9287e5026d29.png" 
-            alt="Stylized illustration of an archway, a candle and a robot reading books" 
-            className="w-full" 
-          />
+          <div className="relative overflow-hidden rounded-lg">
+            <img 
+              src="/lovable-uploads/a1907995-2300-41bc-abe6-9287e5026d29.png" 
+              alt="Stylized illustration of an archway, a candle and a robot reading books" 
+              className="w-full mix-blend-multiply opacity-90" 
+            />
+            <div className="absolute inset-0 bg-background/10 backdrop-blur-[1px]"></div>
+          </div>
         </motion.div>
 
         {/* Welcome Message with specific font styling */}
