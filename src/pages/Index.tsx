@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
@@ -15,8 +16,8 @@ const Index = () => {
           className="w-full"
         >
           <img 
-            src="/lovable-uploads/0c091e16-50c2-42a3-a4ad-5ba37dd27f89.png" 
-            alt="Kishan Vavdara - Machine Learning Engineer" 
+            src="/lovable-uploads/a1907995-2300-41bc-abe6-9287e5026d29.png" 
+            alt="Stylized illustration of an archway, a candle and a robot reading books" 
             className="w-full" 
           />
         </motion.div>
