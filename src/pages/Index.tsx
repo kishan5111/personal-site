@@ -8,15 +8,15 @@ const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <div className="flex flex-col items-start gap-12 max-w-5xl mx-auto">
-        {/* Banner Image - Fixed to display correctly immediately */}
+        {/* Banner Image - Static version without animations */}
         <div className="w-full">
           <div className="relative overflow-hidden rounded-lg">
             <img 
               src="/lovable-uploads/a1907995-2300-41bc-abe6-9287e5026d29.png" 
-              alt="Stylized illustration of an archway, a candle and a robot reading books" 
+              alt="Stylized illustration" 
               className="w-full h-auto scale-125 mix-blend-multiply opacity-80" 
             />
-            <div className="absolute inset-0 bg-background/3 backdrop-blur-[0.3px]"></div>
+            <div className="absolute inset-0 bg-background/5"></div>
           </div>
         </div>
         
