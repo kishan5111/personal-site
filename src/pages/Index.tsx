@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
@@ -8,7 +7,7 @@ const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <div className="flex flex-col items-start gap-12 max-w-5xl mx-auto">
-        {/* Banner Image - Modified to be larger with less blur */}
+        {/* Banner Image - Modified to be larger with less opacity */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -19,9 +18,9 @@ const Index = () => {
             <img 
               src="/lovable-uploads/a1907995-2300-41bc-abe6-9287e5026d29.png" 
               alt="Stylized illustration of an archway, a candle and a robot reading books" 
-              className="w-full h-auto scale-110 mix-blend-multiply opacity-95" 
+              className="w-full h-auto scale-125 mix-blend-multiply opacity-80" 
             />
-            <div className="absolute inset-0 bg-background/5 backdrop-blur-[0.5px]"></div>
+            <div className="absolute inset-0 bg-background/3 backdrop-blur-[0.3px]"></div>
           </div>
         </motion.div>
 
