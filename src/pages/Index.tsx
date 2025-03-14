@@ -8,17 +8,13 @@ const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <div className="flex flex-col items-start gap-12 max-w-5xl mx-auto">
-        {/* Banner Image - Pre-styled to blend immediately */}
+        {/* Banner Image - Fixed to display correctly immediately */}
         <div className="w-full">
           <div className="relative overflow-hidden rounded-lg">
-            <motion.img 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.8 }}
-              transition={{ duration: 0.3 }}
+            <img 
               src="/lovable-uploads/a1907995-2300-41bc-abe6-9287e5026d29.png" 
               alt="Stylized illustration of an archway, a candle and a robot reading books" 
-              className="w-full h-auto scale-125 mix-blend-multiply"
-              style={{ opacity: 0.8 }} // Applying opacity directly in style to ensure it's there before animation
+              className="w-full h-auto scale-125 mix-blend-multiply opacity-80" 
             />
             <div className="absolute inset-0 bg-background/3 backdrop-blur-[0.3px]"></div>
           </div>
