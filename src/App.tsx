@@ -13,47 +13,10 @@ import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import CompetitionDetail from "./pages/CompetitionDetail";
-import { useEffect } from "react";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  useEffect(() => {
-    // Load fonts
-    const loadFonts = async () => {
-      const openSansLink = document.createElement('link');
-      openSansLink.rel = 'stylesheet';
-      openSansLink.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap';
-      
-      const biroLink = document.createElement('link');
-      biroLink.rel = 'stylesheet';
-      biroLink.href = 'https://fonts.cdnfonts.com/css/biro-script-plus-28';
-      
-      const biroStandardLink = document.createElement('link');
-      biroStandardLink.rel = 'stylesheet';
-      biroStandardLink.href = 'https://fonts.cdnfonts.com/css/biro-script-standard';
-      
-      document.head.appendChild(openSansLink);
-      document.head.appendChild(biroLink);
-      document.head.appendChild(biroStandardLink);
-      
-      // Add toggle script
-      const toggleScript = document.createElement('script');
-      toggleScript.src = '/src/toggle.js';
-      toggleScript.type = 'text/javascript';
-      document.body.appendChild(toggleScript);
-      
-      return () => {
-        document.head.removeChild(openSansLink);
-        document.head.removeChild(biroLink);
-        document.head.removeChild(biroStandardLink);
-        document.body.removeChild(toggleScript);
-      };
-    };
-    
-    loadFonts();
-  }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
