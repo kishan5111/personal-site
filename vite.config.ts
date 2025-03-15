@@ -10,8 +10,8 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  // Only use the base path for production builds
-  base: mode === 'production' ? '/kishan-portfolio/' : '/',
+  // Use root path for both production and development when using custom domain
+  base: '/',
   plugins: [
     react(),
     mode === 'development' &&
