@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,31 +42,31 @@
   }
 
   .dark {
-    --background: 220 35% 13%;
-    --foreground: 0 0% 98%;
-    --card: 220 30% 15%;
-    --card-foreground: 0 0% 98%;
-    --popover: 220 30% 15%;
-    --popover-foreground: 0 0% 98%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 100%;
+    --card: 240 10% 5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 10% 5%;
+    --popover-foreground: 0 0% 100%;
     --primary: 250 75% 60%;
     --primary-foreground: 144.9 80.4% 10%;
-    --secondary: 220 25% 25%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 220 20% 25%;
-    --muted-foreground: 240 5% 84.9%;
-    --accent: 220 25% 30%;
-    --accent-foreground: 0 0% 98%;
+    --secondary: 240 8% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 7% 12%;
+    --muted-foreground: 240 5% 90%;
+    --accent: 240 8% 20%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --border: 220 25% 25%;
-    --input: 220 25% 25%;
+    --border: 240 8% 15%;
+    --input: 240 8% 15%;
     --ring: 250 75% 60%;
     
     /* Light/dark variables for dark mode */
     --light: var(--night);
     --dark: var(--day);
     --shadow: #030307;
-    --bounce-light: hsla(220, 40%, 18%, 0.5);
+    --bounce-light: hsla(240, 10%, 10%, 0.5);
   }
 }
 
