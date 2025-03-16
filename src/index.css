@@ -53,7 +53,7 @@
     --secondary: 240 8% 15%;
     --secondary-foreground: 0 0% 100%;
     --muted: 240 7% 12%;
-    --muted-foreground: 240 5% 90%;
+    --muted-foreground: 0 0% 95%;
     --accent: 240 8% 20%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
@@ -96,7 +96,7 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-medium tracking-tight text-gray-800 dark:text-gray-200;
+    @apply font-sans font-medium tracking-tight text-gray-800 dark:text-gray-100;
   }
 }
 
