@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -67,7 +66,7 @@
     --light: var(--night);
     --dark: var(--day);
     --shadow: #030307;
-    --bounce-light: hsla(240, 10%, 10%, 0.5);
+    --bounce-light: hsla(240, 70%, 20%, 0.5); /* Dark blue bounce light for dark mode */
   }
 }
 
@@ -358,4 +357,3 @@
 .dark .text-gray-300 {
   @apply text-gray-100; /* Override gray-300 to be lighter in dark mode */
 }
-
