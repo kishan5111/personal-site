@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  // Use root path for both production and development when using custom domain
+  // Use root path for both production and development
   base: '/',
   plugins: [
     react(),

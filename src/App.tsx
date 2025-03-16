@@ -17,6 +17,8 @@ import CompetitionDetail from "./pages/CompetitionDetail";
 const queryClient = new QueryClient();
 
 const App = () => {
+  console.log("App component rendering");
+  
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
