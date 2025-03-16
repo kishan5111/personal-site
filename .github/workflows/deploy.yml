@@ -30,6 +30,9 @@ jobs:
       - name: Add CNAME to dist folder
         run: echo "kishanvavdara.xyz" > dist/CNAME
 
+      - name: Create .nojekyll file
+        run: touch dist/.nojekyll
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:

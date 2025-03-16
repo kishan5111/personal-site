@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Index from "./pages/Index";
 import Portfolio from "./pages/Portfolio";
@@ -18,6 +19,18 @@ const queryClient = new QueryClient();
 
 const App = () => {
   console.log("App component rendering");
+  
+  useEffect(() => {
+    // Log that the App component has mounted
+    console.log("App component mounted");
+    
+    // Set a class on the body to enable animations only after component mount
+    document.body.classList.add('animation-ready');
+    
+    return () => {
+      document.body.classList.remove('animation-ready');
+    };
+  }, []);
   
   return (
     <QueryClientProvider client={queryClient}>
@@ -77,7 +90,7 @@ const App = () => {
             </div>
           </div>
           
-          <BrowserRouter>
+          <BrowserRouter basename="/">
             <Navigation />
             <div className="pt-20">
               <Routes>
