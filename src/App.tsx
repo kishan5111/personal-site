@@ -90,7 +90,7 @@ const App = () => {
             </div>
           </div>
           
-          <BrowserRouter basename="/">
+          <BrowserRouter>
             <Navigation />
             <div className="pt-20">
               <Routes>
