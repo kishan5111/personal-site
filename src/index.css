@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -42,24 +43,24 @@
   }
 
   .dark {
-    --background: 240 30% 5%;
-    --foreground: 0 0% 100%;
-    --card: 240 30% 7%;
-    --card-foreground: 0 0% 100%;
-    --popover: 240 30% 7%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 250 75% 60%;
-    --primary-foreground: 144.9 80.4% 10%;
-    --secondary: 240 15% 20%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 240 15% 15%;
-    --muted-foreground: 0 0% 95%;
-    --accent: 240 15% 25%;
-    --accent-foreground: 0 0% 100%;
+    --background: 240 30% 3%; /* Darker background */
+    --foreground: 0 0% 100%; /* Pure white text */
+    --card: 240 30% 5%; /* Darker card background */
+    --card-foreground: 0 0% 100%; /* Pure white text on cards */
+    --popover: 240 30% 5%; /* Darker popover background */
+    --popover-foreground: 0 0% 100%; /* Pure white text on popovers */
+    --primary: 250 75% 60%; /* Keep primary color */
+    --primary-foreground: 0 0% 100%; /* Pure white text on primary */
+    --secondary: 240 15% 15%; /* Darker secondary */
+    --secondary-foreground: 0 0% 100%; /* Pure white text on secondary */
+    --muted: 240 15% 12%; /* Darker muted background */
+    --muted-foreground: 0 0% 90%; /* Brighter muted text */
+    --accent: 240 15% 18%; /* Darker accent */
+    --accent-foreground: 0 0% 100%; /* Pure white text on accent */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 15% 20%;
-    --input: 240 15% 20%;
+    --border: 240 15% 18%; /* Darker border */
+    --input: 240 15% 18%; /* Darker input */
     --ring: 250 75% 60%;
     
     /* Light/dark variables for dark mode */
@@ -340,3 +341,21 @@
     transform: translateY(0);
   }
 }
+
+/* Dark mode specific text styles */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  @apply text-white font-medium;
+}
+
+.dark p, .dark span, .dark div {
+  @apply text-white/90; /* Slightly transparent white for better contrast */
+}
+
+.dark .text-gray-700 {
+  @apply text-gray-200; /* Override gray-700 to be light in dark mode */
+}
+
+.dark .text-gray-300 {
+  @apply text-gray-100; /* Override gray-300 to be lighter in dark mode */
+}
+
