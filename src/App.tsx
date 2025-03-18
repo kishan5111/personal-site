@@ -27,6 +27,12 @@ const App = () => {
     // Set a class on the body to enable animations only after component mount
     document.body.classList.add('animation-ready');
     
+    // Ensure dark mode persists on page reload if previously selected
+    const theme = localStorage.getItem('vite-ui-theme');
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+    
     return () => {
       document.body.classList.remove('animation-ready');
     };
@@ -92,7 +98,7 @@ const App = () => {
           
           <BrowserRouter>
             <Navigation />
-            <div className="pt-20">
+            <div className="pt-20 min-h-[calc(100vh-5rem)]">
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/portfolio" element={<Portfolio />} />

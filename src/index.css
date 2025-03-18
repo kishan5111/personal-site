@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -42,11 +43,11 @@
   }
 
   .dark {
-    --background: 240 30% 3%; /* Darker background */
+    --background: 240 20% 5%; /* Much darker background */
     --foreground: 0 0% 100%; /* Pure white text */
-    --card: 240 30% 5%; /* Darker card background */
+    --card: 240 20% 7%; /* Darker card background */
     --card-foreground: 0 0% 100%; /* Pure white text on cards */
-    --popover: 240 30% 5%; /* Darker popover background */
+    --popover: 240 20% 7%; /* Darker popover background */
     --popover-foreground: 0 0% 100%; /* Pure white text on popovers */
     --primary: 250 75% 60%; /* Keep primary color */
     --primary-foreground: 0 0% 100%; /* Pure white text on primary */
@@ -78,6 +79,7 @@
     @apply bg-background text-foreground font-body;
     position: relative;
     overflow-x: hidden;
+    min-height: 100vh; /* Ensure full height on mobile */
     
     animation-duration: 0s;
     animation-fill-mode: forwards;
@@ -141,12 +143,16 @@
   height: 100vh;
   width: 100vw;
   z-index: -1;
+  top: 0;
+  left: 0;
 }
 
 #progressive-blur {
   position: absolute;
   height: 100%;
   width: 100%;
+  top: 0;
+  left: 0;
 }
 
 #progressive-blur>div {
@@ -190,6 +196,8 @@
   height: 100%;
   width: 100%;
   opacity: 0.5;
+  top: 0;
+  left: 0;
 }
 
 #glow-bounce {
@@ -201,6 +209,7 @@
   height: 100%;
   width: 100%;
   bottom: 0;
+  left: 0;
 }
 
 /* Perspective Elements */
@@ -356,4 +365,28 @@
 
 .dark .text-gray-300 {
   @apply text-gray-100; /* Override gray-300 to be lighter in dark mode */
+}
+
+/* Mobile fixes */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+  
+  .perspective {
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.05;
+  }
+  
+  #leaves {
+    right: -900px;
+    width: 1200px;
+    height: 1000px;
+    opacity: 0.15;
+  }
+  
+  .dark #leaves {
+    opacity: 0.05;
+  }
 }
