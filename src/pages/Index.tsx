@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
@@ -12,7 +11,7 @@ const Index = () => {
         <div className="w-full">
           <div className="relative overflow-hidden rounded-lg">
             <img 
-              src="/lovable-uploads/a1907995-2300-41bc-abe6-9287e5026d29.png" 
+              src="/images/banner.png" 
               alt="Stylized illustration" 
               className="w-full h-auto scale-125 mix-blend-multiply opacity-80" 
             />
@@ -64,7 +63,7 @@ const Index = () => {
         >
           <div className="relative overflow-hidden">
             <img
-              src="/lovable-uploads/48b5603b-8a05-4dc8-88bb-a3d94d00d307.png"
+              src="/images/violin.png"
               alt="playing violin"
               className="w-full h-auto object-cover"
             />
@@ -90,7 +89,7 @@ const Index = () => {
             <div>
               <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Beyond Work</h2>
               <p className="text-lg text-gray-700 dark:text-gray-50">
-              To balance things out, I’m into yoga, meditation, and learning the violin (progress is slow but steady!). Weekends are for exploring new ideas or just kicking back with friends.
+              To balance things out, I'm into yoga, meditation, and learning the violin (progress is slow but steady!). Weekends are for exploring new ideas or just kicking back with friends.
               </p>
             </div>
 
