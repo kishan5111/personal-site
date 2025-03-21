@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,31 +42,31 @@
   }
 
   .dark {
-    --background: 240 20% 5%; /* Much darker background */
+    --background: 240 25% 2%; /* Much darker background */
     --foreground: 0 0% 100%; /* Pure white text */
-    --card: 240 20% 7%; /* Darker card background */
+    --card: 240 25% 3%; /* Darker card background */
     --card-foreground: 0 0% 100%; /* Pure white text on cards */
-    --popover: 240 20% 7%; /* Darker popover background */
+    --popover: 240 25% 3%; /* Darker popover background */
     --popover-foreground: 0 0% 100%; /* Pure white text on popovers */
     --primary: 250 75% 60%; /* Keep primary color */
     --primary-foreground: 0 0% 100%; /* Pure white text on primary */
-    --secondary: 240 15% 15%; /* Darker secondary */
+    --secondary: 240 25% 8%; /* Darker secondary */
     --secondary-foreground: 0 0% 100%; /* Pure white text on secondary */
-    --muted: 240 15% 12%; /* Darker muted background */
+    --muted: 240 25% 5%; /* Darker muted background */
     --muted-foreground: 0 0% 90%; /* Brighter muted text */
-    --accent: 240 15% 18%; /* Darker accent */
+    --accent: 240 25% 10%; /* Darker accent */
     --accent-foreground: 0 0% 100%; /* Pure white text on accent */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 15% 18%; /* Darker border */
-    --input: 240 15% 18%; /* Darker input */
+    --border: 240 25% 12%; /* Darker border */
+    --input: 240 25% 12%; /* Darker input */
     --ring: 250 75% 60%;
     
     /* Light/dark variables for dark mode */
     --light: var(--night);
     --dark: var(--day);
-    --shadow: #030307;
-    --bounce-light: hsla(240, 70%, 20%, 0.5); /* Dark blue bounce light for dark mode */
+    --shadow: #000000; /* Pure black shadow */
+    --bounce-light: hsla(240, 100%, 0%, 0.5); /* Darker blue bounce light for dark mode */
   }
 }
 
@@ -356,15 +355,44 @@
 }
 
 .dark p, .dark span, .dark div {
-  @apply text-white/90; /* Slightly transparent white for better contrast */
+  @apply text-white; /* Full white for better readability */
 }
 
 .dark .text-gray-700 {
-  @apply text-gray-200; /* Override gray-700 to be light in dark mode */
+  @apply text-white; /* Full white instead of transparent */
 }
 
 .dark .text-gray-300 {
-  @apply text-gray-100; /* Override gray-300 to be lighter in dark mode */
+  @apply text-white; /* Full white instead of transparent */
+}
+
+.dark .text-gray-600 {
+  @apply text-white; /* Full white instead of transparent */
+}
+
+.dark .text-gray-500 {
+  @apply text-white/95; /* Very slight transparency */
+}
+
+.dark .text-gray-400 {
+  @apply text-white/90; /* Slight transparency */
+}
+
+/* Additional dark mode text overrides */
+.dark .text-gray-800 {
+  @apply text-white;
+}
+
+.dark .text-gray-900 {
+  @apply text-white;
+}
+
+.dark .text-gray-200 {
+  @apply text-white;
+}
+
+.dark .text-gray-100 {
+  @apply text-white;
 }
 
 /* Mobile fixes */

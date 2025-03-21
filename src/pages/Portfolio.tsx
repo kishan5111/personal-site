@@ -54,13 +54,52 @@ const Portfolio = () => {
               </span>
             </div>
             <h3 className="text-xl font-medium mb-2">Learning Machine Learning</h3>
-            <ul className="list-disc ml-5 text-muted-foreground space-y-1">
-              <li>Google Data Analytics Professional Certificate | Coursera (Nov 2022 - Feb 2023)</li>
-              <li>Deep Learning A-Z 2023 | Udemy (Apr 2023 - June 2023)</li>
-              <li>Tensorflow Developer Certificate Bootcamp | Udemy (Jun 2023 - Sep 2023)</li>
+            {/* <ul className="list-disc ml-5 text-muted-foreground space-y-1"> */}
+            <ul className="list-disc ml-5 text-foreground/100 dark:text-foreground space-y-1">
+            {/* <ul className="text-muted-foreground"> */}
+              <li>
+                <a href="https://udemy-certificate.s3.amazonaws.com/image/UC-61a2bfd5-c31c-4b48-bdf0-9edc2887d2b8.jpg" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                  Tensorflow Developer Certificate Bootcamp
+                </a> | Udemy (Jun 2023 - Sep 2023)
+                <a 
+                  href="https://udemy-certificate.s3.amazonaws.com/image/UC-61a2bfd5-c31c-4b48-bdf0-9edc2887d2b8.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary ml-1 hover:underline"
+                >
+                  View
+                </a>
+              </li>
+              <li>
+                <a href="https://udemy-certificate.s3.amazonaws.com/image/UC-d3fecf35-2768-4da4-aeb4-8e8b208edec9.jpg" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                  Deep Learning A-Z 2023
+                </a> | Udemy (Apr 2023 - June 2023)
+                <a 
+                  href="https://udemy-certificate.s3.amazonaws.com/image/UC-d3fecf35-2768-4da4-aeb4-8e8b208edec9.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary ml-1 hover:underline"
+                >
+                  View
+                </a>
+              </li>
+              <li>
+                <a href="https://www.credly.com/badges/2937b353-034b-422c-b6e7-26e45ba0e81f/public_url" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                  Google Data Analytics Professional Certificate
+                </a> | Coursera (Nov 2022 - Feb 2023)
+                <a 
+                  href="https://www.credly.com/badges/2937b353-034b-422c-b6e7-26e45ba0e81f/public_url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary ml-1 hover:underline"
+                >
+                  View
+                </a>
+              </li>
             </ul>
           </div>
-          
+
+            
           {/* Education */}
           <div className="relative pl-8">
             <span className="absolute flex items-center justify-center w-10 h-10 bg-primary/20 rounded-full -left-5 ring-4 ring-background">
@@ -81,7 +120,7 @@ const Portfolio = () => {
                 rel="noopener noreferrer"
                 className="text-primary ml-1 hover:underline"
               >
-                View Certificate
+                View 
               </a>
             </p>
           </div>
@@ -176,7 +215,7 @@ const Portfolio = () => {
                 className="text-primary text-sm flex items-center gap-1 hover:underline"
               >
                 <Github className="h-3 w-3" />
-                <span>GitHub - Project-sentence-classification-in-medical-abstract.ipynb</span>
+                <span>GitHub - Project-classification-in-medical-abstract.ipynb</span>
               </a>
             </div>
           </div>
