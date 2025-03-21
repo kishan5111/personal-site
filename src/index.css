@@ -40,33 +40,32 @@
     --bounce-light: hsla(48, 100%, 80%, 0.3);
     --timing-fn: cubic-bezier(0.455, 0.190, 0.000, 0.985);
   }
-
   .dark {
-    --background: 240 25% 2%; /* Much darker background */
+    --background: 0 0% 0%; /* Pure black background */
     --foreground: 0 0% 100%; /* Pure white text */
-    --card: 240 25% 3%; /* Darker card background */
+    --card: 0 0% 0%; /* Pure black card background */
     --card-foreground: 0 0% 100%; /* Pure white text on cards */
-    --popover: 240 25% 3%; /* Darker popover background */
+    --popover: 0 0% 0%; /* Pure black popover background */
     --popover-foreground: 0 0% 100%; /* Pure white text on popovers */
     --primary: 250 75% 60%; /* Keep primary color */
     --primary-foreground: 0 0% 100%; /* Pure white text on primary */
-    --secondary: 240 25% 8%; /* Darker secondary */
+    --secondary: 0 0% 0%; /* Pure black secondary */
     --secondary-foreground: 0 0% 100%; /* Pure white text on secondary */
-    --muted: 240 25% 5%; /* Darker muted background */
+    --muted: 0 0% 0%; /* Pure black muted background */
     --muted-foreground: 0 0% 90%; /* Brighter muted text */
-    --accent: 240 25% 10%; /* Darker accent */
+    --accent: 0 0% 0%; /* Pure black accent */
     --accent-foreground: 0 0% 100%; /* Pure white text on accent */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 25% 12%; /* Darker border */
-    --input: 240 25% 12%; /* Darker input */
+    --border: 0 0% 0%; /* Pure black border */
+    --input: 0 0% 0%; /* Pure black input */
     --ring: 250 75% 60%;
     
     /* Light/dark variables for dark mode */
     --light: var(--night);
     --dark: var(--day);
     --shadow: #000000; /* Pure black shadow */
-    --bounce-light: hsla(240, 100%, 0%, 0.5); /* Darker blue bounce light for dark mode */
+    --bounce-light: hsla(0, 0%, 0%, 30); /* Gray bounce light for dark mode */
   }
 }
 

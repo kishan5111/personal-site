@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -26,10 +27,7 @@ const App = () => {
     // Set a class on the body to enable animations only after component mount
     document.body.classList.add('animation-ready');
     
-    // Remove dark mode class by default
-    document.documentElement.classList.remove('dark');
-    
-    // Only apply dark mode if explicitly selected
+    // Ensure dark mode persists on page reload if previously selected
     const theme = localStorage.getItem('vite-ui-theme');
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
