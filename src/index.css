@@ -399,12 +399,15 @@
 @media (max-width: 768px) {
   #root {
     padding: 1rem;
+    max-width: 100%;
+    margin: 0;
   }
   
   .perspective {
     width: 100vw;
     height: 100vh;
     opacity: 0.05;
+    top: -10vh;
   }
   
   #leaves {
@@ -412,9 +415,60 @@
     width: 1200px;
     height: 1000px;
     opacity: 0.15;
+    bottom: -100px;
   }
   
   .dark #leaves {
     opacity: 0.05;
+  }
+
+  #dappled-light {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  #progressive-blur {
+    width: 100%;
+    height: 100%;
+  }
+
+  #progressive-blur>div {
+    width: 100%;
+    height: 100%;
+  }
+
+  #blinds>.shutters {
+    gap: 30px;
+  }
+
+  .dark #blinds>.shutters {
+    gap: 15px;
+  }
+
+  .shutter {
+    height: 30px;
+  }
+
+  .dark .shutter {
+    height: 60px;
+  }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 480px) {
+  #root {
+    padding: 0.5rem;
+  }
+
+  .perspective {
+    opacity: 0.03;
+  }
+
+  #leaves {
+    opacity: 0.1;
+  }
+
+  .dark #leaves {
+    opacity: 0.03;
   }
 }
