@@ -108,9 +108,11 @@ const Index = () => {
               className="pt-4"
             >
               <Link to="/contact">
-                <Button className="group w-full md:w-auto">
-                  Let's connect and chat about all things AI and beyond!
-                  <ChevronRight className="transition-transform group-hover:translate-x-1" />
+                <Button className="group w-full md:w-auto text-sm md:text-base">
+                  <span className="flex items-center gap-2">
+                    <span className="whitespace-normal md:whitespace-nowrap">Let's connect and chat about all things AI and beyond!</span>
+                    <ChevronRight className="transition-transform group-hover:translate-x-1 flex-shrink-0" />
+                  </span>
                 </Button>
               </Link>
             </motion.div>
