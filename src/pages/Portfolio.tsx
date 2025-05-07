@@ -20,7 +20,7 @@ const Portfolio = () => {
             <div className="flex items-center gap-2 text-lg text-primary font-semibold mb-2">
               <span>Freelance</span>
               <span className="flex items-center gap-1 text-sm font-normal text-muted-foreground">
-                <Calendar className="w-3 h-3" /> Dec 2023 - Present · 9 mos
+                <Calendar className="w-3 h-3" /> Dec 2023 - Mar 2025 · 1yr 4mos
               </span>
             </div>
             <h3 className="text-xl font-medium mb-2">Machine Learning Engineer</h3>
@@ -35,7 +35,7 @@ const Portfolio = () => {
             <div className="flex items-center gap-2 text-lg text-primary font-semibold mb-2">
               <span>Kaggle</span>
               <span className="flex items-center gap-1 text-sm font-normal text-muted-foreground">
-                <Calendar className="w-3 h-3" /> Oct 2023 - Present · 11 mos
+                <Calendar className="w-3 h-3" /> Oct 2023 - Present  · 1yr 6mos
               </span>
             </div>
             <h3 className="text-xl font-medium mb-2">Kaggle Machine Learning and Data Science Competitor</h3>
