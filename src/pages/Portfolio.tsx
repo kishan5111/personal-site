@@ -1,6 +1,6 @@
-
 import { ExternalLink, Github, Briefcase, Trophy, GraduationCap, BookOpen, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -135,28 +135,74 @@ const Portfolio = () => {
           {/* LMSYS Competition */}
           <div 
             onClick={() => navigate('/competition/lmsys')}
-            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full"
+            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full flex flex-col"
           >
-            <h3 className="text-2xl font-semibold mb-2">LMSYS - Chatbot Arena Human Preference Predictions</h3>
-            <p className="mb-2">Secured 21st place (Silver Medal) out of 1,849 teams</p>
+            <div className="flex-grow">
+              <h3 className="text-2xl font-semibold mb-2">LMSYS - Chatbot Arena Human Preference Predictions</h3>
+              <p className="mb-2">Secured 21st place (Silver Medal) out of 1,849 teams</p>
+              <ul className="text-sm text-muted-foreground list-disc ml-4 space-y-1">
+                <li>Finetuned and hyperparams tuning LLM on TPUs</li>
+                <li>Optimized parallel GPU inference</li>
+                <li>Advanced post-processing techniques</li>
+              </ul>
+            </div>
+            <a 
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate('/competition/lmsys');
+              }}
+              className="text-primary hover:underline mt-4"
+            >
+              View code
+            </a>
           </div>
           
           {/* LLM Prompt Recovery Competition */}
           <div 
             onClick={() => navigate('/competition/llm-prompt')}
-            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full"
+            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full flex flex-col"
           >
-            <h3 className="text-2xl font-semibold mb-2">LLM Prompt Recovery Competition</h3>
-            <p className="mb-2">Ranked 120th (Bronze Medal) out of 2,175 teams</p>
+            <div className="flex-grow">
+              <h3 className="text-2xl font-semibold mb-2">LLM Prompt Recovery Competition</h3>
+              <p className="mb-2">Ranked 120th (Bronze Medal) out of 2,175 teams</p>
+              <ul className="text-sm text-muted-foreground list-disc ml-4 space-y-1">
+                <li>Advanced prompt engineering and tuning</li>
+                <li>Multi-GPU inference optimization</li>
+              </ul>
+            </div>
+            <a 
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate('/competition/llm-prompt');
+              }}
+              className="text-primary hover:underline mt-4"
+            >
+              View code
+            </a>
           </div>
           
           {/* Open Problems Competition */}
           <div 
             onClick={() => navigate('/competition/open-problems')}
-            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full"
+            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full flex flex-col"
           >
-            <h3 className="text-2xl font-semibold mb-2">Open Problems Competition</h3>
-            <p className="mb-2">Multiple gold and silver medal notebooks</p>
+            <div className="flex-grow">
+              <h3 className="text-2xl font-semibold mb-2">Open Problems Competition</h3>
+              <p className="mb-2">Multiple gold and silver medal notebooks</p>
+              <ul className="text-sm text-muted-foreground list-disc ml-4 space-y-1">
+                <li>Training small neural nets, RNN, LSTM, MLP from scratch</li>
+                <li>Advanced evaluation and post-processing techniques</li>
+              </ul>
+            </div>
+            <a 
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate('/competition/open-problems');
+              }}
+              className="text-primary hover:underline mt-4"
+            >
+              View code
+            </a>
           </div>
         </div>
       </section>
@@ -166,6 +212,42 @@ const Portfolio = () => {
         <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">Personal Projects</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Policy Pal */}
+          <div className="border rounded-md p-6 h-full flex flex-col">
+            <h3 className="text-xl font-semibold mb-2">Policy Pal</h3>
+            <p className="text-sm mb-4 flex-grow">A web application that helps users understand lengthy terms and conditions documents by providing concise, easy-to-understand summaries using OpenAI's GPT models. Features include URL/text input, web scraping, and AI-powered analysis of complex legal text.</p>
+            <div>
+              <p className="text-sm mb-3"><span className="font-medium">Tools:</span> OpenAI, Web Scraping, FastAPI, HTML, CSS</p>
+              <a 
+                href="https://github.com/kishan5111/policypal"
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary text-sm flex items-center gap-1 hover:underline"
+              >
+                <Github className="h-3 w-3" />
+                <span>GitHub - Policy Pal</span>
+              </a>
+            </div>
+          </div>
+
+          {/* GradScratch */}
+          <div className="border rounded-md p-6 h-full flex flex-col">
+            <h3 className="text-xl font-semibold mb-2">GradScratch</h3>
+            <p className="text-sm mb-4 flex-grow">A lightweight, educational implementation of neural networks and automatic differentiation from scratch. Extends micrograd with modern deep learning features including multiple activation functions, optimizers, and regularization techniques.</p>
+            <div>
+              <p className="text-sm mb-3"><span className="font-medium">Tools:</span> Python (Pure Implementation)</p>
+              <a 
+                href="https://github.com/kishan5111/gradscratch"
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary text-sm flex items-center gap-1 hover:underline"
+              >
+                <Github className="h-3 w-3" />
+                <span>GitHub - GradScratch</span>
+              </a>
+            </div>
+          </div>
+
           {/* Gemini for YouTube Videos */}
           <div className="border rounded-md p-6 h-full flex flex-col">
             <h3 className="text-xl font-semibold mb-2">Gemini for YouTube Videos</h3>
@@ -215,14 +297,14 @@ const Portfolio = () => {
                 className="text-primary text-sm flex items-center gap-1 hover:underline"
               >
                 <Github className="h-3 w-3" />
-                <span>GitHub - Project-classification-in-medical-abstract.ipynb</span>
+                <span>GitHub - Project-classification-in-medical-abstract</span>
               </a>
             </div>
           </div>
           
           {/* Food Vision Notebook */}
           <div className="border rounded-md p-6 h-full flex flex-col">
-            <h3 className="text-xl font-semibold mb-2">Food Vision Notebook</h3>
+            <h3 className="text-xl font-semibold mb-2">Food Vision</h3>
             <p className="text-sm mb-4 flex-grow">Developed a transfer learning model by fine-tuning a pretrained neural network to classify 101 food categories using the Food101 dataset. Surpassed the accuracy benchmark set by the DeepFood paper.</p>
             <div>
               <p className="text-sm mb-3"><span className="font-medium">Tools:</span> Scikit-learn, NumPy, Pandas, Matplotlib, TensorFlow, TensorFlow Hub</p>
@@ -233,7 +315,7 @@ const Portfolio = () => {
                 className="text-primary text-sm flex items-center gap-1 hover:underline"
               >
                 <Github className="h-3 w-3" />
-                <span>GitHub - Project-Food-Vision.ipynb</span>
+                <span>GitHub - Project-Food-Vision</span>
               </a>
             </div>
           </div>

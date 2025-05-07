@@ -65,10 +65,9 @@
     --light: var(--night);
     --dark: var(--day);
     --shadow: #000000; /* Pure black shadow */
-    --bounce-light: hsla(0, 0%, 0%, 30); /* Gray bounce light for dark mode */
+    --bounce-light: hsla(0, 0%, 0%, 100); /* Pure black bounce light for dark mode */
   }
 }
-
 @layer base {
   * {
     @apply border-border;

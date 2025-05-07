@@ -40,15 +40,15 @@ const competitions: Record<string, Competition> = {
       {
         title: 'Inference - Llama-3 8B',
         date: 'August 2024',
-        description: 'Performed parallel inference on a fine-tuned Llama-3 8B model using dual T4 GPUs, processing 25k samples in under 5 hours.',
-        tools: 'PyTorch, Transformers, Threading, PEFT',
+        description: 'Performed parallel inference on a fine-tuned Llama-3 8B model using dual T4 GPUs, earning gold medal and over 1000+ copied notebook.',
+        tools: 'PyTorch, Transformers, PEFT, threading',
         link: 'https://www.kaggle.com/code/kishanvavdara/inference-llama-3-8b'
       },
       {
         title: '21st Place [Human Bias] 2 x Gemma 9B [4096 len]',
         date: 'September 2024',
         description: 'Combined two fine-tuned Gemma 9B models with preprocessing, feature engineering, and post-processing.',
-        tools: 'PyTorch, Transformers, TPU',
+        tools: 'PyTorch, Transformers, PEFT, scikit-learn, threading',
         link: 'https://www.kaggle.com/code/kishanvavdara/21st-place-human-bias-2-x-gemma-9b-4096-len'
       }
     ],
@@ -80,15 +80,15 @@ const competitions: Record<string, Competition> = {
       {
         title: 'Neural Net Regression',
         date: 'November 2023',
-        description: 'Trained and performed inference with a neural network to achieve a high score. Earned a gold medal and over 200 copies.',
-        tools: 'PyTorch, Scikit-learn',
+        description: 'Trained and performed inference with a neural network to achieve a high score. Earned a gold medal and over 200+ copied notebook.',
+        tools: 'TensorFlow, matplotlib, pandas, numpy, scikit-learn',
         link: 'https://www.kaggle.com/code/kishanvavdara/neural-network-regression'
       },
       {
         title: 'NLP Regression',
         date: 'December 2023',
         description: 'Utilized SMILES molecular data to generate embeddings and trained models including Conv1D, LSTM, and neural networks, earning a silver medal.',
-        tools: 'PyTorch, TensorFlow',
+        tools: 'TensorFlow, matplotlib, pandas, numpy',
         link: 'https://www.kaggle.com/code/kishanvavdara/nlp-regression'
       }
     ]
@@ -121,14 +121,14 @@ const CompetitionDetail = () => {
       
       {competition.writeupLink && (
         <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">Competition Writeup</h2>
+          <h2 className="text-xl font-semibold mb-4">Solution Writeup</h2>
           <a 
             href={competition.writeupLink}
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline inline-flex items-center"
           >
-            Read Discussion <ExternalLink className="ml-2 h-4 w-4" />
+            Read here <ExternalLink className="ml-2 h-4 w-4" />
           </a>
         </div>
       )}
