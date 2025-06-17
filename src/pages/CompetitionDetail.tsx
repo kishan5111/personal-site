@@ -33,7 +33,7 @@ const competitions: Record<string, Competition> = {
       {
         title: 'LMSYS - Llama-3 [TPU Train]',
         date: 'July 2024',
-        description: 'Fine-tuned and sharded the Llama-3 8B model on Kaggle TPUs with a custom pipeline, earning a gold medal and over 700 copies.',
+        description: 'Fine-tuned and sharded the Llama-3 8B model on Kaggle TPUs with a custom pipeline, earning a gold medal and over 700+ copied notebook.',
         tools: 'Torch_XLA, Transformers, PEFT, Scikit-learn, PyTorch',
         link: 'https://www.kaggle.com/code/kishanvavdara/lmsys-llama-3-tpu-train'
       },

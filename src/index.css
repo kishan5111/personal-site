@@ -47,6 +47,7 @@
     --card-foreground: 0 0% 100%; /* Pure white text on cards */
     --popover: 0 0% 0%; /* Pure black popover background */
     --popover-foreground: 0 0% 100%; /* Pure white text on popovers */
+    
     --primary: 250 75% 60%; /* Keep primary color */
     --primary-foreground: 0 0% 100%; /* Pure white text on primary */
     --secondary: 0 0% 0%; /* Pure black secondary */
