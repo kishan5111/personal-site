@@ -41,7 +41,7 @@ const Index = () => {
           className="w-full space-y-4 md:space-y-6"
         >
         <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
-          <span className="font-bold text-gray-900 dark:text-white">Hey there!</span> I'm Kishan. This is my little corner on the Internet — make yourself at home! I'm currently working as a freelance data/ML engineer. I specialize in finetuning, optimizing inference, and deploying LLMs. 
+          <span className="font-bold text-gray-900 dark:text-white">Hey there!</span> I'm Kishan. This is my little corner on the Internet — make yourself at home! I'm currently working as a freelance LLM engineer. I specialize in finetuning, optimizing inference, and deploying LLMs. 
           I transitioned into ML after completing my undergraduate studies in biotechnology (where I was a gold medalist!), 
           through self-study and online courses.
         </p>
