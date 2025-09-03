@@ -94,7 +94,7 @@ const Index = () => {
             <div>
               <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Let's Connect!</h2>
               <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
-                <span className="font-semibold text-green-600 dark:text-green-400">I'm actively seeking new opportunities and exciting collaborations!</span> Whether you're interested in discussing AI, innovation, freelance projects, or full-time roles, 
+                I'm actively seeking new opportunities and exciting collaborations! Whether you're interested in discussing AI, innovation, freelance projects, or full-time roles, 
                 please feel free to get in touch—I'd love to connect!
               </p>
             </div>
