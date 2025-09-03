@@ -7,6 +7,21 @@ const Portfolio = () => {
 
   return (
     <div className="container mx-auto px-4 py-12">
+      {/* Availability Banner */}
+      <div className="mb-12 p-6 bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-r-lg">
+        <div className="flex items-center gap-3">
+          <div className="flex-shrink-0">
+            <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-green-800 dark:text-green-200">Open to Work & Collaborations</h3>
+            <p className="text-green-700 dark:text-green-300 mt-1">
+              Actively seeking new opportunities in ML/AI engineering, freelance projects, and exciting collaborations. Let's build something amazing together!
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* My Journey Timeline Section */}
       <section className="mb-16">
         <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">My Journey</h2>

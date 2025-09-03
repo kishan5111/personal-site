@@ -41,15 +41,11 @@ const Index = () => {
           className="w-full space-y-4 md:space-y-6"
         >
         <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
-          <span className="font-bold text-gray-900 dark:text-white">Hey there!</span> I'm Kishan. This is my little corner on the Internet — make yourself at home! I'm currently working as a freelance LLM engineer. I specialize in finetuning, optimizing inference, and deploying LLMs. 
-          I transitioned into ML after completing my undergraduate studies in biotechnology (where I was a gold medalist!), 
-          through self-study and online courses.
+          <span className="font-bold text-gray-900 dark:text-white">Hey there!</span> I'm Kishan, and this is my little corner of the Internet — make yourself at home! I'm a freelance LLM engineer who specializes in fine-tuning, optimizing inference, and deploying large language models. Currently, I'm <span className="font-semibold text-green-600 dark:text-green-400">actively seeking new opportunities and exciting collaborations</span> in applied LLM/NLP engineering.
         </p>
           
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
-            I'm also an active participant in Kaggle competitions, sharing datasets, models, and notebooks. 
-            I've published gold-medal-winning notebooks on fine-tuning and deploying LLaMA, Gemma, and Qwen models using TPUs and GPUs, 
-            as well as on training neural networks from scratch. Through my contributions, I recently became a 4x Kaggle Expert.
+            My journey into ML began after completing my undergraduate studies in biotechnology, where I was a gold medalist. I transitioned into this field through dedicated self-study and online courses. Since then, I've become an active Kaggle competitor and recently achieved 4x Expert status, with silver and bronze medals in competitions and gold-medal-winning notebooks on fine-tuning and deploying LLaMA, Gemma, and Qwen models using TPUs and GPUs.
           </p>
         </motion.div>
 
@@ -98,7 +94,7 @@ const Index = () => {
             <div>
               <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Let's Connect!</h2>
               <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
-                If you're interested in discussing AI, innovation, or potential collaborations, 
+                <span className="font-semibold text-green-600 dark:text-green-400">I'm actively seeking new opportunities and exciting collaborations!</span> Whether you're interested in discussing AI, innovation, freelance projects, or full-time roles, 
                 please feel free to get in touch—I'd love to connect!
               </p>
             </div>
