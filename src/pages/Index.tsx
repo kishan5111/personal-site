@@ -49,8 +49,7 @@ const Index = () => {
           </p>
         </motion.div>
 
-{/* Thank you for visiting here! Did you find anything interesting?  */}
-
+        {/* Thank you for visiting here! Did you find anything interesting?  */}
 
         {/* Photo in rectangular frame */}
         <motion.div 
