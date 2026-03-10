@@ -19,9 +19,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        body: ["DM Sans", "system-ui", "sans-serif"],
-        opensans: ["Open Sans", "system-ui", "sans-serif"],
+        sans: ["Manrope", "system-ui", "sans-serif"],
+        body: ["Manrope", "system-ui", "sans-serif"],
+        article: ["Source Serif 4", "Georgia", "serif"],
+        opensans: ["Source Serif 4", "Georgia", "serif"],
         biro: ["Biro Script Plus Sloppy", "cursive"],
         biroStandard: ["biro_script_standardRgus", "cursive"],
       },

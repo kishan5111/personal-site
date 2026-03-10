@@ -7,65 +7,50 @@ const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <div className="flex flex-col items-start gap-8 md:gap-12 max-w-5xl mx-auto">
-        {/* Banner Image - Static version without animations */}
-        <div className="w-full">
-          <div className="relative overflow-hidden rounded-lg">
-            <img 
-              src="/images/banner.png" 
-              alt="Stylized illustration" 
-              className="w-full h-auto scale-110 md:scale-125 mix-blend-multiply opacity-80" 
-            />
-            <div className="absolute inset-0 bg-background/5"></div>
-          </div>
+        <div className="grid w-full gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="space-y-4 md:space-y-6"
+          >
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-left font-sans text-3xl font-semibold tracking-tight text-gray-900 dark:text-white md:text-5xl"
+            >
+              Kishan Vavdara
+            </motion.h1>
+
+            <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
+              I'm Kishan, an <span className="font-semibold text-gray-900 dark:text-white">ML/LLM engineer</span> focused on fine-tuning, evaluation, inference optimization, and deployment of large language models. I work across the full model lifecycle, from training and benchmarking to efficient GPU/TPU inference.
+            </p>
+
+            <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
+              I'm a <span className="font-semibold text-gray-900 dark:text-white">Kaggle Competition Master and Notebook Master</span>, with multiple medal-winning solutions, including gold-winning Kaggle notebooks on LLaMA, Gemma, and Qwen fine-tuning and inference. My work combines rigorous experimentation with practical systems thinking, especially where model quality, latency, and compute constraints all matter.
+            </p>
+
+            <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
+              I originally transitioned into ML from biotechnology through self-study and hands-on building. That path shaped how I work today: rigorous experimentation, fast iteration, and a strong bias toward practical results.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="w-full max-w-lg justify-self-center pt-10 lg:justify-self-end lg:pt-24"
+          >
+            <div className="relative mx-auto aspect-square max-w-[360px] overflow-hidden rounded-full border border-border/50 bg-background/70 shadow-sm">
+              <img
+                src="/images/image_prof.jpeg"
+                alt="Kishan Vavdara portrait"
+                className="h-full w-full scale-100 object-cover object-[34%_24%]"
+              />
+            </div>
+          </motion.div>
         </div>
-        
-        {/* Welcome Message with specific font styling */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-left font-biro text-3xl md:text-4xl text-gray-900 dark:text-white"
-          style={{ 
-            padding: "0px",
-            border: "none"
-          }}
-        >
-          Welcome!
-        </motion.p>
-        
-        {/* Description */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="w-full space-y-4 md:space-y-6"
-        >
-        <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
-          <span className="font-bold text-gray-900 dark:text-white">Hey there!</span> I'm Kishan, and this is my little corner of the Internet — make yourself at home! I'm a freelance LLM engineer who specializes in fine-tuning, optimizing inference, and deploying large language models. Currently, I'm <span className="font-semibold text-green-600 dark:text-green-400">actively seeking new opportunities and exciting collaborations</span> in applied LLM/NLP engineering.
-        </p>
-          
-          <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
-            My journey into ML began after completing my undergraduate studies in biotechnology, where I was a gold medalist. I transitioned into this field through dedicated self-study and online courses. Since then, I've become an active Kaggle competitor and recently achieved 4x Expert status, with silver and bronze medals in competitions and gold-medal-winning notebooks on fine-tuning and deploying LLaMA, Gemma, and Qwen models using TPUs and GPUs.
-          </p>
-        </motion.div>
-
-        {/* Thank you for visiting here! Did you find anything interesting?  */}
-
-        {/* Photo in rectangular frame */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="w-full max-w-3xl mx-auto"
-        >
-          <div className="relative overflow-hidden">
-            <img
-              src="/images/violin.png"
-              alt="playing violin"
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </motion.div>
         
         {/* Additional sections */}
         <motion.div 
@@ -76,25 +61,26 @@ const Index = () => {
         >
           <div className="space-y-4 md:space-y-6">
             <div>
-              <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Interests</h2>
-              <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
-                My current interests and learning goals include AI agents, GPU coding (CUDA, CUTLASS, and cuTE), 
-                and the application of AI in neuroscience and biology, which I intend to explore in depth.
-              </p>
+              <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">What I Can Help With</h2>
+              <ul className="list-disc ml-5 space-y-2 text-base md:text-lg text-gray-700 dark:text-gray-50">
+                <li>Fine-tuning and post-training of open-weight LLMs using PEFT and full fine-tuning workflows.</li>
+                <li>Evaluation pipelines, benchmarking, and experiment design for model selection and iteration.</li>
+                <li>Inference optimization across GPU/TPU setups, including latency, throughput, batching, and memory tradeoffs.</li>
+                <li>Deployment-oriented workflows for teams building with LLaMA, Gemma, Qwen, and related open models.</li>
+              </ul>
             </div>
 
             <div>
-              <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Beyond Work</h2>
+              <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Selected Work</h2>
               <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
-              To balance things out, I'm into yoga, meditation, and learning the violin (progress is slow but steady!). Weekends are for exploring new ideas or just kicking back with friends.
+                I also build tooling around practical LLM infrastructure problems. <span className="font-semibold text-gray-900 dark:text-white">FitMyGPU</span> is a project focused on helping reason about workload-to-hardware fit, deployment constraints, and compute tradeoffs earlier, before those decisions become expensive mistakes.
               </p>
             </div>
 
             <div>
               <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Let's Connect!</h2>
               <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
-                I'm actively seeking new opportunities and exciting collaborations! Whether you're interested in discussing AI, innovation, freelance projects, or full-time roles, 
-                please feel free to get in touch—I'd love to connect!
+                I'm currently open to ML/LLM engineering roles, applied AI work, and collaboration opportunities across fine-tuning, evaluation, inference, and deployment. If your team is hiring or building in this space, I'd be glad to connect.
               </p>
             </div>
 
@@ -107,7 +93,7 @@ const Index = () => {
               <Link to="/contact">
                 <Button className="group w-full md:w-auto text-sm md:text-base">
                   <span className="flex items-center gap-2">
-                    <span className="whitespace-normal md:whitespace-nowrap">Let's connect and chat about all things AI and beyond!</span>
+                    <span className="whitespace-normal md:whitespace-nowrap">Get in touch about roles, projects, or collaborations</span>
                     <ChevronRight className="transition-transform group-hover:translate-x-1 flex-shrink-0" />
                   </span>
                 </Button>

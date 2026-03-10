@@ -25,8 +25,8 @@ const App = () => {
     // Log that the App component has mounted
     console.log("App component mounted");
     
-    // Set a class on the body to enable animations only after component mount
-    document.body.classList.add('animation-ready');
+    // Background animation disabled for now.
+    // document.body.classList.add('animation-ready');
     
     // Ensure dark mode persists on page reload if previously selected
     const theme = localStorage.getItem('vite-ui-theme');
@@ -35,7 +35,7 @@ const App = () => {
     }
     
     return () => {
-      document.body.classList.remove('animation-ready');
+      // document.body.classList.remove('animation-ready');
     };
   }, []);
   
@@ -47,7 +47,12 @@ const App = () => {
           <Sonner />
           <Analytics />
           
-          {/* Dappled light effect */}
+          {/*
+            Dappled light / window background effect.
+            Commented out for now so the page background stays cleaner,
+            but the markup is kept here for future use.
+          */}
+          {/*
           <div id="dappled-light" aria-hidden="true">
             <div id="glow"></div>
             <div id="glow-bounce"></div>
@@ -57,21 +62,21 @@ const App = () => {
                   <defs>
                     <filter id="wind" x="-20%" y="-20%" width="140%" height="140%">
                       <feTurbulence type="fractalNoise" numOctaves="2" seed="1">
-                        <animate 
-                          attributeName="baseFrequency" 
-                          dur="16s" 
+                        <animate
+                          attributeName="baseFrequency"
+                          dur="16s"
                           keyTimes="0;0.33;0.66;1"
-                          values="0.005 0.003;0.01 0.009;0.008 0.004;0.005 0.003" 
-                          repeatCount="indefinite" 
+                          values="0.005 0.003;0.01 0.009;0.008 0.004;0.005 0.003"
+                          repeatCount="indefinite"
                         />
                       </feTurbulence>
                       <feDisplacementMap in="SourceGraphic">
-                        <animate 
-                          attributeName="scale" 
-                          dur="20s" 
-                          keyTimes="0;0.25;0.5;0.75;1" 
+                        <animate
+                          attributeName="scale"
+                          dur="20s"
+                          keyTimes="0;0.25;0.5;0.75;1"
                           values="45;55;75;55;45"
-                          repeatCount="indefinite" 
+                          repeatCount="indefinite"
                         />
                       </feDisplacementMap>
                     </filter>
@@ -97,6 +102,7 @@ const App = () => {
               <div></div>
             </div>
           </div>
+          */}
           
           <BrowserRouter>
             <Navigation />
