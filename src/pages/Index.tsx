@@ -73,7 +73,7 @@ const Index = () => {
             <div>
               <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Selected Work</h2>
               <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
-                I also build tooling around practical LLM infrastructure problems. <span className="font-semibold text-gray-900 dark:text-white">FitMyGPU</span> is a project focused on helping reason about workload-to-hardware fit, deployment constraints, and compute tradeoffs earlier, before those decisions become expensive mistakes.
+                I also build tooling around practical LLM infrastructure problems. <a href="https://fitmygpu.com" target="_blank" rel="noreferrer" className="font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white">FitMyGPU.com</a> is a project focused on helping reason about workload-to-hardware fit, deployment constraints, and compute tradeoffs earlier, before those decisions become expensive mistakes.
               </p>
             </div>
 
