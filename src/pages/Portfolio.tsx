@@ -1,341 +1,275 @@
-import { ExternalLink, Github, Briefcase, Trophy, GraduationCap, BookOpen, Calendar } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import {
+  activeProjects,
+  competitions,
+  featuredCompetitionIds,
+  selectedCodeContributions,
+} from "@/lib/portfolio-data";
+import { Badge } from "@/components/ui/badge";
+
+const medalStyles: Record<string, string> = {
+  Gold: "border-amber-300/70 bg-amber-100/70 text-amber-950 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-100",
+  Silver: "border-slate-300/70 bg-slate-100/80 text-slate-900 dark:border-slate-400/40 dark:bg-slate-400/10 dark:text-slate-100",
+  Bronze: "border-orange-300/70 bg-orange-100/80 text-orange-950 dark:border-orange-500/40 dark:bg-orange-500/10 dark:text-orange-100",
+};
 
 const Portfolio = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="container mx-auto px-4 py-12">
-      {/* Availability Banner */}
-      <div className="mb-12 p-6 bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 rounded-r-lg">
-        <div className="flex items-center gap-3">
-          <div className="flex-shrink-0">
-            <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-green-800 dark:text-green-200">Open to Work & Collaborations</h3>
-            <p className="text-green-700 dark:text-green-300 mt-1">
-              Actively seeking new opportunities in ML/AI engineering, freelance projects, and exciting collaborations. Let's build something amazing together!
+      <div className="mx-auto max-w-6xl space-y-16">
+        <section className="space-y-6">
+          <div className="space-y-4">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              Portfolio
+            </p>
+            <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+              Selected competition results, public code, and active projects.
+            </h1>
+            <p className="max-w-3xl text-base leading-8 text-muted-foreground md:text-lg">
+              Work across evaluation, inference, deployment, and practical ML
+              systems.
+            </p>
+            <p className="max-w-3xl text-sm leading-7 text-muted-foreground">
+              Kaggle Competition Master and Notebook Master with public
+              notebooks, writeups, and active product work around serving and
+              hardware-fit decisions.
             </p>
           </div>
-        </div>
-      </div>
 
-      {/* My Journey Timeline Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">My Journey</h2>
-        
-        <div className="relative border-l border-primary ml-6 mt-8 space-y-12">
-          {/* Freelance Experience */}
-          <div className="relative pl-8">
-            <span className="absolute flex items-center justify-center w-10 h-10 bg-primary/20 rounded-full -left-5 ring-4 ring-background">
-              <Briefcase className="w-5 h-5 text-primary" />
-            </span>
-            <div className="flex items-center gap-2 text-lg text-primary font-semibold mb-2">
-              <span>Freelance</span>
-              <span className="flex items-center gap-1 text-sm font-normal text-muted-foreground">
-                <Calendar className="w-3 h-3" /> Dec 2023 - Mar 2025 · 1yr 4mos
-              </span>
-            </div>
-            <h3 className="text-xl font-medium mb-2">Machine Learning Engineer</h3>
-            <p className="text-muted-foreground">Began working as a freelance Machine Learning Engineer, securing projects through professional connections.</p>
-          </div>
-          
-          {/* Kaggle */}
-          <div className="relative pl-8">
-            <span className="absolute flex items-center justify-center w-10 h-10 bg-primary/20 rounded-full -left-5 ring-4 ring-background">
-              <Trophy className="w-5 h-5 text-primary" />
-            </span>
-            <div className="flex items-center gap-2 text-lg text-primary font-semibold mb-2">
-              <span>Kaggle</span>
-              <span className="flex items-center gap-1 text-sm font-normal text-muted-foreground">
-                <Calendar className="w-3 h-3" /> Oct 2023 - Present  · 1yr 6mos
-              </span>
-            </div>
-            <h3 className="text-xl font-medium mb-2">Kaggle Machine Learning and Data Science Competitor</h3>
-            <p className="text-muted-foreground">Started contributing in Kaggle competitions, discussions, and code sharing.</p>
-          </div>
-          
-          {/* Self Study */}
-          <div className="relative pl-8">
-            <span className="absolute flex items-center justify-center w-10 h-10 bg-primary/20 rounded-full -left-5 ring-4 ring-background">
-              <BookOpen className="w-5 h-5 text-primary" />
-            </span>
-            <div className="flex items-center gap-2 text-lg text-primary font-semibold mb-2">
-              <span>Self Study</span>
-              <span className="flex items-center gap-1 text-sm font-normal text-muted-foreground">
-                <Calendar className="w-3 h-3" /> Nov 2022 - Sep 2023
-              </span>
-            </div>
-            <h3 className="text-xl font-medium mb-2">Learning Machine Learning</h3>
-            {/* <ul className="list-disc ml-5 text-muted-foreground space-y-1"> */}
-            <ul className="list-disc ml-5 text-foreground/100 dark:text-foreground space-y-1">
-            {/* <ul className="text-muted-foreground"> */}
-              <li>
-                <a href="https://udemy-certificate.s3.amazonaws.com/image/UC-61a2bfd5-c31c-4b48-bdf0-9edc2887d2b8.jpg" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
-                  Tensorflow Developer Certificate Bootcamp
-                </a> | Udemy (Jun 2023 - Sep 2023)
-                <a 
-                  href="https://udemy-certificate.s3.amazonaws.com/image/UC-61a2bfd5-c31c-4b48-bdf0-9edc2887d2b8.jpg"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary ml-1 hover:underline"
-                >
-                  View
-                </a>
-              </li>
-              <li>
-                <a href="https://udemy-certificate.s3.amazonaws.com/image/UC-d3fecf35-2768-4da4-aeb4-8e8b208edec9.jpg" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
-                  Deep Learning A-Z 2023
-                </a> | Udemy (Apr 2023 - June 2023)
-                <a 
-                  href="https://udemy-certificate.s3.amazonaws.com/image/UC-d3fecf35-2768-4da4-aeb4-8e8b208edec9.jpg"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary ml-1 hover:underline"
-                >
-                  View
-                </a>
-              </li>
-              <li>
-                <a href="https://www.credly.com/badges/2937b353-034b-422c-b6e7-26e45ba0e81f/public_url" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
-                  Google Data Analytics Professional Certificate
-                </a> | Coursera (Nov 2022 - Feb 2023)
-                <a 
-                  href="https://www.credly.com/badges/2937b353-034b-422c-b6e7-26e45ba0e81f/public_url"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary ml-1 hover:underline"
-                >
-                  View
-                </a>
-              </li>
-            </ul>
-          </div>
-
-            
-          {/* Education */}
-          <div className="relative pl-8">
-            <span className="absolute flex items-center justify-center w-10 h-10 bg-primary/20 rounded-full -left-5 ring-4 ring-background">
-              <GraduationCap className="w-5 h-5 text-primary" />
-            </span>
-            <div className="flex items-center gap-2 text-lg text-primary font-semibold mb-2">
-              <span>Gujarat University</span>
-              <span className="flex items-center gap-1 text-sm font-normal text-muted-foreground">
-                <Calendar className="w-3 h-3" /> Apr 2019 - Jun 2022
-              </span>
-            </div>
-            <h3 className="text-xl font-medium mb-2">BSc, Biotechnology (Gold Medalist)</h3>
-            <p className="text-muted-foreground">
-              Undergraduate studies at Gujarat University.
-              <a 
-                href="https://psc.shayonainstitute.edu.in/public/asset/images/Latest-Updates/pscGold%20Medals_GSC%20GNR%20Students_71st%20Convocation_GU_B.Sc.%20Sem%206_March%202022_05%2001%202023%20%281%29.pdf"
+          <div className="flex flex-wrap gap-3 pt-2">
+            <Button asChild>
+              <Link to="/contact">
+                Get in touch
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
+              <a
+                href="https://www.kaggle.com/kishanvavdara"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary ml-1 hover:underline"
+                rel="noreferrer"
               >
-                View 
+                Kaggle
+                <ExternalLink className="h-4 w-4" />
               </a>
+            </Button>
+            <Button asChild variant="outline">
+              <a
+                href="https://github.com/kishan5111"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+                <Github className="h-4 w-4" />
+              </a>
+            </Button>
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="space-y-2">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              Featured Results
             </p>
-          </div>
-        </div>
-      </section>
-      
-      {/* Achievements Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">Achievements</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* LMSYS Competition */}
-          <div 
-            onClick={() => navigate('/competition/lmsys')}
-            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full flex flex-col"
-          >
-            <div className="flex-grow">
-              <h3 className="text-2xl font-semibold mb-2">LMSYS - Chatbot Arena Human Preference Predictions</h3>
-              <p className="mb-2">Secured 21st place (Silver Medal) out of 1,849 teams</p>
-              <ul className="text-sm text-muted-foreground list-disc ml-4 space-y-1">
-                <li>Finetuned and hyperparams tuning LLM on TPUs</li>
-                <li>Optimized parallel GPU inference</li>
-                <li>Advanced post-processing techniques</li>
-              </ul>
-            </div>
-            <a 
-              onClick={(e) => {
-                e.stopPropagation();
-                navigate('/competition/lmsys');
-              }}
-              className="text-primary hover:underline mt-4"
-            >
-              View code
-            </a>
-          </div>
-          
-          {/* LLM Prompt Recovery Competition */}
-          <div 
-            onClick={() => navigate('/competition/llm-prompt')}
-            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full flex flex-col"
-          >
-            <div className="flex-grow">
-              <h3 className="text-2xl font-semibold mb-2">LLM Prompt Recovery Competition</h3>
-              <p className="mb-2">Ranked 120th (Bronze Medal) out of 2,175 teams</p>
-              <ul className="text-sm text-muted-foreground list-disc ml-4 space-y-1">
-                <li>Advanced prompt engineering and tuning</li>
-                <li>Multi-GPU inference optimization</li>
-              </ul>
-            </div>
-            <a 
-              onClick={(e) => {
-                e.stopPropagation();
-                navigate('/competition/llm-prompt');
-              }}
-              className="text-primary hover:underline mt-4"
-            >
-              View code
-            </a>
-          </div>
-          
-          {/* Open Problems Competition */}
-          <div 
-            onClick={() => navigate('/competition/open-problems')}
-            className="border rounded-lg p-6 hover:border-primary cursor-pointer transition-colors h-full flex flex-col"
-          >
-            <div className="flex-grow">
-              <h3 className="text-2xl font-semibold mb-2">Open Problems Competition</h3>
-              <p className="mb-2">Multiple gold and silver medal notebooks</p>
-              <ul className="text-sm text-muted-foreground list-disc ml-4 space-y-1">
-                <li>Training small neural nets, RNN, LSTM, MLP from scratch</li>
-                <li>Advanced evaluation and post-processing techniques</li>
-              </ul>
-            </div>
-            <a 
-              onClick={(e) => {
-                e.stopPropagation();
-                navigate('/competition/open-problems');
-              }}
-              className="text-primary hover:underline mt-4"
-            >
-              View code
-            </a>
-          </div>
-        </div>
-      </section>
-      
-      {/* Projects Section */}
-      <section>
-        <h2 className="text-3xl font-bold mb-8 text-primary border-b pb-4">Personal Projects</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Policy Pal */}
-          <div className="border rounded-md p-6 h-full flex flex-col">
-            <h3 className="text-xl font-semibold mb-2">Policy Pal</h3>
-            <p className="text-sm mb-4 flex-grow">A web application that helps users understand lengthy terms and conditions documents by providing concise, easy-to-understand summaries using OpenAI's GPT models. Features include URL/text input, web scraping, and AI-powered analysis of complex legal text.</p>
-            <div>
-              <p className="text-sm mb-3"><span className="font-medium">Tools:</span> OpenAI, Web Scraping, FastAPI, HTML, CSS</p>
-              <a 
-                href="https://github.com/kishan5111/policypal"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary text-sm flex items-center gap-1 hover:underline"
-              >
-                <Github className="h-3 w-3" />
-                <span>GitHub - Policy Pal</span>
-              </a>
-            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-foreground">
+              Strongest competition work
+            </h2>
           </div>
 
-          {/* GradScratch */}
-          <div className="border rounded-md p-6 h-full flex flex-col">
-            <h3 className="text-xl font-semibold mb-2">GradScratch</h3>
-            <p className="text-sm mb-4 flex-grow">A lightweight, educational implementation of neural networks and automatic differentiation from scratch. Extends micrograd with modern deep learning features including multiple activation functions, optimizers, and regularization techniques.</p>
-            <div>
-              <p className="text-sm mb-3"><span className="font-medium">Tools:</span> Python (Pure Implementation)</p>
-              <a 
-                href="https://github.com/kishan5111/gradscratch"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary text-sm flex items-center gap-1 hover:underline"
-              >
-                <Github className="h-3 w-3" />
-                <span>GitHub - GradScratch</span>
-              </a>
-            </div>
+          <div className="grid gap-6 lg:grid-cols-2">
+            {featuredCompetitionIds.map((id) => {
+              const competition = competitions[id];
+
+              return (
+                <article
+                  key={competition.id}
+                  className="rounded-3xl border border-border/60 bg-background/55 p-6 shadow-sm backdrop-blur-sm"
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <Badge
+                      variant="outline"
+                      className={medalStyles[competition.medal]}
+                    >
+                      {competition.medal}
+                    </Badge>
+                    <p className="text-sm font-medium text-muted-foreground">
+                      {competition.rank}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 space-y-3">
+                    <div>
+                      <h3 className="text-2xl font-semibold text-foreground">
+                        {competition.title}
+                      </h3>
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        {competition.dateRange}
+                      </p>
+                    </div>
+
+                    <p className="text-base leading-7 text-foreground/90">
+                      {competition.summary}
+                    </p>
+
+                    <ul className="space-y-2 text-sm leading-7 text-muted-foreground">
+                      {competition.bullets.slice(0, 2).map((bullet) => (
+                        <li key={bullet} className="flex gap-3">
+                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary/70" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <Button asChild size="sm">
+                      <Link to={`/competition/${competition.id}`}>
+                        View details
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </Button>
+                    {competition.writeupLink && (
+                      <Button asChild variant="outline" size="sm">
+                        <a
+                          href={competition.writeupLink}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Writeup
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="space-y-2">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              Selected Code and Writeups
+            </p>
+            <h2 className="text-3xl font-semibold tracking-tight text-foreground">
+              Selected public notebooks and writeups
+            </h2>
           </div>
 
-          {/* Gemini for YouTube Videos */}
-          <div className="border rounded-md p-6 h-full flex flex-col">
-            <h3 className="text-xl font-semibold mb-2">Gemini for YouTube Videos</h3>
-            <p className="text-sm mb-4 flex-grow">Developed a tool to download, upload, and chat with YouTube videos/shorts using their URLs, leveraging Gemini 1.5 Pro with long context capabilities for interactive conversations.</p>
-            <div>
-              <p className="text-sm mb-3"><span className="font-medium">Tools:</span> Pytube, google.generativeai</p>
-              <a 
-                href="https://www.kaggle.com/code/kishanvavdara/gemini-for-youtube-videos"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary text-sm flex items-center gap-1 hover:underline"
+          <div className="grid gap-4 lg:grid-cols-2">
+            {selectedCodeContributions.map((item) => (
+              <article
+                key={item.title}
+                className="rounded-2xl border border-border/55 bg-background/45 p-5 shadow-sm"
               >
-                <ExternalLink className="h-3 w-3" />
-                <span>Code - gemini-for-youtube-videos</span>
-              </a>
-            </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <Badge variant="outline" className="border-border/60 bg-background/70">
+                    {item.label}
+                  </Badge>
+                  <p className="text-sm text-muted-foreground">
+                    {item.competitionTitle}
+                  </p>
+                </div>
+
+                <h3 className="mt-4 text-lg font-semibold text-foreground">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-7 text-muted-foreground">
+                  {item.description}
+                </p>
+
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                  >
+                    Open link
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                  <Link
+                    to={`/competition/${item.competitionId}`}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary"
+                  >
+                    See competition context
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
-          
-          {/* Time Series BitPredict */}
-          <div className="border rounded-md p-6 h-full flex flex-col">
-            <h3 className="text-xl font-semibold mb-2">Time Series BitPredict 💰📈</h3>
-            <p className="text-sm mb-4 flex-grow">Created a time series forecasting project to predict Bitcoin prices. Implemented dense neural networks, multivariate dense models, feature engineering, ensemble techniques, and future forecasting capabilities.</p>
-            <div>
-              <p className="text-sm mb-3"><span className="font-medium">Tools:</span> TensorFlow, Matplotlib, Pandas, NumPy</p>
-              <a 
-                href="https://www.kaggle.com/code/kishanvavdara/time-series-bitpredict"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary text-sm flex items-center gap-1 hover:underline"
+        </section>
+
+        <section className="space-y-6">
+          <div className="space-y-2">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              Active Projects
+            </p>
+            <h2 className="text-3xl font-semibold tracking-tight text-foreground">
+              Active projects
+            </h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {activeProjects.map((project) => (
+              <article
+                key={project.title}
+                className="rounded-3xl border border-border/60 bg-background/55 p-6 shadow-sm"
               >
-                <ExternalLink className="h-3 w-3" />
-                <span>Code - time-series-bitpredict</span>
-              </a>
-            </div>
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="text-2xl font-semibold text-foreground">
+                    {project.title}
+                  </h3>
+                  <Badge variant="outline" className="border-border/60 bg-background/70">
+                    {project.status}
+                  </Badge>
+                </div>
+
+                <p className="mt-4 text-base leading-7 text-foreground/90">
+                  {project.description}
+                </p>
+
+                <div className="mt-5">
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                  >
+                    Visit {project.title}
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
-          
-          {/* SkimLit */}
-          <div className="border rounded-md p-6 h-full flex flex-col">
-            <h3 className="text-xl font-semibold mb-2">SkimLit (Skim Literature)</h3>
-            <p className="text-sm mb-4 flex-grow">Built an NLP model to streamline reading medical abstracts by replicating and exceeding the performance of the deep learning model from the 2017 paper PubMed 200k RCT: A Dataset for Sequential Sentence Classification in Medical Abstracts.</p>
-            <div>
-              <p className="text-sm mb-3"><span className="font-medium">Tools:</span> Scikit-learn, NumPy, Pandas, Matplotlib, TensorFlow, Keras</p>
-              <a 
-                href="https://github.com/kishan5111/Deep_Learning_Vault/blob/main/projects/Project-sentence-classification-in-medical-abstract.ipynb"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary text-sm flex items-center gap-1 hover:underline"
-              >
-                <Github className="h-3 w-3" />
-                <span>GitHub - Project-classification-in-medical-abstract</span>
-              </a>
+        </section>
+
+        <section className="rounded-3xl border border-border/60 bg-background/55 p-6 shadow-sm">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="space-y-2">
+              <h2 className="text-2xl font-semibold text-foreground">
+                Open to ML and LLM engineering work.
+              </h2>
+              <p className="text-sm leading-7 text-muted-foreground md:text-base">
+                Especially interested in roles involving evaluation, inference,
+                model iteration, and deployment.
+              </p>
             </div>
+
+            <Button asChild size="lg">
+              <Link to="/contact">
+                Start a conversation
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
           </div>
-          
-          {/* Food Vision Notebook */}
-          <div className="border rounded-md p-6 h-full flex flex-col">
-            <h3 className="text-xl font-semibold mb-2">Food Vision</h3>
-            <p className="text-sm mb-4 flex-grow">Developed a transfer learning model by fine-tuning a pretrained neural network to classify 101 food categories using the Food101 dataset. Surpassed the accuracy benchmark set by the DeepFood paper.</p>
-            <div>
-              <p className="text-sm mb-3"><span className="font-medium">Tools:</span> Scikit-learn, NumPy, Pandas, Matplotlib, TensorFlow, TensorFlow Hub</p>
-              <a 
-                href="https://github.com/kishan5111/Deep_Learning_Vault/blob/main/projects/Project-Food-Vision.ipynb"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary text-sm flex items-center gap-1 hover:underline"
-              >
-                <Github className="h-3 w-3" />
-                <span>GitHub - Project-Food-Vision</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 };

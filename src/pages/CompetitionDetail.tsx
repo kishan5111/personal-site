@@ -1,156 +1,198 @@
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { competitions } from "@/lib/portfolio-data";
 
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-
-interface Notebook {
-  title: string;
-  date: string;
-  description: string;
-  tools: string;
-  link: string;
-}
-
-interface Competition {
-  id: string;
-  title: string;
-  date: string;
-  description: string;
-  rank: string;
-  notebooks: Notebook[];
-  writeupLink?: string;
-}
-
-const competitions: Record<string, Competition> = {
-  'lmsys': {
-    id: 'lmsys',
-    title: 'LMSYS - Chatbot Arena Human Preference Predictions',
-    date: 'July - September 2024',
-    description: 'Secured 21st place (Silver Medal) out of 1,849 teams by predicting human preferences in chatbot interactions.',
-    rank: '21st / 1,849',
-    notebooks: [
-      {
-        title: 'LMSYS - Llama-3 [TPU Train]',
-        date: 'July 2024',
-        description: 'Fine-tuned and sharded the Llama-3 8B model on Kaggle TPUs with a custom pipeline, earning a gold medal and over 700+ copied notebook.',
-        tools: 'Torch_XLA, Transformers, PEFT, Scikit-learn, PyTorch',
-        link: 'https://www.kaggle.com/code/kishanvavdara/lmsys-llama-3-tpu-train'
-      },
-      {
-        title: 'Inference - Llama-3 8B',
-        date: 'August 2024',
-        description: 'Performed parallel inference on a fine-tuned Llama-3 8B model using dual T4 GPUs, earning gold medal and over 1000+ copied notebook.',
-        tools: 'PyTorch, Transformers, PEFT, threading',
-        link: 'https://www.kaggle.com/code/kishanvavdara/inference-llama-3-8b'
-      },
-      {
-        title: '21st Place [Human Bias] 2 x Gemma 9B [4096 len]',
-        date: 'September 2024',
-        description: 'Combined two fine-tuned Gemma 9B models with preprocessing, feature engineering, and post-processing.',
-        tools: 'PyTorch, Transformers, PEFT, scikit-learn, threading',
-        link: 'https://www.kaggle.com/code/kishanvavdara/21st-place-human-bias-2-x-gemma-9b-4096-len'
-      }
-    ],
-    writeupLink: 'https://www.kaggle.com/competitions/lmsys-chatbot-arena/discussion/527627'
-  },
-  'llm-prompt': {
-    id: 'llm-prompt',
-    title: 'LLM Prompt Recovery Competition',
-    date: 'March 2024',
-    description: 'Ranked 120th (Bronze Medal) out of 2,175 teams by recovering prompts used to transform given texts.',
-    rank: '120th / 2,175',
-    notebooks: [
-      {
-        title: 'Gemma 7b-it-quant Inference on Multi-GPU',
-        date: 'March 2024',
-        description: 'Implemented inference with the quantized Gemma-7b-it model on dual T4 GPUs for efficient prompting and submission.',
-        tools: 'PyTorch, Transformers, PEFT',
-        link: 'https://www.kaggle.com/code/kishanvavdara/gemma-7b-it-quant-inference-on-multi-gpu'
-      }
-    ]
-  },
-  'open-problems': {
-    id: 'open-problems',
-    title: 'Open Problems Competition',
-    date: 'November - December 2023',
-    description: 'Contributed two standout notebooks in the Open Problems Single-Cell Perturbations competition.',
-    rank: 'Gold & Silver medals',
-    notebooks: [
-      {
-        title: 'Neural Net Regression',
-        date: 'November 2023',
-        description: 'Trained and performed inference with a neural network to achieve a high score. Earned a gold medal and over 200+ copied notebook.',
-        tools: 'TensorFlow, matplotlib, pandas, numpy, scikit-learn',
-        link: 'https://www.kaggle.com/code/kishanvavdara/neural-network-regression'
-      },
-      {
-        title: 'NLP Regression',
-        date: 'December 2023',
-        description: 'Utilized SMILES molecular data to generate embeddings and trained models including Conv1D, LSTM, and neural networks, earning a silver medal.',
-        tools: 'TensorFlow, matplotlib, pandas, numpy',
-        link: 'https://www.kaggle.com/code/kishanvavdara/nlp-regression'
-      }
-    ]
-  }
+const medalStyles: Record<string, string> = {
+  Gold: "border-amber-300/70 bg-amber-100/70 text-amber-950 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-100",
+  Silver: "border-slate-300/70 bg-slate-100/80 text-slate-900 dark:border-slate-400/40 dark:bg-slate-400/10 dark:text-slate-100",
+  Bronze: "border-orange-300/70 bg-orange-100/80 text-orange-950 dark:border-orange-500/40 dark:bg-orange-500/10 dark:text-orange-100",
 };
 
 const CompetitionDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const competition = competitions[id as string];
+  const competition = id ? competitions[id] : undefined;
 
   if (!competition) {
-    return <div className="container mx-auto px-4 py-12">Competition not found</div>;
+    return (
+      <div className="container mx-auto px-4 py-12">
+        <div className="mx-auto max-w-3xl rounded-3xl border border-border/60 bg-background/55 p-8 text-center shadow-sm">
+          <h1 className="text-3xl font-semibold text-foreground">
+            Competition not found
+          </h1>
+          <p className="mt-3 text-sm leading-7 text-muted-foreground">
+            The portfolio entry you tried to open does not exist.
+          </p>
+          <Button asChild className="mt-6">
+            <Link to="/portfolio">
+              Back to portfolio
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <Button
-        variant="ghost"
-        className="mb-8"
-        onClick={() => navigate('/portfolio')}
-      >
-        <ArrowLeft className="mr-2 h-4 w-4" />
-        Back to Portfolio
-      </Button>
+      <div className="mx-auto max-w-5xl space-y-10">
+        <Button variant="ghost" className="px-0" onClick={() => navigate("/portfolio")}>
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to portfolio
+        </Button>
 
-      <h1 className="text-4xl font-bold mb-4 text-primary">{competition.title}</h1>
-      <p className="text-muted-foreground mb-2">{competition.date}</p>
-      <p className="text-lg mb-8">{competition.description}</p>
-      
-      {competition.writeupLink && (
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">Solution Writeup</h2>
-          <a 
-            href={competition.writeupLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:underline inline-flex items-center"
-          >
-            Read here <ExternalLink className="ml-2 h-4 w-4" />
-          </a>
-        </div>
-      )}
-
-      <h2 className="text-2xl font-bold mb-6">Notebooks</h2>
-      <div className="space-y-8">
-        {competition.notebooks.map((notebook, index) => (
-          <div key={index} className="border rounded-lg p-6">
-            <h3 className="text-xl font-semibold mb-2">{notebook.title}</h3>
-            <p className="text-muted-foreground mb-2">{notebook.date}</p>
-            <p className="mb-4">{notebook.description}</p>
-            <p className="text-sm mb-4"><span className="font-medium">Tools:</span> {notebook.tools}</p>
-            <a 
-              href={notebook.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline inline-flex items-center"
-            >
-              View Code <ExternalLink className="ml-2 h-4 w-4" />
-            </a>
+        <section className="rounded-3xl border border-border/60 bg-background/55 p-8 shadow-sm">
+          <div className="flex flex-wrap items-center gap-3">
+            <Badge variant="outline" className={medalStyles[competition.medal]}>
+              {competition.medal}
+            </Badge>
+            <Badge variant="outline" className="border-border/60 bg-background/70">
+              {competition.rank}
+            </Badge>
+            <Badge variant="outline" className="border-border/60 bg-background/70">
+              {competition.dateRange}
+            </Badge>
           </div>
-        ))}
+
+          <div className="mt-6 space-y-4">
+            <h1 className="text-4xl font-semibold tracking-tight text-foreground">
+              {competition.title}
+            </h1>
+            <p className="text-lg leading-8 text-foreground/90">
+              {competition.summary}
+            </p>
+            <p className="max-w-4xl text-sm leading-7 text-muted-foreground md:text-base">
+              {competition.challenge}
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <div className="rounded-2xl border border-border/50 bg-background/70 p-4">
+              <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                Result
+              </p>
+              <p className="mt-2 text-xl font-semibold text-foreground">
+                {competition.rank}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border/50 bg-background/70 p-4">
+              <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                Teams
+              </p>
+              <p className="mt-2 text-xl font-semibold text-foreground">
+                {competition.teamCount}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border/50 bg-background/70 p-4">
+              <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                Public artifacts
+              </p>
+              <p className="mt-2 text-xl font-semibold text-foreground">
+                {competition.notebooks.length > 0
+                  ? `${competition.notebooks.length} notebooks`
+                  : "Writeup only"}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="rounded-3xl border border-border/60 bg-background/45 p-8 shadow-sm">
+          <div className="space-y-2">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              What mattered here
+            </p>
+            <h2 className="text-2xl font-semibold text-foreground">
+              Technical highlights
+            </h2>
+          </div>
+
+          <ul className="mt-6 space-y-3 text-sm leading-7 text-muted-foreground md:text-base">
+            {competition.bullets.map((bullet) => (
+              <li key={bullet} className="flex gap-3">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary/70" />
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="space-y-2">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                Public notebooks
+              </p>
+              <h2 className="text-2xl font-semibold text-foreground">
+                Code contributions and writeups
+              </h2>
+            </div>
+
+            {competition.writeupLink && (
+              <Button asChild variant="outline">
+                <a
+                  href={competition.writeupLink}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Read writeup
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </Button>
+            )}
+          </div>
+
+          {competition.notebooks.length > 0 ? (
+            <div className="grid gap-4">
+              {competition.notebooks.map((notebook) => (
+                <article
+                  key={notebook.title}
+                  className="rounded-2xl border border-border/55 bg-background/55 p-6 shadow-sm"
+                >
+                  <div className="flex flex-wrap items-center gap-3">
+                    {notebook.label && (
+                      <Badge
+                        variant="outline"
+                        className="border-border/60 bg-background/70"
+                      >
+                        {notebook.label}
+                      </Badge>
+                    )}
+                    <p className="text-sm text-muted-foreground">
+                      {competition.title}
+                    </p>
+                  </div>
+
+                  <h3 className="mt-4 text-xl font-semibold text-foreground">
+                    {notebook.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-muted-foreground md:text-base">
+                    {notebook.description}
+                  </p>
+
+                  <div className="mt-5">
+                    <a
+                      href={notebook.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                    >
+                      Open notebook
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-border/55 bg-background/55 p-6 text-sm leading-7 text-muted-foreground shadow-sm">
+              No notebook links are listed for this competition yet. The writeup
+              link above is the main public artifact currently surfaced here.
+            </div>
+          )}
+        </section>
       </div>
     </div>
   );
