@@ -21,8 +21,8 @@ export default {
       fontFamily: {
         sans: ["Manrope", "system-ui", "sans-serif"],
         body: ["Manrope", "system-ui", "sans-serif"],
-        article: ["Source Serif 4", "Georgia", "serif"],
-        opensans: ["Source Serif 4", "Georgia", "serif"],
+        article: ["Literata", "Georgia", "serif"],
+        opensans: ["Literata", "Georgia", "serif"],
         biro: ["Biro Script Plus Sloppy", "cursive"],
         biroStandard: ["biro_script_standardRgus", "cursive"],
       },

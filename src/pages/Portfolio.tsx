@@ -15,6 +15,18 @@ const medalStyles: Record<string, string> = {
   Bronze: "border-orange-300/70 bg-orange-100/80 text-orange-950 dark:border-orange-500/40 dark:bg-orange-500/10 dark:text-orange-100",
 };
 
+const surfaceClass =
+  "rounded-3xl border border-border/60 bg-background/55 p-6 shadow-sm dark:border-white/12 dark:bg-white/[0.04] dark:shadow-none";
+
+const compactSurfaceClass =
+  "rounded-2xl border border-border/55 bg-background/45 p-5 shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none";
+
+const quietBadgeClass =
+  "border-border/60 bg-background/70 dark:border-white/12 dark:bg-white/[0.05]";
+
+const outlineButtonClass =
+  "dark:border-white/15 dark:bg-white/[0.03] dark:hover:bg-white/[0.07]";
+
 const Portfolio = () => {
   return (
     <div className="container mx-auto px-4 py-12">
@@ -45,7 +57,7 @@ const Portfolio = () => {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className={outlineButtonClass}>
               <a
                 href="https://www.kaggle.com/kishanvavdara"
                 target="_blank"
@@ -55,7 +67,7 @@ const Portfolio = () => {
                 <ExternalLink className="h-4 w-4" />
               </a>
             </Button>
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className={outlineButtonClass}>
               <a
                 href="https://github.com/kishan5111"
                 target="_blank"
@@ -85,7 +97,7 @@ const Portfolio = () => {
               return (
                 <article
                   key={competition.id}
-                  className="rounded-3xl border border-border/60 bg-background/55 p-6 shadow-sm backdrop-blur-sm"
+                  className={`${surfaceClass} backdrop-blur-sm`}
                 >
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <Badge
@@ -131,7 +143,12 @@ const Portfolio = () => {
                       </Link>
                     </Button>
                     {competition.writeupLink && (
-                      <Button asChild variant="outline" size="sm">
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className={outlineButtonClass}
+                      >
                         <a
                           href={competition.writeupLink}
                           target="_blank"
@@ -163,10 +180,10 @@ const Portfolio = () => {
             {selectedCodeContributions.map((item) => (
               <article
                 key={item.title}
-                className="rounded-2xl border border-border/55 bg-background/45 p-5 shadow-sm"
+                className={compactSurfaceClass}
               >
                 <div className="flex flex-wrap items-center gap-3">
-                  <Badge variant="outline" className="border-border/60 bg-background/70">
+                  <Badge variant="outline" className={quietBadgeClass}>
                     {item.label}
                   </Badge>
                   <p className="text-sm text-muted-foreground">
@@ -218,13 +235,13 @@ const Portfolio = () => {
             {activeProjects.map((project) => (
               <article
                 key={project.title}
-                className="rounded-3xl border border-border/60 bg-background/55 p-6 shadow-sm"
+                className={surfaceClass}
               >
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <h3 className="text-2xl font-semibold text-foreground">
                     {project.title}
                   </h3>
-                  <Badge variant="outline" className="border-border/60 bg-background/70">
+                  <Badge variant="outline" className={quietBadgeClass}>
                     {project.status}
                   </Badge>
                 </div>
@@ -249,7 +266,7 @@ const Portfolio = () => {
           </div>
         </section>
 
-        <section className="rounded-3xl border border-border/60 bg-background/55 p-6 shadow-sm">
+        <section className={surfaceClass}>
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold text-foreground">

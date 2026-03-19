@@ -1,3 +1,23 @@
+export interface BlogSection {
+  id: string;
+  title: string;
+  content: string;
+}
+
+export interface ComparisonRow {
+  method: string;
+  trainablePct: string;
+  convergenceSpeed: string;
+  memoryOverhead: string;
+  bestFor: string;
+  failureRisk: string;
+}
+
+export interface RelatedPostLink {
+  title: string;
+  url: string;
+}
+
 export interface BlogPostRecord {
   id: string;
   title: string;
@@ -7,75 +27,102 @@ export interface BlogPostRecord {
   readingTime: string;
   tags: string[];
   coverImage?: string;
-  content: string;
+  intro?: string[];
+  sections?: BlogSection[];
+  comparisonRows?: ComparisonRow[];
+  relatedPosts?: RelatedPostLink[];
+  content?: string;
 }
 
 export const blogPosts: BlogPostRecord[] = [
   {
     id: "beyond-lora-exploring-ia3-and-boft",
-    title: "Beyond LoRA: Exploring IA3 and BOFT",
-    excerpt:
-      "LoRA is still the default PEFT baseline, but IA3 and BOFT are worth understanding once parameter budget, update geometry, and training behavior start to matter.",
+    title:
+      "LoRA, IA3, and BOFT: What Each Method Actually Changes (and When to Use Which)",
+    excerpt: "",
     description:
-      "A more technical look at how IA3 and BOFT differ from LoRA, what each method changes mathematically, and how I would benchmark them in a real PEFT workflow.",
+      "A practical breakdown of LoRA, IA3, and BOFT - what each method modifies, when to reach for each, and the failure modes that matter in real fine-tuning work.",
     date: "March 11, 2026",
-    readingTime: "12 min read",
+    readingTime: "13 min read",
     tags: ["PEFT", "Fine-tuning", "LLMs"],
     coverImage: "/images/banner.png",
-    content: `LoRA is still the default PEFT baseline for good reasons. It is simple, widely supported, easy to merge, and usually strong enough to make progress quickly. But once I stop asking "can I fine-tune this model?" and start asking "what is the smallest, safest, and most controllable update I can make?", LoRA stops being the only method worth thinking about.
+    intro: [
+      "I ran LoRA, IA3, and BOFT while fine-tuning models for Kaggle competition work - training LLMs on task-specific datasets where parameter budget and training stability both mattered. The short version: LoRA is still the default for a reason, but it is not always the right shape of update. IA3 surprised me with how little it could get away with. BOFT had training behavior I did not expect.",
+      "This post is about what each method actually changes, when that difference matters, and the failure modes I ran into.",
+    ],
+    sections: [
+      {
+        id: "how-to-choose",
+        title: "How to choose",
+        content: `If I need a quick rule before running experiments, this is the one I use.
 
-This is where IA3 and BOFT get interesting. They are not just smaller or more exotic alternatives. They represent different beliefs about how a frozen model should be adapted.
+### Choose LoRA when
 
-## Why LoRA became the default
+- I want the safest default.
+- I need broad tooling support and familiar recipes.
+- I expect the task to need a meaningful behavioral shift.
 
-LoRA works by keeping the pretrained weights frozen and learning low-rank updates for selected matrices. In practice that gives us a strong balance:
+### Choose IA3 when
+
+- I want the smallest trainable footprint possible.
+- I think the base model already knows most of what I need.
+- I want a conservative update because preserving pretrained behavior matters.
+
+### Choose BOFT when
+
+- I care about structured updates more than raw adapter familiarity.
+- I want to test whether multiplicative transforms preserve useful pretrained behavior better than additive patches.
+- I am willing to spend more time understanding the method instead of only tuning the dataset.`,
+      },
+      {
+        id: "why-lora-became-the-default",
+        title: "Why LoRA became the default",
+        content: `LoRA won the default slot because it is simple, widely supported, easy to merge, and usually strong enough to get a serious baseline quickly.
+
+The mental model is also easy to carry around: keep the pretrained weights frozen and learn a compact additive patch on top. That gives me:
 
 - small checkpoints
-- good quality for many downstream tasks
-- clean integration with existing training stacks
-- no extra inference latency once the update is merged
+- reasonable training stability
+- broad model support in existing PEFT stacks
+- no extra inference latency once I merge the update
 
-That combination made LoRA the practical default, and I think that is still correct. If I want the fastest path to a serious baseline, LoRA is usually where I start.
-
-The problem is that "default" is not the same as "best for every constraint". Once the training budget is tight, storage is tight, or I want a different kind of inductive bias, I want more than one tool available.
-
-## A more exact view of what each method changes
-
-Suppose a pretrained linear layer is:
+If I want the fastest path to a usable baseline, LoRA is still where I start. The mistake is assuming "default" also means "best under every constraint."`,
+      },
+      {
+        id: "what-each-method-changes",
+        title: "What each method changes",
+        content: `Start from the same frozen linear layer:
 
 \`\`\`text
 y = W x
 \`\`\`
 
-with frozen pretrained weight matrix 'W'.
+The important difference is not just parameter count. It is the shape of the update each method is allowed to make.
 
-LoRA, IA3, and BOFT do not just differ in parameter count. They modify different parts of this computation:
+- LoRA learns an additive low-rank correction to \`W\`.
+- IA3 rescales selected internal activations flowing through the layer.
+- BOFT applies a structured multiplicative transform around the frozen weight.
 
-- LoRA learns an additive low-rank correction to W
-- IA3 rescales selected intermediate activations
-- BOFT applies a structured multiplicative transform with an orthogonality bias
-
-That means they have different failure modes. Additive updates can be expressive but may drift harder. Activation scaling can be very cheap but may not be expressive enough. Orthogonal structured updates may preserve useful geometry but ask more from the method choice itself.
-
-## LoRA as an additive low-rank update
-
-For LoRA, the common mental model is:
+That distinction matters because different update shapes fail in different ways. Additive updates can be expressive but drift more. Activation rescaling can be extremely cheap but sometimes too constrained. Structured multiplicative updates can preserve useful pretrained geometry, but they ask more from the method and the tuning recipe.`,
+      },
+      {
+        id: "lora-additive-low-rank-update",
+        title: "LoRA: additive low-rank update",
+        content: `The LoRA view is:
 
 \`\`\`text
-W' = W + (alpha / r) * B A
+W' = W + (alpha / r) BA
 \`\`\`
 
-where 'A' has shape '(r, d_in)', 'B' has shape '(d_out, r)', and 'r' is the adapter rank.
+with \`A\` shaped like \`(r, d_in)\`, \`B\` shaped like \`(d_out, r)\`, and \`r\` as the adapter rank.
 
-This is what gives LoRA its practical shape:
+That gives LoRA its practical balance:
 
-- trainable parameters scale like r * (d_in + d_out) instead of d_in * d_out
+- trainable parameters scale with \`r (d_in + d_out)\` instead of \`d_in d_out\`
 - the update is expressive enough for many downstream tasks
 - the adapter can usually be merged into the base weights for inference
 
-In transformer code, this usually means targeting projections like 'q_proj', 'k_proj', 'v_proj', 'o_proj', or feed-forward projections depending on the model family.
-
-Here is a minimal Hugging Face PEFT setup for a LoRA baseline:
+This is why LoRA remains the default. It is easy to reason about and strong enough that I can trust it as a first serious baseline.
 
 \`\`\`python
 from peft import LoraConfig, TaskType, get_peft_model
@@ -90,48 +137,28 @@ lora_config = LoraConfig(
 
 model = get_peft_model(model, lora_config)
 model.print_trainable_parameters()
-\`\`\`
+\`\`\``,
+      },
+      {
+        id: "ia3-rescaling-activations",
+        title: "IA3: rescaling activations",
+        content: `IA3 does something much narrower than LoRA. Instead of learning an additive patch over the weights, it learns vectors that rescale internal activations.
 
-This is still the fastest way I know to get a strong first baseline.
-
-## IA3: change the activations, not the weight matrix
-
-IA3 takes a very different approach from LoRA. Instead of learning additive low-rank updates to a weight matrix, it learns vectors that rescale internal activations.
-
-That sounds like a small implementation detail, but it changes the character of the method.
-
-My mental model is:
-
-- LoRA says: "let me add a compact learned update to this layer"
-- IA3 says: "let me amplify or suppress the signals already flowing through this layer"
-
-This is appealing because it is extremely lightweight. The trainable state is tiny compared with a LoRA adapter, and the update is conceptually narrow. You are not asking the model to learn a fresh matrix-shaped correction. You are mostly steering existing pathways harder or softer.
-
-In the PEFT formulation, IA3 learns vectors that rescale selected attention and feed-forward activations. A useful shorthand is:
+A useful shorthand is:
 
 \`\`\`text
-k'    = l_k  * k
-v'    = l_v  * v
+k'    = l_k * k
+v'    = l_v * v
 h_ff' = l_ff * h_ff
 \`\`\`
 
-where 'l_k', 'l_v', and 'l_ff' are learned vectors and '*' means elementwise multiplication.
+The important part is not the syntax. It is the bias. IA3 is not asking for a fresh low-rank matrix-shaped correction. It is asking which existing channels should be trusted more or less.
 
-That is much more constrained than LoRA. The method is not inventing a fresh low-rank matrix. It is reweighting the internal information flow that the pretrained model already produces.
+That makes IA3 attractive when:
 
-That makes IA3 interesting when:
-
-- I care a lot about parameter count
+- adapter size matters a lot
 - I want many cheap task-specific adapters
-- I suspect the base model already has most of the capability and only needs careful steering
-
-It also makes IA3 feel different during experiment design. With LoRA, I usually think about rank, target modules, alpha, dropout, optimizer settings, and where the useful update capacity should live. With IA3, the question becomes more about whether simple activation-level rescaling is enough for the task at hand.
-
-That is the tradeoff. IA3 is elegant because it asks the model to do less. But that can also mean it has less freedom when the task needs a richer behavioral shift.
-
-In practice, IA3 is appealing when I suspect the base model already knows most of what I need and the real job is selective amplification rather than representational surgery.
-
-Here is what an IA3 setup looks like in PEFT:
+- the base model already has most of the capability and mostly needs steering
 
 \`\`\`python
 from peft import IA3Config, TaskType, get_peft_model
@@ -144,62 +171,39 @@ ia3_config = IA3Config(
 
 model = get_peft_model(model, ia3_config)
 model.print_trainable_parameters()
-\`\`\`
+\`\`\``,
+      },
+      {
+        id: "where-ia3-beats-lora",
+        title: "Where IA3 beats LoRA",
+        content: `IA3 is not "LoRA but better." It is better when the task needs a smaller and more conservative update.
 
-The important point is conceptual, not just syntactic: IA3 is telling the model which existing channels to trust more or less, not learning a broad additive patch over the layer weights.
+That usually means:
 
-## Where IA3 can be a better fit than LoRA
+- I care a lot about parameter count.
+- I am sweeping many task variants and want very cheap adapters.
+- The downstream behavior is close enough to pretraining that activation rescaling might be sufficient.
+- I want to reduce the chance of rewriting too much of the pretrained behavior.
 
-I would not position IA3 as "LoRA but better". I would position it as "LoRA is not always the right shape of update".
+This is also where catastrophic forgetting enters the conversation. I would not claim IA3 prevents it, but the method does put the model inside a much narrower update family. If I want adaptation pressure without broad representational surgery, IA3 becomes much more attractive.`,
+      },
+      {
+        id: "boft-multiplicative-structured",
+        title: "BOFT: multiplicative + structured",
+        content: `BOFT is interesting because it changes the geometry of the update, not just the size.
 
-Cases where IA3 looks attractive to me:
-
-1. I want a very small adapter footprint.
-2. I care about fast iteration across many task variants.
-3. The downstream task is fairly close to the pretrained behavior.
-4. I want a strong low-cost baseline before paying for a larger adapter.
-
-In that setting, IA3 is not just a smaller checkpoint. It is a deliberately conservative update mechanism.
-
-That conservative quality matters. Sometimes I do not want the adapter to have too much expressive freedom. Sometimes the real problem is not "the model needs a major rewrite". It is "the model needs a more disciplined routing of what it already knows".
-
-This also changes how I think about experiment cost. If I am sweeping many tasks, prompts, or dataset variants, IA3 is attractive because the adapter itself is so small that I can afford to treat it almost like a routing hypothesis rather than a full adaptation object.
-
-## BOFT: multiplicative updates with a stronger structural bias
-
-BOFT is interesting for a different reason.
-
-Where LoRA is additive, BOFT is multiplicative. It builds on orthogonal finetuning ideas and uses butterfly factorization to make those updates more parameter-efficient.
-
-The high-level shape is closer to
+The shorthand I keep in mind is:
 
 \`\`\`text
 W' = R W
 \`\`\`
 
-or a related structured orthogonal transform around the frozen pretrained weight, where 'R' is not a dense unconstrained matrix but a product of butterfly-structured factors. The butterfly parameterization is what keeps the update practical.
+where \`R\` is not a dense unconstrained matrix but a structured transform built from butterfly-style factors. The important part is the bias this introduces.
 
-The key idea I care about is not the butterfly math by itself. It is the bias that BOFT introduces.
+- LoRA says: add a compact learned patch.
+- BOFT says: transform the pretrained weights through a structured multiplicative family.
 
-LoRA says: add a learned correction.
-
-BOFT says: transform the pretrained weights through a structured, orthogonal update space.
-
-That gives BOFT a different flavor. The promise is not just parameter efficiency. The promise is that by constraining the update geometry, you may preserve more of the useful structure from pretraining while still adapting the model.
-
-This is the part that makes BOFT worth watching. A lot of real finetuning pain is not "my model cannot learn the task at all". It is:
-
-- overfitting quickly
-- drifting too far from useful pretrained behavior
-- getting an adapter that is technically tuned but feels brittle
-
-BOFT is appealing because it treats the update rule itself as something that should have structure, not just low parameter count.
-
-This is the type of PEFT method I reach for when I care not only about adapter size but also about the geometry of the update.
-
-This is also where IA3 and BOFT become attractive if I am worried about catastrophic forgetting. I would not claim either method magically prevents it, but both impose a more constrained kind of change than a broad unconstrained update. IA3 only rescales existing pathways, and BOFT keeps the update inside a structured multiplicative family, so both can be sensible choices when I want adaptation pressure without rewriting too much of the pretrained behavior.
-
-Here is what a BOFT configuration looks like in PEFT for a Llama-style naming scheme:
+That is what makes BOFT worth trying when I care about preserving pretrained behavior while still adapting the model.
 
 \`\`\`python
 from peft import BOFTConfig, TaskType, get_peft_model
@@ -214,124 +218,88 @@ boft_config = BOFTConfig(
 
 model = get_peft_model(model, boft_config)
 model.print_trainable_parameters()
-\`\`\`
-
-I would not treat those hyperparameters as universally good. The real point is that BOFT gives me a structured multiplicative family to explore, not just another additive adapter.
-
-## Why BOFT feels more experimental in practice
-
-Even though I like the idea, I would still treat BOFT as a more deliberate choice than LoRA.
+\`\`\``,
+      },
+      {
+        id: "why-boft-feels-experimental",
+        title: "Why BOFT feels experimental",
+        content: `Even when I like the idea, BOFT still feels like a deliberate choice rather than a default choice.
 
 Why:
 
-- the method is less standard in everyday LLM stacks
-- the hyperparameter surface is less familiar to most practitioners
-- debugging and intuition are not as mature as they are for LoRA
+- the method is less common in everyday LLM stacks
+- the hyperparameter surface is less familiar than LoRA's
+- the debugging intuition is weaker
+- training behavior can feel different enough that I need to spend time learning the method itself
 
-That does not make it bad. It just means I would not reach for BOFT unless I actually care about the bias it introduces.
-
-If my goal is "give me the strongest reasonable baseline by tonight", LoRA still wins.
-
-If my goal is "I care about preserving pretrained behavior, I want a more structured update family, and I am willing to tune for it", BOFT becomes more interesting.
-
-Another way to say it: LoRA is my baseline adapter, IA3 is my cheapest steering adapter, and BOFT is my geometry-aware adapter.
-
-## What I would actually benchmark
-
-If I am comparing these methods seriously, I do not want a leaderboard screenshot. I want a table like this:
-
-\`\`\`python
-import pandas as pd
-
-results = pd.DataFrame(
-    [
-        {"method": "lora", "trainable_pct": 0.12, "val_loss": 1.84, "ppl": 6.30},
-        {"method": "ia3",  "trainable_pct": 0.01, "val_loss": 1.96, "ppl": 7.10},
-        {"method": "boft", "trainable_pct": 0.05, "val_loss": 1.88, "ppl": 6.55},
-    ]
-)
-
-print(results.sort_values("val_loss"))
-\`\`\`
-
-The exact metric will depend on the task, but the evaluation frame should usually include:
-
-- task metric or validation loss
-- trainable parameter count
-- peak memory
-- tokens per second
-- stability across seeds
-- sensitivity to data size and hyperparameters
-
-That last one matters more than people admit. A method that wins once but collapses under small recipe changes is much less useful than a method that is slightly worse on paper but stable under repeated runs.
-
-## Failure modes I would watch for
+If my goal is "give me a strong baseline tonight," I still reach for LoRA. If my goal is "test a structured update family because preserving pretrained behavior matters," BOFT becomes much more interesting.`,
+      },
+      {
+        id: "failure-modes",
+        title: "Failure modes",
+        content: `The failure mode is often more important than the headline method.
 
 LoRA failure modes:
 
-- rank too small to express the shift I need
+- rank too small for the shift I need
 - target modules too narrow
-- overfitting when the dataset is tiny and noisy
+- overfitting when the dataset is small and noisy
 
 IA3 failure modes:
 
 - not enough expressive freedom
-- downstream task requires richer weight-level change
-- apparent convergence without enough behavioral movement
+- convergence that looks clean but does not move behavior enough
+- tasks that really need weight-level change rather than routing changes
 
 BOFT failure modes:
 
 - more tuning burden
 - less intuitive debugging
-- gains that disappear if the task does not actually benefit from structured multiplicative updates
+- gains that disappear when the task does not really benefit from structured multiplicative updates
 
-This is why I do not like method debates without workload context. The right question is not "which PEFT method is best?". The right question is "what kind of update do I want this frozen model to be allowed to make?".
+The useful question is not "which PEFT method is best?" It is "what kind of update am I willing to let this frozen model make?"`,
+      },
+      {
+        id: "practical-takeaway",
+        title: "Practical takeaway",
+        content: `LoRA is still the default for a reason. I do not think the lesson is "move on from LoRA." The lesson is "do not let LoRA become the only update shape you can imagine."
 
-## How I think about choosing between them
+IA3 is a reminder that a very small amount of steering can sometimes be enough. BOFT is a reminder that the geometry of the update can matter, not just the adapter size.
 
-If I had to compress the decision into a simple practical rule:
-
-### Choose LoRA when:
-
-- I want the safest default
-- I need broad community support and well-known recipes
-- I want a baseline that is likely to work with minimal friction
-
-### Choose IA3 when:
-
-- I want the smallest possible trainable footprint
-- I believe the task is close enough that activation rescaling may be sufficient
-- I want a cheap adapter to test whether lightweight steering is enough
-- I want a more conservative update because preserving pretrained behavior matters
-
-### Choose BOFT when:
-
-- I care about a more structured update family than additive low-rank patches
-- I want to explore stronger preservation of pretrained behavior
-- I am willing to spend more attention on the method itself, not just the dataset
-- I am trying to reduce the risk of catastrophic forgetting with a more constrained update style
-
-That last point matters. The right way to compare these methods is not by ideology. It is by what failure mode I am trying to avoid.
-
-## My practical takeaway
-
-LoRA is still the default for a reason. I do not think the lesson is "move on from LoRA". The lesson is "do not let LoRA become the only way you imagine PEFT".
-
-IA3 is a reminder that very small, activation-level control can sometimes be enough.
-
-BOFT is a reminder that the shape of the update matters, and that preserving useful pretrained structure may be as important as maximizing raw adapter flexibility.
-
-If I were running a serious adaptation project, I would not frame this as a beauty contest between methods. I would frame it as a search over update styles:
-
-- additive and flexible
-- activation-level and conservative
-- multiplicative and structurally constrained
-
-That is the part I find most useful.
-
-The real win is not picking a favorite acronym. The real win is understanding what kind of change I am allowing the model to make, what budget I am operating under, and what kind of failure I am trying to prevent while doing it.
-
-In practice, I would still start with LoRA for speed, keep IA3 in mind when I want extremely cheap steering, and reach for BOFT when I specifically care about structured multiplicative updates rather than a generic additive patch.`,
+If I need one sentence to end on: use LoRA as the default baseline, reach for IA3 when you want conservative and tiny updates, and try BOFT when the structure of the update itself is part of what you want to test.`,
+      },
+    ],
+    comparisonRows: [
+      {
+        method: "LoRA",
+        trainablePct: "~0.1% - 1%",
+        convergenceSpeed: "Fast once the recipe is tuned",
+        memoryOverhead: "Low",
+        bestFor: "Default baselines and broader task shifts",
+        failureRisk: "Medium",
+      },
+      {
+        method: "IA3",
+        trainablePct: "~0.01%",
+        convergenceSpeed: "Fast to try, can plateau early",
+        memoryOverhead: "Very low",
+        bestFor: "Tiny adapters and conservative steering",
+        failureRisk: "Medium to high",
+      },
+      {
+        method: "BOFT",
+        trainablePct: "~0.05% - 0.2%",
+        convergenceSpeed: "Variable, usually slower to tune",
+        memoryOverhead: "Low to moderate",
+        bestFor: "Structured updates and preservation-sensitive tuning",
+        failureRisk: "High",
+      },
+    ],
+    relatedPosts: [
+      { title: "[LINK_1_TITLE]", url: "[LINK_1_URL]" },
+      { title: "[LINK_2_TITLE]", url: "[LINK_2_URL]" },
+      { title: "[LINK_3_TITLE]", url: "[LINK_3_URL]" },
+    ],
   },
 ];
 

@@ -1,14 +1,127 @@
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { ArrowLeft, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getBlogPostById } from "@/lib/blog-posts";
+import { cn } from "@/lib/utils";
+
+const articleClassName =
+  "w-full min-w-0 font-article text-[1.02rem] leading-[1.95] tracking-normal text-foreground md:text-[1.08rem] [&_blockquote]:border-l-4 [&_blockquote]:border-primary/30 [&_blockquote]:pl-5 [&_blockquote]:italic [&_code]:rounded-md [&_code]:bg-amber-100/70 [&_code]:px-1.5 [&_code]:py-0.5 dark:[&_code]:bg-white/10 [&_em]:italic [&_h3]:mb-3 [&_h3]:mt-8 [&_h3]:font-sans [&_h3]:text-xl [&_h3]:font-semibold [&_li]:mt-2 [&_ol]:my-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-5 [&_pre]:my-6 [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-stone-100 [&_pre]:p-4 [&_pre]:text-sm [&_pre]:leading-7 [&_pre]:text-stone-900 dark:[&_pre]:bg-white/5 dark:[&_pre]:text-white [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_strong]:font-semibold [&_table]:my-6 [&_td]:align-top [&_ul]:my-6 [&_ul]:list-disc [&_ul]:pl-6";
 
 const BlogPost = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const post = id ? getBlogPostById(id) : undefined;
+  const [activeSectionId, setActiveSectionId] = useState(
+    post?.sections?.[0]?.id ?? "",
+  );
+
+  useEffect(() => {
+    if (!post) {
+      return;
+    }
+
+    const previousTitle = document.title;
+    const descriptionMeta = document.querySelector(
+      'meta[name="description"]',
+    ) as HTMLMetaElement | null;
+    const previousDescription = descriptionMeta?.getAttribute("content") ?? null;
+    let createdMeta = false;
+    let metaElement = descriptionMeta;
+
+    if (!metaElement) {
+      metaElement = document.createElement("meta");
+      metaElement.name = "description";
+      document.head.appendChild(metaElement);
+      createdMeta = true;
+    }
+
+    document.title = `${post.title} | Kishan Vavdara`;
+    metaElement.setAttribute("content", post.description);
+
+    return () => {
+      document.title = previousTitle;
+
+      if (createdMeta && metaElement?.parentNode) {
+        metaElement.parentNode.removeChild(metaElement);
+      } else if (metaElement) {
+        if (previousDescription === null) {
+          metaElement.removeAttribute("content");
+        } else {
+          metaElement.setAttribute("content", previousDescription);
+        }
+      }
+    };
+  }, [post]);
+
+  useEffect(() => {
+    if (!post?.sections?.length) {
+      return;
+    }
+
+    setActiveSectionId(post.sections[0].id);
+
+    const elements = post.sections
+      .map((section) => document.getElementById(section.id))
+      .filter(Boolean) as HTMLElement[];
+
+    if (!elements.length) {
+      return;
+    }
+
+    const offset = 180;
+    let frameId = 0;
+
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + offset;
+      const reachedBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 24;
+
+      let nextActiveId = elements[0].id;
+
+      for (const element of elements) {
+        if (element.offsetTop <= scrollPosition) {
+          nextActiveId = element.id;
+        } else {
+          break;
+        }
+      }
+
+      if (reachedBottom) {
+        nextActiveId = elements[elements.length - 1].id;
+      }
+
+      setActiveSectionId((current) =>
+        current === nextActiveId ? current : nextActiveId,
+      );
+      frameId = 0;
+    };
+
+    const requestUpdate = () => {
+      if (frameId !== 0) {
+        return;
+      }
+
+      frameId = window.requestAnimationFrame(updateActiveSection);
+    };
+
+    updateActiveSection();
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+
+      if (frameId !== 0) {
+        window.cancelAnimationFrame(frameId);
+      }
+    };
+  }, [post]);
 
   if (!post) {
     return (
@@ -34,44 +147,217 @@ const BlogPost = () => {
   }
 
   return (
-    <div className="min-h-screen container mx-auto px-4 py-12">
+    <div className="min-h-screen container mx-auto px-4 py-8 md:py-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-4xl space-y-8"
+        className="mx-auto max-w-[1380px] space-y-6"
       >
-        <Button
-          variant="ghost"
-          className="flex items-center gap-2"
-          onClick={() => navigate("/blog")}
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to Blog
-        </Button>
+        <div className="lg:grid lg:grid-cols-[200px_minmax(0,1120px)] lg:gap-20 xl:gap-24">
+          <div className="hidden lg:block" />
+          <div className="space-y-5">
+            <Button
+              variant="ghost"
+              className="-ml-2 flex items-center gap-2"
+              onClick={() => navigate("/blog")}
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to Blog
+            </Button>
 
-        <header className="space-y-4">
-          <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-            <span>{post.date}</span>
-            <span>{post.readingTime}</span>
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-border/70 px-3 py-1 text-xs font-medium text-foreground"
+            <header className="space-y-5 border-b border-border/45 pb-6 dark:border-transparent">
+              <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+                <span>{post.date}</span>
+                <span>{post.readingTime}</span>
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-border/50 px-3 py-1 text-xs font-medium text-foreground/85"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h1
+                className="max-w-none font-article text-4xl font-semibold leading-[1.02] tracking-tight text-foreground md:text-5xl"
+                style={{ textWrap: "balance" }}
               >
-                {tag}
-              </span>
-            ))}
+                {post.title}
+              </h1>
+              {post.excerpt && (
+                <p className="max-w-4xl text-lg leading-8 text-muted-foreground">
+                  {post.excerpt}
+                </p>
+              )}
+            </header>
           </div>
-          <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-            {post.title}
-          </h1>
-          <p className="max-w-3xl text-lg leading-8 text-muted-foreground">{post.excerpt}</p>
-        </header>
+        </div>
 
-        <article className="w-full max-w-[74ch] font-article text-[1.02rem] leading-[1.95] tracking-normal text-foreground md:text-[1.08rem] [&_blockquote]:border-l-4 [&_blockquote]:border-primary/30 [&_blockquote]:pl-5 [&_blockquote]:italic [&_code]:rounded-md [&_code]:bg-amber-100/70 [&_code]:px-1.5 [&_code]:py-0.5 dark:[&_code]:bg-white/10 [&_em]:italic [&_h1]:mb-6 [&_h1]:mt-10 [&_h1]:font-sans [&_h1]:text-4xl [&_h1]:font-semibold [&_h2]:mb-4 [&_h2]:mt-12 [&_h2]:font-sans [&_h2]:text-2xl [&_h2]:font-semibold [&_h3]:mb-3 [&_h3]:mt-8 [&_h3]:font-sans [&_h3]:text-xl [&_h3]:font-semibold [&_li]:mt-2 [&_ol]:my-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-5 [&_pre]:my-6 [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-stone-100 [&_pre]:p-4 [&_pre]:text-sm [&_pre]:leading-7 [&_pre]:text-stone-900 dark:[&_pre]:bg-white/5 dark:[&_pre]:text-white [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_strong]:font-semibold [&_ul]:my-6 [&_ul]:list-disc [&_ul]:pl-6">
-          <ReactMarkdown>{post.content}</ReactMarkdown>
-        </article>
+        <div className="lg:grid lg:grid-cols-[200px_minmax(0,1120px)] lg:gap-20 xl:gap-24">
+          {post.sections && post.sections.length > 0 && (
+            <aside className="hidden lg:block lg:-ml-12 xl:-ml-16">
+              <div className="sticky top-24 -ml-2 pt-0">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                  On this page
+                </p>
+                <nav className="mt-4 space-y-1">
+                  {post.sections.map((section) => (
+                    <a
+                      key={section.id}
+                      href={`#${section.id}`}
+                      className={cn(
+                        "block border-l border-border/40 pl-4 pr-2 py-2 text-sm leading-6 text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground",
+                        activeSectionId === section.id &&
+                          "border-foreground/60 font-medium text-foreground",
+                      )}
+                    >
+                      {section.title}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+            </aside>
+          )}
+
+          <div className="min-w-0 lg:max-w-[1120px]">
+            <article className={articleClassName}>
+              {post.intro?.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+
+              {post.sections?.map((section) => (
+                <section
+                  key={section.id}
+                  id={section.id}
+                  className="scroll-mt-28 border-t border-border/40 pt-10 first:border-t-0 first:pt-4"
+                >
+                  <h2 className="mb-4 font-sans text-2xl font-semibold tracking-tight text-foreground md:text-[2rem]">
+                    {section.title}
+                  </h2>
+                  <ReactMarkdown>{section.content}</ReactMarkdown>
+
+                  {section.id === "how-to-choose" && post.comparisonRows && (
+                    <>
+                      <div className="mt-6 rounded-2xl border border-border/55 bg-background/45 px-4 py-3 text-sm leading-7 text-muted-foreground">
+                        Jump to the deep dives below if you want the reasoning
+                        behind each choice.
+                      </div>
+
+                      <div className="mt-8 rounded-3xl border border-border/60 bg-background/50 p-5 shadow-sm">
+                        <p className="text-sm leading-7 text-muted-foreground">
+                          Numbers will vary by model, task, and dataset size -
+                          treat these as directional, not absolute.
+                        </p>
+
+                        <div className="mt-5 overflow-x-auto">
+                          <table className="w-full min-w-[720px] border-separate border-spacing-0 text-left text-sm">
+                            <thead>
+                              <tr className="text-foreground">
+                                <th className="border-b border-border/60 px-4 py-3 font-semibold">
+                                  Method
+                                </th>
+                                <th className="border-b border-border/60 px-4 py-3 font-semibold">
+                                  Trainable %
+                                </th>
+                                <th className="border-b border-border/60 px-4 py-3 font-semibold">
+                                  Convergence Speed
+                                </th>
+                                <th className="border-b border-border/60 px-4 py-3 font-semibold">
+                                  Memory Overhead
+                                </th>
+                                <th className="border-b border-border/60 px-4 py-3 font-semibold">
+                                  Best For
+                                </th>
+                                <th className="border-b border-border/60 px-4 py-3 font-semibold">
+                                  Failure Risk
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {post.comparisonRows.map((row) => (
+                                <tr
+                                  key={row.method}
+                                  className="align-top text-muted-foreground"
+                                >
+                                  <td className="border-b border-border/40 px-4 py-4 font-semibold text-foreground">
+                                    {row.method}
+                                  </td>
+                                  <td className="border-b border-border/40 px-4 py-4">
+                                    {row.trainablePct}
+                                  </td>
+                                  <td className="border-b border-border/40 px-4 py-4">
+                                    {row.convergenceSpeed}
+                                  </td>
+                                  <td className="border-b border-border/40 px-4 py-4">
+                                    {row.memoryOverhead}
+                                  </td>
+                                  <td className="border-b border-border/40 px-4 py-4">
+                                    {row.bestFor}
+                                  </td>
+                                  <td className="border-b border-border/40 px-4 py-4">
+                                    {row.failureRisk}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {section.id === "what-each-method-changes" && (
+                    <div className="mt-8 grid gap-4 md:grid-cols-3">
+                      <div className="rounded-2xl border border-border/55 bg-background/55 p-5 shadow-sm">
+                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                          LoRA
+                        </p>
+                        <div className="mt-4 rounded-xl border border-border/50 bg-background/70 p-4 font-mono text-sm text-foreground">
+                          y = (W + BA)x
+                        </div>
+                        <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                          Additive patch over the frozen weight matrix.
+                        </p>
+                      </div>
+
+                      <div className="rounded-2xl border border-border/55 bg-background/55 p-5 shadow-sm">
+                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                          IA3
+                        </p>
+                        <div className="mt-4 rounded-xl border border-border/50 bg-background/70 p-4 font-mono text-sm text-foreground">
+                          y = W(l ⊙ x)
+                        </div>
+                        <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                          Rescales internal activations instead of patching
+                          weights.
+                        </p>
+                      </div>
+
+                      <div className="rounded-2xl border border-border/55 bg-background/55 p-5 shadow-sm">
+                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                          BOFT
+                        </p>
+                        <div className="mt-4 rounded-xl border border-border/50 bg-background/70 p-4 font-mono text-sm text-foreground">
+                          y = RWx
+                        </div>
+                        <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                          Applies a structured multiplicative transform to the
+                          frozen weights.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </section>
+              ))}
+
+              {post.content && !post.sections && (
+                <ReactMarkdown>{post.content}</ReactMarkdown>
+              )}
+            </article>
+
+          </div>
+        </div>
       </motion.div>
     </div>
   );
