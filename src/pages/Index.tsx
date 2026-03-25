@@ -65,7 +65,7 @@ const Index = () => {
           <div className="space-y-4 md:space-y-6">
             <div>
               <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">What I Can Help With</h2>
-              <ul className="list-disc ml-5 space-y-2 text-base md:text-lg text-gray-700 dark:text-gray-50">
+              <ul className="list-disc ml-5 space-y-2 text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">
                 <li>Fine-tuning, post-training, and reinforcement learning workflows for LLMs using PEFT and full fine-tuning approaches.</li>
                 <li>Evaluation pipelines, benchmarking, and experiment design for model selection and iteration.</li>
                 <li>Inference optimization across GPU setups, including latency, throughput, batching, and memory tradeoffs.</li>
@@ -100,14 +100,14 @@ const Index = () => {
 
             <div>
               <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Selected Work</h2>
-              <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
+              <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">
                 I also build tooling around practical LLM infrastructure problems. <a href="https://fitmygpu.com" target="_blank" rel="noreferrer" className="font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white">FitMyGPU</a> helps reason about workload-to-hardware fit, deployment constraints, and compute tradeoffs earlier, while <a href="https://servingops.com" target="_blank" rel="noreferrer" className="font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white">ServingOps</a> is focused on practical serving workflows and operational decisions for model deployment.
               </p>
             </div>
 
             <div>
               <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Let's Connect!</h2>
-              <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
+              <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">
                 I'm open to ML/LLM engineering roles and collaborations across fine-tuning, evaluation, inference, and deployment.
               </p>
             </div>
