@@ -1,0 +1,78 @@
+<svg width="1440" height="860" viewBox="0 0 1440 860" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: 700 35px 'Manrope', ui-sans-serif, system-ui; fill: #17120F; }
+      .label { font: 700 22px 'Manrope', ui-sans-serif, system-ui; fill: #17120F; }
+      .body { font: 500 17px 'Manrope', ui-sans-serif, system-ui; fill: #4B4037; }
+      .small { font: 600 13px 'Manrope', ui-sans-serif, system-ui; fill: #6D6259; letter-spacing: .12em; text-transform: uppercase; }
+      .mono { font: 700 15px 'IBM Plex Mono', ui-monospace, monospace; fill: #17120F; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="860" rx="28" fill="#F7F1E3"/>
+  <text x="86" y="96" class="small">KV cache allocation</text>
+  <text x="86" y="148" class="title">Paged KV cache reuses</text>
+  <text x="86" y="188" class="title">scattered free pages</text>
+
+  <rect x="86" y="220" width="596" height="566" rx="28" fill="#FCF7ED" stroke="#D7C6AC" stroke-width="2"/>
+  <rect x="758" y="220" width="596" height="566" rx="28" fill="#FCF7ED" stroke="#D7C6AC" stroke-width="2"/>
+
+  <text x="120" y="268" class="label">Contiguous KV cache</text>
+  <text x="792" y="268" class="label">Paged KV cache</text>
+  <text x="120" y="300" class="body">Growth needs one big free span.</text>
+  <text x="792" y="300" class="body">Growth can use any free pages.</text>
+
+  <g transform="translate(120 340)">
+    <rect x="0" y="0" width="500" height="276" rx="24" fill="#F2E8D8" stroke="#D7C6AC" stroke-width="2"/>
+    <text x="28" y="34" class="mono">Physical KV memory</text>
+
+    <rect x="28" y="56" width="72" height="44" rx="10" fill="#D8E6E3"/><text x="64" y="84" class="mono" text-anchor="middle">A</text>
+    <rect x="108" y="56" width="72" height="44" rx="10" fill="#D8E6E3"/><text x="144" y="84" class="mono" text-anchor="middle">A</text>
+    <rect x="188" y="56" width="72" height="44" rx="10" fill="#D8E6E3"/><text x="224" y="84" class="mono" text-anchor="middle">A</text>
+    <rect x="268" y="56" width="72" height="44" rx="10" fill="#F7F1E3" stroke="#D7C6AC" stroke-dasharray="8 8"/><text x="304" y="84" class="mono" text-anchor="middle">free</text>
+    <rect x="348" y="56" width="72" height="44" rx="10" fill="#E8C792"/><text x="384" y="84" class="mono" text-anchor="middle">B</text>
+    <rect x="428" y="56" width="44" height="44" rx="10" fill="#E8C792"/><text x="450" y="84" class="mono" text-anchor="middle">B</text>
+
+    <rect x="28" y="116" width="96" height="44" rx="10" fill="#DFA45D"/><text x="76" y="144" class="mono" text-anchor="middle">C</text>
+    <rect x="132" y="116" width="72" height="44" rx="10" fill="#F7F1E3" stroke="#D7C6AC" stroke-dasharray="8 8"/><text x="168" y="144" class="mono" text-anchor="middle">free</text>
+    <rect x="212" y="116" width="104" height="44" rx="10" fill="#D8E6E3"/><text x="264" y="144" class="mono" text-anchor="middle">A</text>
+    <rect x="324" y="116" width="72" height="44" rx="10" fill="#F7F1E3" stroke="#D7C6AC" stroke-dasharray="8 8"/><text x="360" y="144" class="mono" text-anchor="middle">free</text>
+    <rect x="404" y="116" width="68" height="44" rx="10" fill="#DFA45D"/><text x="438" y="144" class="mono" text-anchor="middle">C</text>
+
+    <rect x="28" y="176" width="72" height="44" rx="10" fill="#E8C792"/><text x="64" y="204" class="mono" text-anchor="middle">B</text>
+    <rect x="108" y="176" width="72" height="44" rx="10" fill="#E8C792"/><text x="144" y="204" class="mono" text-anchor="middle">B</text>
+    <rect x="188" y="176" width="72" height="44" rx="10" fill="#F7F1E3" stroke="#D7C6AC" stroke-dasharray="8 8"/><text x="224" y="204" class="mono" text-anchor="middle">free</text>
+    <rect x="268" y="176" width="72" height="44" rx="10" fill="#DFA45D"/><text x="304" y="204" class="mono" text-anchor="middle">C</text>
+    <rect x="348" y="176" width="124" height="44" rx="10" fill="#F7F1E3" stroke="#D7C6AC" stroke-dasharray="8 8"/><text x="410" y="204" class="mono" text-anchor="middle">free</text>
+
+    <text x="28" y="260" class="body">D needs 3 blocks; no big gap exists.</text>
+  </g>
+
+  <g transform="translate(792 340)">
+    <rect x="0" y="0" width="500" height="276" rx="24" fill="#F2E8D8" stroke="#D7C6AC" stroke-width="2"/>
+    <text x="28" y="34" class="mono">Physical KV pages</text>
+
+    <rect x="28" y="56" width="72" height="44" rx="10" fill="#D8E6E3"/><text x="64" y="84" class="mono" text-anchor="middle">A1</text>
+    <rect x="108" y="56" width="72" height="44" rx="10" fill="#D8E6E3"/><text x="144" y="84" class="mono" text-anchor="middle">A2</text>
+    <rect x="188" y="56" width="72" height="44" rx="10" fill="#D8E6E3"/><text x="224" y="84" class="mono" text-anchor="middle">A3</text>
+    <rect x="268" y="56" width="72" height="44" rx="10" fill="#DFA45D"/><text x="304" y="84" class="mono" text-anchor="middle">C1</text>
+    <rect x="348" y="56" width="72" height="44" rx="10" fill="#E8C792"/><text x="384" y="84" class="mono" text-anchor="middle">B1</text>
+
+    <rect x="28" y="116" width="72" height="44" rx="10" fill="#8F9B6C"/><text x="64" y="144" class="mono" text-anchor="middle">D1</text>
+    <rect x="108" y="116" width="72" height="44" rx="10" fill="#F7F1E3" stroke="#D7C6AC" stroke-dasharray="8 8"/><text x="144" y="144" class="mono" text-anchor="middle">free</text>
+    <rect x="188" y="116" width="72" height="44" rx="10" fill="#E8C792"/><text x="224" y="144" class="mono" text-anchor="middle">B2</text>
+    <rect x="268" y="116" width="72" height="44" rx="10" fill="#F7F1E3" stroke="#D7C6AC" stroke-dasharray="8 8"/><text x="304" y="144" class="mono" text-anchor="middle">free</text>
+    <rect x="348" y="116" width="72" height="44" rx="10" fill="#8F9B6C"/><text x="384" y="144" class="mono" text-anchor="middle">D2</text>
+
+    <rect x="28" y="176" width="72" height="44" rx="10" fill="#DFA45D"/><text x="64" y="204" class="mono" text-anchor="middle">C2</text>
+    <rect x="108" y="176" width="72" height="44" rx="10" fill="#8F9B6C"/><text x="144" y="204" class="mono" text-anchor="middle">D3</text>
+    <rect x="188" y="176" width="72" height="44" rx="10" fill="#D8E6E3"/><text x="224" y="204" class="mono" text-anchor="middle">A4</text>
+    <rect x="268" y="176" width="72" height="44" rx="10" fill="#E8C792"/><text x="304" y="204" class="mono" text-anchor="middle">B3</text>
+    <rect x="348" y="176" width="72" height="44" rx="10" fill="#F7F1E3" stroke="#D7C6AC" stroke-dasharray="8 8"/><text x="384" y="204" class="mono" text-anchor="middle">free</text>
+
+    <text x="28" y="260" class="body">D uses scattered free pages: D1, D2, D3.</text>
+  </g>
+
+  <text x="120" y="668" class="mono">contiguous: free space exists, growth still fails</text>
+  <text x="792" y="668" class="mono">paged: scattered free pages still get reused</text>
+</svg>

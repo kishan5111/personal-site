@@ -1,0 +1,57 @@
+<svg width="1440" height="860" viewBox="0 0 1440 860" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: 700 35px 'Manrope', ui-sans-serif, system-ui; fill: #17120F; }
+      .label { font: 600 21px 'Manrope', ui-sans-serif, system-ui; fill: #17120F; }
+      .body { font: 500 17px 'Manrope', ui-sans-serif, system-ui; fill: #4B4037; }
+      .small { font: 600 13px 'Manrope', ui-sans-serif, system-ui; fill: #6D6259; letter-spacing: .12em; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="860" rx="28" fill="#F7F1E3"/>
+  <text x="86" y="96" class="small">KV cache pressure</text>
+  <text x="86" y="148" class="title">Context length and concurrency</text>
+  <text x="86" y="188" class="title">turn cache into the real memory wall</text>
+
+  <rect x="86" y="210" width="582" height="566" rx="28" fill="#FCF7ED" stroke="#D7C6AC" stroke-width="2"/>
+  <text x="122" y="256" class="label">Single request, BF16 KV cache</text>
+  <text x="122" y="287" class="body">GPT-OSS 120B with 36 layers, 8 KV heads,</text>
+  <text x="122" y="313" class="body">head dim 64</text>
+
+  <line x1="146" y1="708" x2="614" y2="708" stroke="#D7C6AC" stroke-width="2"/>
+
+  <rect x="174" y="602" width="96" height="106" rx="18" fill="#D8E6E3"/>
+  <rect x="334" y="464" width="96" height="244" rx="18" fill="#BFD3CE"/>
+  <rect x="494" y="244" width="96" height="464" rx="18" fill="#5D7E77"/>
+
+  <text x="185" y="744" class="label">8k</text>
+  <text x="178" y="774" class="body">~0.56 GiB</text>
+
+  <text x="342" y="744" class="label">32k</text>
+  <text x="338" y="774" class="body">~2.25 GiB</text>
+
+  <text x="496" y="744" class="label">128k</text>
+  <text x="498" y="774" class="body">~9.0 GiB</text>
+
+  <rect x="746" y="210" width="608" height="566" rx="28" fill="#FCF7ED" stroke="#D7C6AC" stroke-width="2"/>
+  <text x="782" y="256" class="label">Now multiply by concurrency</text>
+  <text x="782" y="287" class="body">The model can fit and still lose to cache growth.</text>
+
+  <rect x="796" y="342" width="452" height="52" rx="18" fill="#E8D9C5"/>
+  <rect x="796" y="430" width="520" height="52" rx="18" fill="#E8C792"/>
+  <rect x="796" y="518" width="534" height="52" rx="18" fill="#DFA45D"/>
+
+  <text x="818" y="375" class="body">16 concurrent requests × 8k context</text>
+  <text x="1222" y="377" class="label" text-anchor="end">~9 GiB</text>
+
+  <text x="818" y="463" class="body">32 concurrent requests × 32k context</text>
+  <text x="1288" y="465" class="label" text-anchor="end">~72 GiB</text>
+
+  <text x="818" y="551" class="body">16 concurrent requests × 128k context</text>
+  <text x="1302" y="553" class="label" text-anchor="end">~144 GiB</text>
+
+  <rect x="796" y="620" width="526" height="114" rx="22" fill="#F2E8D8" stroke="#D7C6AC" stroke-width="2"/>
+  <text x="828" y="662" class="label">Practical reading</text>
+  <text x="828" y="694" class="body">At long context, VRAM gets consumed by live sessions,</text>
+  <text x="828" y="720" class="body">not just by the weights.</text>
+</svg>

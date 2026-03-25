@@ -1,3 +1,5 @@
+import prefillDecodeMemoryWallContent from "@/content/blog/prefill-decode-memory-wall.md?raw";
+
 export interface BlogSection {
   id: string;
   title: string;
@@ -35,6 +37,18 @@ export interface BlogPostRecord {
 }
 
 export const blogPosts: BlogPostRecord[] = [
+  {
+    id: "prefill-decode-and-the-memory-wall",
+    title: "Prefill, Decode, and the Memory Wall: A Deep Dive into LLM Inference",
+    excerpt:
+      "From TTFT and TPOT to GPU architecture - everything that actually determines how fast your model runs",
+    description:
+      "A deep dive into LLM inference bottlenecks: prefill vs decode, TTFT and TPOT, roofline reasoning, KV-cache growth, GPU memory hierarchy, and a GPT-OSS 120B benchmark on RTX PRO 6000 Blackwell vs H100 SXM.",
+    date: "March 25, 2026",
+    readingTime: "26 min read",
+    tags: ["LLM Inference", "GPU Systems", "Serving"],
+    content: prefillDecodeMemoryWallContent,
+  },
   {
     id: "beyond-lora-exploring-ia3-and-boft",
     title:

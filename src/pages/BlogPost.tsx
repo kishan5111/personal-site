@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { ArrowLeft, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getBlogPostById } from "@/lib/blog-posts";
 import { cn } from "@/lib/utils";
 
 const articleClassName =
-  "w-full min-w-0 font-article text-[1.02rem] leading-[1.95] tracking-normal text-foreground md:text-[1.08rem] [&_blockquote]:border-l-4 [&_blockquote]:border-primary/30 [&_blockquote]:pl-5 [&_blockquote]:italic [&_code]:rounded-md [&_code]:bg-amber-100/70 [&_code]:px-1.5 [&_code]:py-0.5 dark:[&_code]:bg-white/10 [&_em]:italic [&_h3]:mb-3 [&_h3]:mt-8 [&_h3]:font-sans [&_h3]:text-xl [&_h3]:font-semibold [&_li]:mt-2 [&_ol]:my-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-5 [&_pre]:my-6 [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-stone-100 [&_pre]:p-4 [&_pre]:text-sm [&_pre]:leading-7 [&_pre]:text-stone-900 dark:[&_pre]:bg-white/5 dark:[&_pre]:text-white [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_strong]:font-semibold [&_table]:my-6 [&_td]:align-top [&_ul]:my-6 [&_ul]:list-disc [&_ul]:pl-6";
+  "mx-auto w-full max-w-[1240px] min-w-0 font-article text-[1rem] leading-[1.86] tracking-[0.002em] text-foreground md:text-[1.06rem] [&_blockquote]:my-6 [&_blockquote]:border-l-4 [&_blockquote]:border-primary/25 [&_blockquote]:pl-5 [&_blockquote]:italic [&_code]:rounded-sm [&_code]:bg-stone-200/55 [&_code]:px-1 [&_code]:py-0.5 dark:[&_code]:bg-white/8 [&_em]:italic [&_h3]:mb-2 [&_h3]:mt-9 [&_h3]:font-sans [&_h3]:text-[1.26rem] [&_h3]:font-semibold [&_h3]:leading-[1.18] [&_img]:my-10 [&_img]:w-full [&_img]:rounded-none [&_img]:border-0 [&_img]:bg-transparent [&_img]:p-0 [&_li]:mt-1.5 [&_ol]:my-5 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-4 [&_pre]:my-8 [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-stone-300/70 [&_pre]:bg-stone-100/80 [&_pre]:p-4 [&_pre]:text-[0.92rem] [&_pre]:leading-7 [&_pre]:text-stone-900 dark:[&_pre]:border-white/10 dark:[&_pre]:bg-white/5 dark:[&_pre]:text-white [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_strong]:font-medium [&_table]:my-10 [&_table]:w-full [&_table]:border-collapse [&_table]:text-[0.95rem] [&_tbody_tr]:border-b [&_tbody_tr]:border-border/40 [&_td]:align-top [&_td]:border-b [&_td]:border-border/40 [&_td]:px-4 [&_td]:py-3 [&_th]:border-b [&_th]:border-border/55 [&_th]:bg-stone-100/50 [&_th]:px-4 [&_th]:py-3 [&_th]:text-left [&_th]:font-sans [&_th]:text-[0.83rem] [&_th]:font-semibold [&_th]:tracking-[0.04em] dark:[&_th]:bg-white/5 [&_ul]:my-5 [&_ul]:list-disc [&_ul]:pl-6";
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -154,7 +155,7 @@ const BlogPost = () => {
         transition={{ duration: 0.5 }}
         className="mx-auto max-w-[1380px] space-y-6"
       >
-        <div className="lg:grid lg:grid-cols-[200px_minmax(0,1120px)] lg:gap-20 xl:gap-24">
+        <div className="lg:grid lg:grid-cols-[200px_minmax(0,1240px)] lg:gap-20 xl:gap-24">
           <div className="hidden lg:block" />
           <div className="space-y-5">
             <Button
@@ -194,7 +195,7 @@ const BlogPost = () => {
           </div>
         </div>
 
-        <div className="lg:grid lg:grid-cols-[200px_minmax(0,1120px)] lg:gap-20 xl:gap-24">
+        <div className="lg:grid lg:grid-cols-[200px_minmax(0,1240px)] lg:gap-20 xl:gap-24">
           {post.sections && post.sections.length > 0 && (
             <aside className="hidden lg:block lg:-ml-12 xl:-ml-16">
               <div className="sticky top-24 -ml-2 pt-0">
@@ -220,7 +221,7 @@ const BlogPost = () => {
             </aside>
           )}
 
-          <div className="min-w-0 lg:max-w-[1120px]">
+          <div className="min-w-0 lg:max-w-[1240px]">
             <article className={articleClassName}>
               {post.intro?.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -235,7 +236,9 @@ const BlogPost = () => {
                   <h2 className="mb-4 font-sans text-2xl font-semibold tracking-tight text-foreground md:text-[2rem]">
                     {section.title}
                   </h2>
-                  <ReactMarkdown>{section.content}</ReactMarkdown>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {section.content}
+                  </ReactMarkdown>
 
                   {section.id === "how-to-choose" && post.comparisonRows && (
                     <>
@@ -352,7 +355,9 @@ const BlogPost = () => {
               ))}
 
               {post.content && !post.sections && (
-                <ReactMarkdown>{post.content}</ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {post.content}
+                </ReactMarkdown>
               )}
             </article>
 

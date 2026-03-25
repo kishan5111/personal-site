@@ -11,6 +11,7 @@ import Navigation from "@/components/Navigation";
 import Index from "./pages/Index";
 import Portfolio from "./pages/Portfolio";
 import Blog from "./pages/Blog";
+import BlogDraftPreview from "./pages/BlogDraftPreview";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -112,6 +113,7 @@ const App = () => {
                 <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/competition/:id" element={<CompetitionDetail />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/draft" element={<BlogDraftPreview />} />
                 <Route path="/blog/:id" element={<BlogPost />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />

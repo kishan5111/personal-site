@@ -1,0 +1,58 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="axisArrow" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto">
+      <path d="M2 2L11 7L2 12" fill="none" stroke="#171717" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .axis { stroke: #171717; stroke-width: 3; }
+      .guide { stroke: #A7A7A7; stroke-width: 2.25; stroke-dasharray: 10 10; }
+      .memory { stroke: #2F8C83; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+      .compute { stroke: #7651C8; stroke-width: 6; stroke-linecap: round; fill: none; }
+      .connector { stroke: #6D6D6D; stroke-width: 2; fill: none; }
+      .title { font: 700 18px 'Manrope', ui-sans-serif, system-ui; fill: #4A4A4A; letter-spacing: 0.08em; text-transform: uppercase; }
+      .label { font: 700 20px 'Manrope', ui-sans-serif, system-ui; fill: #171717; }
+      .body { font: 500 17px 'Manrope', ui-sans-serif, system-ui; fill: #373737; }
+      .axisText { font: 600 19px 'Manrope', ui-sans-serif, system-ui; fill: #171717; }
+      .small { font: 500 15px 'Manrope', ui-sans-serif, system-ui; fill: #595959; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" rx="28" fill="#F7F1E3"/>
+  <rect x="120" y="108" width="1320" height="640" rx="30" fill="#FBF6EA" stroke="#E2D3BE" stroke-width="2"/>
+
+  <rect x="170" y="120" width="625" height="590" fill="#E8F5F3"/>
+  <rect x="795" y="120" width="615" height="590" fill="#F2ECFF"/>
+
+  <text x="170" y="82" class="title">Roofline model for LLM inference</text>
+
+  <line x1="170" y1="710" x2="1390" y2="710" class="axis" marker-end="url(#axisArrow)"/>
+  <line x1="170" y1="710" x2="170" y2="130" class="axis" marker-end="url(#axisArrow)"/>
+
+  <text x="800" y="812" class="axisText" text-anchor="middle">Arithmetic intensity (FLOPs / byte) = batch size at BF16</text>
+  <text x="144" y="420" class="axisText" text-anchor="middle" transform="rotate(-90 144 420)">Performance</text>
+
+  <text x="370" y="170" class="label" fill="#2F8C83">memory-bound zone</text>
+  <text x="1008" y="170" class="label" fill="#7651C8">compute-bound zone</text>
+
+  <line x1="170" y1="710" x2="795" y2="320" class="memory"/>
+  <line x1="795" y1="320" x2="1320" y2="320" class="compute"/>
+
+  <text x="1010" y="350" class="body" fill="#7651C8">compute ceiling (989 TFLOPS)</text>
+
+  <line x1="795" y1="320" x2="795" y2="710" class="guide"/>
+  <text x="795" y="742" class="axisText" text-anchor="middle">ridge point (batch ≈ 295)</text>
+
+  <circle cx="462" cy="528" r="15" fill="#F17750"/>
+  <path d="M477 528H546C566 528 576 522 586 512L618 486" class="connector"/>
+  <rect x="618" y="448" width="332" height="116" rx="14" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="2"/>
+  <text x="648" y="486" class="label">Decode</text>
+  <text x="648" y="518" class="body">memory-bound, small batch,</text>
+  <text x="648" y="544" class="body">AI ≈ batch size</text>
+
+  <circle cx="1110" cy="320" r="15" fill="#7651C8"/>
+  <path d="M1125 320H1185C1210 320 1224 314 1238 301L1270 270" class="connector"/>
+  <rect x="1030" y="188" width="360" height="116" rx="14" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="2"/>
+  <text x="1060" y="226" class="label">Prefill</text>
+  <text x="1060" y="258" class="body">compute-bound, seq=2048,</text>
+  <text x="1060" y="284" class="body">AI ≈ 2048</text>
+</svg>
