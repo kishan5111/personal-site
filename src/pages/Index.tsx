@@ -10,7 +10,7 @@ const Index = () => {
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
       <div className="flex flex-col items-start gap-8 md:gap-12 max-w-5xl mx-auto">
-        <div className="grid w-full gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+        <div className="grid w-full gap-10 lg:grid-cols-[1.4fr_0.6fr] lg:items-start">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -26,11 +26,11 @@ const Index = () => {
               Kishan Vavdara
             </motion.h1>
 
-            <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
+            <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">
               I'm Kishan, an <span className="font-semibold text-gray-900 dark:text-white">ML/LLM engineer</span> focused on fine-tuning, evaluation, inference optimization, and deployment of large language models. I work across the full model lifecycle, from training and benchmarking to efficient inference.
             </p>
 
-            <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
+            <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">
               I'm a <span className="font-semibold text-gray-900 dark:text-white">Kaggle Competition Master and Notebook Master</span>, with multiple medal-winning solutions, including gold in competitions and gold-winning Kaggle notebooks on LLaMA, Gemma, and Qwen fine-tuning and inference. My work combines rigorous experimentation with practical systems thinking, especially where model quality, latency, and compute constraints all matter.
             </p>
 
@@ -43,7 +43,7 @@ const Index = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="w-full max-w-lg justify-self-center pt-2 lg:justify-self-end lg:pt-14"
+            className="w-full max-w-lg justify-self-center pt-0 lg:max-w-[310px] lg:justify-self-end lg:pt-10"
           >
             <div className="relative mx-auto aspect-square max-w-[360px] overflow-hidden rounded-full border border-border/50 bg-background/70 shadow-sm">
               <img
@@ -60,7 +60,7 @@ const Index = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="w-full -mt-8 md:-mt-10"
+          className="w-full -mt-10 md:-mt-12"
         >
           <div className="space-y-4 md:space-y-6">
             <div>
@@ -74,8 +74,8 @@ const Index = () => {
             </div>
 
             {latestPost && (
-              <div className="pb-2 md:pb-4">
-                <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Latest Post</h2>
+              <div className="pt-3 pb-2 md:pt-5 md:pb-4">
+                <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-white-100">Latest Post</h2>
                 <div className="space-y-2 rounded-2xl border border-border/50 bg-background/45 p-5 shadow-sm dark:border-white/15 dark:bg-white/[0.03]">
                   <p className="text-sm md:text-base text-gray-500 dark:text-gray-400">
                     {latestPost.date} · {latestPost.readingTime}
