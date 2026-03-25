@@ -10,6 +10,12 @@ const medalStyles: Record<string, string> = {
   Bronze: "border-orange-300/70 bg-orange-100/80 text-orange-950 dark:border-orange-500/40 dark:bg-orange-500/10 dark:text-orange-100",
 };
 
+const medalLabels: Record<string, string> = {
+  Gold: "🥇 Gold",
+  Silver: "🥈 Silver",
+  Bronze: "🥉 Bronze",
+};
+
 const CompetitionDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -47,7 +53,7 @@ const CompetitionDetail = () => {
         <section className="rounded-3xl border border-border/60 bg-background/55 p-8 shadow-sm">
           <div className="flex flex-wrap items-center gap-3">
             <Badge variant="outline" className={medalStyles[competition.medal]}>
-              {competition.medal}
+              {medalLabels[competition.medal]}
             </Badge>
             <Badge variant="outline" className="border-border/60 bg-background/70">
               {competition.rank}

@@ -15,6 +15,12 @@ const medalStyles: Record<string, string> = {
   Bronze: "border-orange-300/70 bg-orange-100/80 text-orange-950 dark:border-orange-500/40 dark:bg-orange-500/10 dark:text-orange-100",
 };
 
+const medalLabels: Record<string, string> = {
+  Gold: "🥇 Gold",
+  Silver: "🥈 Silver",
+  Bronze: "🥉 Bronze",
+};
+
 const surfaceClass =
   "rounded-3xl border border-border/60 bg-background/55 p-6 shadow-sm dark:border-white/12 dark:bg-white/[0.04] dark:shadow-none";
 
@@ -104,7 +110,7 @@ const Portfolio = () => {
                       variant="outline"
                       className={medalStyles[competition.medal]}
                     >
-                      {competition.medal}
+                      {medalLabels[competition.medal]}
                     </Badge>
                     <p className="text-sm font-medium text-muted-foreground">
                       {competition.rank}
