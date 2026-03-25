@@ -317,7 +317,7 @@ const BlogPost = () => {
               ))}
             </div>
             <h1
-              className="max-w-none font-article text-[2.8rem] font-semibold leading-[1.02] tracking-tight text-foreground md:text-[3.8rem] lg:text-[4.2rem]"
+              className="max-w-none font-article text-[2.35rem] font-semibold leading-[1.02] tracking-tight text-foreground md:text-[3.15rem] lg:text-[3.55rem]"
             >
               {post.title}
             </h1>
@@ -475,9 +475,9 @@ const BlogPost = () => {
         </div>
 
         {hasTableOfContents && (
-          <aside className="hidden lg:col-start-1 lg:row-start-1 lg:block">
+          <aside className="hidden lg:col-start-1 lg:row-start-1 lg:-ml-4 lg:block xl:-ml-6">
             <div className="sticky top-24 pt-1">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+              <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                 On this page
               </p>
               <nav className="mt-4 space-y-1">
@@ -492,8 +492,8 @@ const BlogPost = () => {
                       scrollToSection(section.id);
                     }}
                     className={cn(
-                      "block border-l border-border/40 pl-4 pr-2 py-2 text-sm leading-6 text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground",
-                      section.level === 3 && "pl-7 text-[13px]",
+                      "block border-l border-border/40 pl-4 pr-2 py-1.5 text-[12px] leading-5 text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground",
+                      section.level === 3 && "pl-7 text-[11px]",
                       activeSectionId === section.id &&
                         "border-foreground/60 font-medium text-foreground",
                     )}

@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { blogPosts } from "@/lib/blog-posts";
 
@@ -62,12 +61,12 @@ const Blog = () => {
                   </CardDescription>
                 </div>
                 <div className="pt-2">
-                  <Button asChild className="group">
-                    <Link to={`/blog/${post.id}`}>
-                      Read article
-                      <ArrowRight className="transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
+                  <Link
+                    to={`/blog/${post.id}`}
+                    className="font-medium text-foreground underline underline-offset-4"
+                  >
+                    Read full post
+                  </Link>
                 </div>
               </CardHeader>
             </Card>
