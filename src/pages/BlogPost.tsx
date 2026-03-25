@@ -15,6 +15,7 @@ const BlogPost = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const post = id ? getBlogPostById(id) : undefined;
+  const hasTableOfContents = Boolean(post?.sections?.length);
   const [activeSectionId, setActiveSectionId] = useState(
     post?.sections?.[0]?.id ?? "",
   );
@@ -195,8 +196,14 @@ const BlogPost = () => {
           </div>
         </div>
 
-        <div className="lg:grid lg:grid-cols-[200px_minmax(0,1240px)] lg:gap-20 xl:gap-24">
-          {post.sections && post.sections.length > 0 && (
+        <div
+          className={cn(
+            hasTableOfContents
+              ? "lg:grid lg:grid-cols-[200px_minmax(0,1240px)] lg:gap-20 xl:gap-24"
+              : "mx-auto max-w-[1240px]",
+          )}
+        >
+          {hasTableOfContents && (
             <aside className="hidden lg:block lg:-ml-12 xl:-ml-16">
               <div className="sticky top-24 -ml-2 pt-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
@@ -221,7 +228,7 @@ const BlogPost = () => {
             </aside>
           )}
 
-          <div className="min-w-0 lg:max-w-[1240px]">
+          <div className="min-w-0">
             <article className={articleClassName}>
               {post.intro?.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
