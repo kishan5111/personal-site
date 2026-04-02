@@ -1,4 +1,5 @@
 import prefillDecodeMemoryWallContent from "@/content/blog/prefill-decode-memory-wall.md?raw";
+import brainRlAdversarialEnvironmentContent from "@/content/blog/your-brain-is-running-rl-in-an-adversarial-environment.md?raw";
 
 export interface BlogSection {
   id: string;
@@ -37,6 +38,18 @@ export interface BlogPostRecord {
 }
 
 export const blogPosts: BlogPostRecord[] = [
+  {
+    id: "your-brain-is-running-rl-in-an-adversarial-environment",
+    title: "Your Brain Is Running RL in an Adversarial Environment",
+    excerpt:
+      "On dopamine, prediction, uncertainty, and why modern life exploits all three simultaneously.",
+    description:
+      "A neuroscience-first look at dopamine, reward prediction error, uncertainty, wanting versus liking, and why modern environments exploit reinforcement-learning mechanisms in the human brain.",
+    date: "April 3, 2026",
+    readingTime: "16 min read",
+    tags: ["Neuroscience", "Reinforcement Learning", "Dopamine"],
+    content: brainRlAdversarialEnvironmentContent,
+  },
   {
     id: "prefill-decode-and-the-memory-wall",
     title: "Prefill, Decode, and the Memory Wall: A Deep Dive into LLM Inference",

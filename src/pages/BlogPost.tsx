@@ -9,7 +9,7 @@ import { getBlogPostById } from "@/lib/blog-posts";
 import { cn } from "@/lib/utils";
 
 const articleClassName =
-  "mx-auto w-full max-w-[1100px] min-w-0 font-article text-[1rem] leading-[1.86] tracking-[0.002em] text-foreground md:text-[1.06rem] [&_blockquote]:my-6 [&_blockquote]:border-l-4 [&_blockquote]:border-primary/25 [&_blockquote]:pl-5 [&_blockquote]:italic [&_code]:rounded-sm [&_code]:bg-stone-200/55 [&_code]:px-1 [&_code]:py-0.5 dark:[&_code]:bg-white/8 [&_em]:italic [&_h2]:mb-4 [&_h2]:mt-14 [&_h2]:scroll-mt-28 [&_h2]:font-sans [&_h2]:text-[1.95rem] [&_h2]:font-semibold [&_h2]:leading-[1.06] [&_h2]:tracking-tight md:[&_h2]:text-[2.2rem] [&_h3]:mb-2 [&_h3]:mt-9 [&_h3]:scroll-mt-28 [&_h3]:font-sans [&_h3]:text-[1.26rem] [&_h3]:font-semibold [&_h3]:leading-[1.18] [&_img]:my-10 [&_img]:w-full [&_img]:rounded-none [&_img]:border-0 [&_img]:bg-transparent [&_img]:p-0 [&_li]:mt-1.5 [&_ol]:my-5 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-4 [&_pre]:my-8 [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-stone-300/70 [&_pre]:bg-stone-100/80 [&_pre]:p-4 [&_pre]:text-[0.92rem] [&_pre]:leading-7 [&_pre]:text-stone-900 dark:[&_pre]:border-white/10 dark:[&_pre]:bg-white/5 dark:[&_pre]:text-white [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_strong]:font-medium [&_table]:my-10 [&_table]:w-full [&_table]:border-collapse [&_table]:text-[0.95rem] [&_tbody_tr]:border-b [&_tbody_tr]:border-border/40 [&_td]:align-top [&_td]:border-b [&_td]:border-border/40 [&_td]:px-4 [&_td]:py-3 [&_th]:border-b [&_th]:border-border/55 [&_th]:bg-stone-100/50 [&_th]:px-4 [&_th]:py-3 [&_th]:text-left [&_th]:font-sans [&_th]:text-[0.83rem] [&_th]:font-semibold [&_th]:tracking-[0.04em] dark:[&_th]:bg-white/5 [&_ul]:my-5 [&_ul]:list-disc [&_ul]:pl-6";
+  "mx-auto w-full max-w-[1100px] min-w-0 font-article text-[1rem] leading-[1.86] tracking-[0.002em] text-foreground md:text-[1.06rem] [&_.sources-list]:mt-8 [&_.sources-list]:text-[0.88rem] [&_.sources-list]:leading-7 md:[&_.sources-list]:text-[0.93rem] [&_blockquote]:my-6 [&_blockquote]:border-l-4 [&_blockquote]:border-primary/25 [&_blockquote]:pl-5 [&_blockquote]:italic [&_code]:rounded-sm [&_code]:bg-stone-200/55 [&_code]:px-1 [&_code]:py-0.5 dark:[&_code]:bg-white/8 [&_em]:italic [&_h2]:mb-4 [&_h2]:mt-14 [&_h2]:scroll-mt-28 [&_h2]:font-sans [&_h2]:text-[1.95rem] [&_h2]:font-semibold [&_h2]:leading-[1.06] [&_h2]:tracking-tight md:[&_h2]:text-[2.2rem] [&_h3]:mb-2 [&_h3]:mt-9 [&_h3]:scroll-mt-28 [&_h3]:font-sans [&_h3]:text-[1.26rem] [&_h3]:font-semibold [&_h3]:leading-[1.18] [&_img]:my-10 [&_img]:w-full [&_img]:rounded-none [&_img]:border-0 [&_img]:bg-transparent [&_img]:p-0 [&_li]:mt-1.5 [&_ol]:my-5 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-4 [&_pre]:my-8 [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-stone-300/70 [&_pre]:bg-stone-100/80 [&_pre]:p-4 [&_pre]:text-[0.92rem] [&_pre]:leading-7 [&_pre]:text-stone-900 dark:[&_pre]:border-white/10 dark:[&_pre]:bg-white/5 dark:[&_pre]:text-white [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_strong]:font-medium [&_table]:my-10 [&_table]:w-full [&_table]:border-collapse [&_table]:text-[0.95rem] [&_tbody_tr]:border-b [&_tbody_tr]:border-border/40 [&_td]:align-top [&_td]:border-b [&_td]:border-border/40 [&_td]:px-4 [&_td]:py-3 [&_th]:border-b [&_th]:border-border/55 [&_th]:bg-stone-100/50 [&_th]:px-4 [&_th]:py-3 [&_th]:text-left [&_th]:font-sans [&_th]:text-[0.83rem] [&_th]:font-semibold [&_th]:tracking-[0.04em] dark:[&_th]:bg-white/5 [&_ul]:my-5 [&_ul]:list-disc [&_ul]:pl-6";
 
 interface TocItem {
   id: string;
@@ -240,6 +240,27 @@ const BlogPost = () => {
   }, [post?.content, post?.sections, tocSignature, tocItems]);
 
   useEffect(() => {
+    if (!articleRef.current) {
+      return;
+    }
+
+    articleRef.current.querySelectorAll(".sources-list").forEach((node) => {
+      node.classList.remove("sources-list");
+    });
+
+    const paragraphs = Array.from(articleRef.current.querySelectorAll("p"));
+    for (const paragraph of paragraphs) {
+      const text = paragraph.textContent?.trim().replace(/\s+/g, " ");
+      if (text === "Sources:" || text === "Sources") {
+        const next = paragraph.nextElementSibling;
+        if (next instanceof HTMLUListElement) {
+          next.classList.add("sources-list");
+        }
+      }
+    }
+  }, [post?.content, post?.sections]);
+
+  useEffect(() => {
     if (!tocItems.length || !window.location.hash) {
       return;
     }
@@ -303,26 +324,26 @@ const BlogPost = () => {
             Back to Blog
           </Button>
 
-          <header className="space-y-5 border-b border-border/45 pb-6 dark:border-transparent">
-            <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+          <header className="space-y-4 border-b border-border/45 pb-6 dark:border-transparent">
+            <div className="flex flex-wrap items-center gap-3 text-[11px] text-muted-foreground md:text-[13px]">
               <span>{post.date}</span>
               <span>{post.readingTime}</span>
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-border/50 px-3 py-1 text-xs font-medium text-foreground/85"
+                  className="rounded-full border border-border/50 px-2 py-0.5 text-[10px] font-medium text-foreground/85 md:text-[11px]"
                 >
                   {tag}
                 </span>
               ))}
             </div>
             <h1
-              className="max-w-none font-article text-[2.35rem] font-semibold leading-[1.02] tracking-tight text-foreground md:text-[3.15rem] lg:text-[3.55rem]"
+              className="max-w-none font-article text-[1.9rem] font-semibold leading-[1.04] tracking-tight text-foreground md:text-[2.45rem] lg:text-[2.85rem]"
             >
               {post.title}
             </h1>
             {post.excerpt && (
-              <p className="max-w-4xl text-lg leading-8 text-muted-foreground">
+              <p className="max-w-4xl text-[0.93rem] leading-7 text-muted-foreground md:text-[1rem]">
                 {post.excerpt}
               </p>
             )}
