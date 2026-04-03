@@ -1,4 +1,4 @@
-*I work in AI. I build and fine-tune LLMs for a living. But the subject that genuinely fascinates me, the one I wish I could have studied formally, is neurobiology. Not because it's abstractly interesting, but because it's about us. About why we do what we do, why we can't stop what we know we should stop, and why the most important things in our lives are often the ones we pursue least.*
+*I work in AI, mostly on LLMs, training, serving, and everything in between. But the subject that genuinely fascinates me, the one I wish I could have studied formally, is neurobiology. Not because it's abstractly interesting, but because it's about us. About why we do what we do, why we can't stop what we know we should stop, and why the most important things in our lives are often the ones we pursue least.*
 
 *I've wanted to write this for a long time. This is my attempt to build intuition for how reinforcement learning actually runs in the human brain, then connect it to the environments we've built around ourselves. I'll save the technical bridge to AI for the next post. For now, just the neuroscience.*
 
