@@ -2,13 +2,13 @@
 
 *I've wanted to write this for a long time. This is my attempt to build intuition for how reinforcement learning actually runs in the human brain, then connect it to the environments we've built around ourselves. I'll save the technical bridge to AI for the next post. For now, just the neuroscience.*
 
-## The Wrong Model
+## The Wrong Mental Model
 
 Most self-help advice starts with the assumption that you have a discipline problem. You know what you should do. You just don't do it. The prescription is always a variation of: try harder, build better habits, remove distractions, hold yourself accountable.
 
 This is the wrong model. Not because discipline is irrelevant, but because it treats the brain as a broken intention-executer rather than what it actually is: a learning system. A prediction engine. A machine that has been running reward-based learning for millions of years, and doing it extraordinarily well.
 
-You are not weak. You are running a reinforcement-learning system in an environment engineered to hijack anticipation, uncertainty, and habit formation. Once you understand the mechanism, the problem looks completely different. And so does the solution.
+You are not weak. You are running a reinforcement-learning system in an environment engineered to hijack anticipation, uncertainty, and habit formation. Once you understand the mechanism, the problem looks completely different.
 
 ---
 
@@ -60,6 +60,8 @@ The distinction Schultz and his colleagues were drawing on, and which Kent Berri
 
 You can *want* something intensely and *like* it very little when you get it.
 
+![Wanting rises while liking stays flat or falls over repeated exposure](/blog-assets/your-brain-is-running-rl-in-an-adversarial-environment/wanting-vs-liking.svg)
+
 This is not an abstract observation. It is the mechanistic description of most compulsive behavior. The addict wants the drug with an intensity that has no relationship to how much they like it. The person compulsively checking their phone wants to check it, the dopamine pull is real, and often feels nothing of value when they do. The systems have been decoupled.
 
 ---
@@ -73,6 +75,8 @@ In 2003, Fiorillo, Tobler, and Schultz published a paper in *Science* that added
 They showed monkeys cues that predicted rewards at different probabilities randomly: 0%, 25%, 50%, 75%, 100%. The phasic RPE signal (the spike) behaved as expected, firing proportionally to the gap between what was predicted and what arrived.
 
 But there was a second dopamine response they hadn't previously seen. A  *sustained* , gradually ramping activation that persisted from the cue until the moment of potential reward. This wasn't the prediction error signal. It was something else  and it was maximal at exactly 50% probability.
+
+![Phasic and sustained dopamine responses across reward probability, based on Fiorillo 2003](/blog-assets/your-brain-is-running-rl-in-an-adversarial-environment/fiorillo-probability-responses.svg)
 
 The paper's conclusion was precise: *uncertainty is maximal at P = 0.5, and so is this sustained dopamine response.*
 
@@ -173,4 +177,5 @@ The same mechanisms, prediction error, proxy rewards, the gap between signal and
 * Schultz W. A dopamine mechanism for reward maximization. *PNAS* 2024
 * Berridge KC, Robinson TE. Liking, wanting, and the incentive-sensitization theory of addiction. *American Psychologist* 2016
 * Robinson TE, Berridge KC. The incentive-sensitization theory of addiction: 30 years on. *Annual Review of Psychology* 2025
+* Berridge KC. Roles of “Wanting” and “Liking” in Motivating Behavior: Gambling, Food, and Drug Addictions. Springer Nature Link. https://link.springer.com/chapter/10.1007/7854_2015_387
 * Sapolsky RM.  *Behave: The Biology of Humans at Our Best and Worst* . 2017

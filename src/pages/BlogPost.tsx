@@ -86,6 +86,19 @@ const createMarkdownComponents = (): Components => {
   return {
     h2: ({ children }) => <h2 id={getHeadingId(children)}>{children}</h2>,
     h3: ({ children }) => <h3 id={getHeadingId(children)}>{children}</h3>,
+    img: ({ src, alt }) => {
+      const isWantingLikingImage = src?.includes("wanting-vs-liking.");
+
+      return (
+        <img
+          src={src ?? ""}
+          alt={alt ?? ""}
+          className={
+            isWantingLikingImage ? "mx-auto my-10 w-full max-w-[760px]" : undefined
+          }
+        />
+      );
+    },
   };
 };
 

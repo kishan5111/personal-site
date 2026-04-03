@@ -1,0 +1,71 @@
+<svg width="1240" height="640" viewBox="0 0 1240 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Phasic and sustained dopamine responses across reward probability</title>
+  <desc id="desc">Two bar charts side by side. The left chart shows a phasic response highest at low reward probability and near zero at certainty. The right chart shows a sustained response peaking at fifty percent probability.</desc>
+
+  <rect width="1240" height="640" rx="28" fill="#FCF8EF"/>
+  <rect x="48" y="36" width="1144" height="568" rx="24" fill="#FFFDF8" stroke="#DECDB2" stroke-width="2"/>
+
+  <text x="84" y="84" fill="#6F6256" font-family="Manrope, system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="0.14em">FIORILLO 2003</text>
+
+  <g transform="translate(90 120)">
+    <text x="240" y="0" text-anchor="middle" fill="#1F1A17" font-family="Manrope, system-ui, sans-serif" font-size="21" font-weight="700">Phasic dopamine response at reward delivery</text>
+
+    <line x1="72" y1="342" x2="446" y2="342" stroke="#1F1A17" stroke-width="3"/>
+    <line x1="72" y1="342" x2="72" y2="40" stroke="#1F1A17" stroke-width="3"/>
+
+    <line x1="72" y1="72" x2="446" y2="72" stroke="#E2D5C2" stroke-width="2"/>
+    <line x1="72" y1="140" x2="446" y2="140" stroke="#E2D5C2" stroke-width="2"/>
+    <line x1="72" y1="206" x2="446" y2="206" stroke="#E2D5C2" stroke-width="2"/>
+    <line x1="72" y1="274" x2="446" y2="274" stroke="#E2D5C2" stroke-width="2"/>
+
+    <text x="10" y="350" fill="#6F6256" font-family="Manrope, system-ui, sans-serif" font-size="14" font-weight="600">baseline</text>
+    <text x="28" y="78" fill="#6F6256" font-family="Manrope, system-ui, sans-serif" font-size="14" font-weight="600">peak</text>
+
+    <rect x="99" y="342" width="44" height="0" rx="12" fill="#7258C7"/>
+    <rect x="171" y="112" width="44" height="230" rx="12" fill="#7258C7"/>
+    <rect x="243" y="180" width="44" height="162" rx="12" fill="#7258C7"/>
+    <rect x="315" y="247" width="44" height="95" rx="12" fill="#7258C7"/>
+    <rect x="387" y="323" width="44" height="19" rx="12" fill="#7258C7"/>
+
+    <text x="121" y="382" text-anchor="middle" fill="#4C423A" font-family="Manrope, system-ui, sans-serif" font-size="16" font-weight="600">0%</text>
+    <text x="193" y="382" text-anchor="middle" fill="#4C423A" font-family="Manrope, system-ui, sans-serif" font-size="16" font-weight="600">25%</text>
+    <text x="265" y="382" text-anchor="middle" fill="#4C423A" font-family="Manrope, system-ui, sans-serif" font-size="16" font-weight="600">50%</text>
+    <text x="337" y="382" text-anchor="middle" fill="#4C423A" font-family="Manrope, system-ui, sans-serif" font-size="16" font-weight="600">75%</text>
+    <text x="409" y="382" text-anchor="middle" fill="#4C423A" font-family="Manrope, system-ui, sans-serif" font-size="16" font-weight="600">100%</text>
+
+    <text x="259" y="430" text-anchor="middle" fill="#1F1A17" font-family="Manrope, system-ui, sans-serif" font-size="18" font-weight="700">Reward probability</text>
+    <text x="259" y="456" text-anchor="middle" fill="#6F6256" font-family="Manrope, system-ui, sans-serif" font-size="14" font-weight="600">Higher at low probability, bigger surprise when it arrives</text>
+  </g>
+
+  <g transform="translate(650 120)">
+    <text x="240" y="0" text-anchor="middle" fill="#1F1A17" font-family="Manrope, system-ui, sans-serif" font-size="21" font-weight="700">Sustained ramp during the waiting period</text>
+
+    <line x1="72" y1="342" x2="446" y2="342" stroke="#1F1A17" stroke-width="3"/>
+    <line x1="72" y1="342" x2="72" y2="40" stroke="#1F1A17" stroke-width="3"/>
+
+    <line x1="72" y1="72" x2="446" y2="72" stroke="#E2D5C2" stroke-width="2"/>
+    <line x1="72" y1="140" x2="446" y2="140" stroke="#E2D5C2" stroke-width="2"/>
+    <line x1="72" y1="206" x2="446" y2="206" stroke="#E2D5C2" stroke-width="2"/>
+    <line x1="72" y1="274" x2="446" y2="274" stroke="#E2D5C2" stroke-width="2"/>
+
+    <text x="10" y="350" fill="#6F6256" font-family="Manrope, system-ui, sans-serif" font-size="14" font-weight="600">baseline</text>
+    <text x="28" y="78" fill="#6F6256" font-family="Manrope, system-ui, sans-serif" font-size="14" font-weight="600">peak</text>
+
+    <rect x="99" y="342" width="44" height="0" rx="12" fill="#E05C2C"/>
+    <rect x="171" y="230" width="44" height="112" rx="12" fill="#E05C2C"/>
+    <rect x="243" y="74" width="44" height="268" rx="12" fill="#E05C2C"/>
+    <rect x="315" y="230" width="44" height="112" rx="12" fill="#E05C2C"/>
+    <rect x="387" y="342" width="44" height="0" rx="12" fill="#E05C2C"/>
+
+    <text x="121" y="382" text-anchor="middle" fill="#4C423A" font-family="Manrope, system-ui, sans-serif" font-size="16" font-weight="600">0%</text>
+    <text x="193" y="382" text-anchor="middle" fill="#4C423A" font-family="Manrope, system-ui, sans-serif" font-size="16" font-weight="600">25%</text>
+    <text x="265" y="382" text-anchor="middle" fill="#4C423A" font-family="Manrope, system-ui, sans-serif" font-size="16" font-weight="600">50%</text>
+    <text x="337" y="382" text-anchor="middle" fill="#4C423A" font-family="Manrope, system-ui, sans-serif" font-size="16" font-weight="600">75%</text>
+    <text x="409" y="382" text-anchor="middle" fill="#4C423A" font-family="Manrope, system-ui, sans-serif" font-size="16" font-weight="600">100%</text>
+
+    <text x="259" y="430" text-anchor="middle" fill="#1F1A17" font-family="Manrope, system-ui, sans-serif" font-size="18" font-weight="700">Reward probability</text>
+    <text x="259" y="456" text-anchor="middle" fill="#6F6256" font-family="Manrope, system-ui, sans-serif" font-size="14" font-weight="600">Peaks at 50%, maximum uncertainty, maximum anticipation</text>
+  </g>
+
+  <text x="32" y="320" transform="rotate(-90 32 320)" text-anchor="middle" fill="#1F1A17" font-family="Manrope, system-ui, sans-serif" font-size="23" font-weight="700">Relative dopamine response</text>
+</svg>
