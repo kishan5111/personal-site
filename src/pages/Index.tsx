@@ -100,9 +100,54 @@ const Index = () => {
 
             <div>
               <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Selected Work</h2>
-              <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">
-                I also build tooling around practical LLM infrastructure problems. <a href="https://fitmygpu.com" target="_blank" rel="noreferrer" className="font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white">FitMyGPU</a> helps reason about workload-to-hardware fit, deployment constraints, and compute tradeoffs earlier, while <a href="https://servingops.com" target="_blank" rel="noreferrer" className="font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white">ServingOps</a> is focused on practical serving workflows and operational decisions for model deployment.
-              </p>
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="rounded-2xl border border-border/50 bg-background/45 p-5 shadow-sm dark:border-white/15 dark:bg-white/[0.03]">
+                  <p className="mb-1 text-sm font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+                    Personal Project
+                  </p>
+                  <p className="mb-2 text-base md:text-lg font-semibold text-gray-900 dark:text-white">
+                    FitMyGPU
+                  </p>
+                  <p className="text-[14px] md:text-[0.96rem] text-gray-700 dark:text-gray-50">
+                    A tool for reasoning about hardware fit, deployment constraints, and compute tradeoffs before infrastructure decisions become expensive mistakes.
+                  </p>
+                  <p className="mt-3">
+                    <a
+                      href="https://fitmygpu.com"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white"
+                    >
+                      Visit project
+                    </a>
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-border/50 bg-background/45 p-5 shadow-sm dark:border-white/15 dark:bg-white/[0.03]">
+                  <p className="mb-1 text-sm font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+                    Open Source
+                  </p>
+                  <p className="mb-2 text-base md:text-lg font-semibold text-gray-900 dark:text-white">
+                    TriAttention
+                  </p>
+                  <p className="text-[14px] md:text-[0.96rem] text-gray-700 dark:text-gray-50">
+                    Contributed GPT-OSS-120B MoE support to an upstream KV-cache compression project for long-context inference and merged it upstream.
+                  </p>
+                  <p className="mt-2 text-[13px] md:text-[0.9rem] text-gray-500 dark:text-gray-400">
+                    Python, PyTorch, vLLM, KV cache compression
+                  </p>
+                  <p className="mt-3">
+                    <a
+                      href="https://github.com/WeianMao/triattention/commit/de4ce3907ef69782bc1c3a0015a19758da0e1e11"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white"
+                    >
+                      Upstream merge
+                    </a>
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div>
