@@ -174,11 +174,8 @@ const Portfolio = () => {
 
         <section className="space-y-6">
           <div className="space-y-2">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              Selected Code and Writeups
-            </p>
             <h2 className="text-3xl font-semibold tracking-tight text-foreground">
-              Selected public notebooks and writeups
+              Selected public code and writeups
             </h2>
           </div>
 
@@ -229,9 +226,6 @@ const Portfolio = () => {
 
         <section className="space-y-6">
           <div className="space-y-2">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              Active Projects
-            </p>
             <h2 className="text-3xl font-semibold tracking-tight text-foreground">
               Active projects
             </h2>
@@ -269,27 +263,6 @@ const Portfolio = () => {
                 </div>
               </article>
             ))}
-          </div>
-        </section>
-
-        <section className={surfaceClass}>
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div className="space-y-2">
-              <h2 className="text-2xl font-semibold text-foreground">
-                Open to ML and LLM engineering work.
-              </h2>
-              <p className="text-sm leading-7 text-muted-foreground md:text-base">
-                Especially interested in roles involving evaluation, inference,
-                model iteration, and deployment.
-              </p>
-            </div>
-
-            <Button asChild size="lg">
-              <Link to="/contact">
-                Start a conversation
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
           </div>
         </section>
       </div>

@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { blogPosts } from "@/lib/blog-posts";
 
 const Index = () => {
-  const latestPost = blogPosts[0];
+  const latestPosts = blogPosts.slice(0, 2);
 
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
@@ -73,33 +71,40 @@ const Index = () => {
               </ul>
             </div>
 
-            {latestPost && (
+            {latestPosts.length > 0 && (
               <div className="pt-3 pb-2 md:pt-5 md:pb-4">
-                <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-white-100">Latest Post</h2>
-                <div className="space-y-2 rounded-2xl border border-border/50 bg-background/45 p-5 shadow-sm dark:border-white/15 dark:bg-white/[0.03]">
-                  <p className="text-sm md:text-base text-gray-500 dark:text-gray-400">
-                    {latestPost.date} · {latestPost.readingTime}
-                  </p>
-                  <p className="text-base md:text-lg text-gray-900 dark:text-white font-semibold">
-                    {latestPost.title}
-                  </p>
-                  <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
-                    {latestPost.description}
-                  </p>
-                  <p>
-                    <Link
-                      to={`/blog/${latestPost.id}`}
-                      className="font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white"
+                <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-white-100">Latest Posts</h2>
+                <div className="space-y-4">
+                  {latestPosts.map((post) => (
+                    <div
+                      key={post.id}
+                      className="space-y-2 rounded-2xl border border-border/50 bg-background/45 p-5 shadow-sm dark:border-white/15 dark:bg-white/[0.03]"
                     >
-                      Read the latest post
-                    </Link>
-                  </p>
+                      <p className="text-sm md:text-base text-gray-500 dark:text-gray-400">
+                        {post.date} · {post.readingTime}
+                      </p>
+                      <p className="text-base md:text-lg text-gray-900 dark:text-white font-semibold">
+                        {post.title}
+                      </p>
+                      <p className="text-[14px] md:text-[0.96rem] leading-7 text-gray-700 dark:text-gray-50">
+                        {post.description}
+                      </p>
+                      <p>
+                        <Link
+                          to={`/blog/${post.id}`}
+                          className="font-semibold text-gray-900 underline decoration-current underline-offset-4 transition-colors hover:text-foreground dark:text-white"
+                        >
+                          Read full post
+                        </Link>
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
 
             <div>
-              <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Selected Work</h2>
+              <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-white-100">Selected Work</h2>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="rounded-2xl border border-border/50 bg-background/45 p-5 shadow-sm dark:border-white/15 dark:bg-white/[0.03]">
                   <p className="mb-1 text-sm font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
@@ -150,28 +155,6 @@ const Index = () => {
               </div>
             </div>
 
-            <div>
-              <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">Let's Connect!</h2>
-              <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">
-                I'm open to ML/LLM engineering roles and collaborations across fine-tuning, evaluation, inference, and deployment.
-              </p>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-              className="pt-4"
-            >
-              <Link to="/contact">
-                <Button className="group w-full md:w-auto text-sm md:text-base">
-                  <span className="flex items-center gap-2">
-                    <span className="whitespace-normal md:whitespace-nowrap">Get in touch about roles, projects, or collaborations</span>
-                    <ChevronRight className="transition-transform group-hover:translate-x-1 flex-shrink-0" />
-                  </span>
-                </Button>
-              </Link>
-            </motion.div>
           </div>
         </motion.div>
       </div>

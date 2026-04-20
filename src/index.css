@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    --background: 48 100% 97%;
+    --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -28,18 +28,18 @@
     --radius: 0.75rem;
     
     /* Day/night transition colors */
-    --day: 48 100% 97%;
-    --evening: 35 80% 75%;
-    --dusk: 25 65% 51%;
+    --day: 0 0% 100%;
+    --evening: 0 0% 99%;
+    --dusk: 0 0% 96%;
     --night: 250 30% 10%;
-    --dawn: 250 25% 20%;
-    --morning: 45 80% 85%;
+    --dawn: 220 20% 16%;
+    --morning: 0 0% 99%;
     
     /* Light/dark variables */
     --light: var(--day);
     --dark: var(--night);
     --shadow: #1a1917;
-    --bounce-light: hsla(48, 100%, 80%, 0.3);
+    --bounce-light: hsla(0, 0%, 100%, 0.25);
     --timing-fn: cubic-bezier(0.455, 0.190, 0.000, 0.985);
   }
   .dark {
