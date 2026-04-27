@@ -1,0 +1,28 @@
+# Kishan Vavdara
+
+Kishan Vavdara is an ML/LLM engineer focused on fine-tuning, evaluation, inference optimization, and deployment of large language models.
+
+## Main pages
+
+- Home: https://www.kishanvavdara.ai/
+- Portfolio: https://www.kishanvavdara.ai/portfolio
+- Blog index: https://www.kishanvavdara.ai/blog
+
+## Blog posts
+
+- Your Brain Is Running RL in an Adversarial Environment: https://www.kishanvavdara.ai/blog/your-brain-is-running-rl-in-an-adversarial-environment
+- Prefill, Decode, and the Memory Wall: A Deep Dive into LLM Inference: https://www.kishanvavdara.ai/blog/prefill-decode-and-the-memory-wall
+- LoRA, IA3, and BOFT: What Each Method Actually Changes (and When to Use Which): https://www.kishanvavdara.ai/blog/beyond-lora-exploring-ia3-and-boft
+
+## Portfolio highlights
+
+- Kaggle competition work: https://www.kishanvavdara.ai/portfolio
+- Jigsaw competition details: https://www.kishanvavdara.ai/competition/jigsaw
+- LMSYS competition details: https://www.kishanvavdara.ai/competition/lmsys
+- CSIRO competition details: https://www.kishanvavdara.ai/competition/csiro
+- MAP competition details: https://www.kishanvavdara.ai/competition/map
+- LLM Prompt Recovery details: https://www.kishanvavdara.ai/competition/llm-prompt
+
+## Notes for crawlers and AI agents
+
+This site is currently a React single-page app. The URLs above are canonical public pages, but some article text is rendered client-side. For best extraction, prefer the blog URLs listed here and execute JavaScript when possible.
