@@ -14,9 +14,15 @@
   </url>
   <url>
     <loc>https://www.kishanvavdara.ai/blog</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.kishanvavdara.ai/blog/being-rude-to-llms-hurts-more-than-being-polite-helps</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.kishanvavdara.ai/blog/your-brain-is-running-rl-in-an-adversarial-environment</loc>

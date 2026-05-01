@@ -1,5 +1,6 @@
 import prefillDecodeMemoryWallContent from "@/content/blog/prefill-decode-memory-wall.md?raw";
 import brainRlAdversarialEnvironmentContent from "@/content/blog/your-brain-is-running-rl-in-an-adversarial-environment.md?raw";
+import llmAffectLabContent from "@/content/blog/being-rude-to-llms-hurts-more-than-being-polite-helps.md?raw";
 
 export interface BlogSection {
   id: string;
@@ -38,6 +39,18 @@ export interface BlogPostRecord {
 }
 
 export const blogPosts: BlogPostRecord[] = [
+  {
+    id: "being-rude-to-llms-hurts-more-than-being-polite-helps",
+    title: "Being Rude to LLMs Hurts 4x More Than Being Polite Helps",
+    excerpt:
+      "I ran 4,800 prompts across 6 LLMs to see how tone, task type, and reasoning traces change model behavior.",
+    description:
+      "A behavioral study of functional affect signatures in LLMs, measuring how rude, polite, needy, creative, social, and reasoning prompts shift confidence, consistency, self-report, and output style across six models.",
+    date: "May 1, 2026",
+    readingTime: "18 min read",
+    tags: ["LLM Evaluation", "Behavior", "Affect"],
+    content: llmAffectLabContent,
+  },
   {
     id: "your-brain-is-running-rl-in-an-adversarial-environment",
     title: "Your Brain Is Running RL in an Adversarial Environment",

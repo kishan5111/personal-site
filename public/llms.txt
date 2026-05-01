@@ -10,6 +10,7 @@ Kishan Vavdara is an ML/LLM engineer focused on fine-tuning, evaluation, inferen
 
 ## Blog posts
 
+- Being Rude to LLMs Hurts 4x More Than Being Polite Helps: https://www.kishanvavdara.ai/blog/being-rude-to-llms-hurts-more-than-being-polite-helps
 - Your Brain Is Running RL in an Adversarial Environment: https://www.kishanvavdara.ai/blog/your-brain-is-running-rl-in-an-adversarial-environment
 - Prefill, Decode, and the Memory Wall: A Deep Dive into LLM Inference: https://www.kishanvavdara.ai/blog/prefill-decode-and-the-memory-wall
 - LoRA, IA3, and BOFT: What Each Method Actually Changes (and When to Use Which): https://www.kishanvavdara.ai/blog/beyond-lora-exploring-ia3-and-boft
