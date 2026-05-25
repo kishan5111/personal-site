@@ -25,7 +25,7 @@ const Index = () => {
             </motion.h1>
 
             <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">
-              I'm Kishan, an <span className="font-semibold text-gray-900 dark:text-white">ML/LLM engineer</span> focused on fine-tuning, evaluation, inference optimization, and deployment of large language models. I work across the full model lifecycle, from training and benchmarking to efficient inference.
+              I'm Kishan, an <span className="font-semibold text-gray-900 dark:text-white">ML/LLM engineer</span> working on fine-tuning, evaluation, and inference optimization for large language models.
             </p>
 
             <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">

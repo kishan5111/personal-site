@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { blogPosts } from "@/lib/blog-posts";
 
 const Blog = () => {
@@ -34,42 +33,41 @@ const Blog = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="grid gap-6"
+          className="grid gap-3"
         >
           {blogPosts.map((post) => (
-            <Card
+            <article
               key={post.id}
-              className="border-border/40 bg-background/35 shadow-none backdrop-blur-[2px]"
+              className="rounded-lg border border-border/40 bg-background/30 px-4 py-3 shadow-none md:px-5 md:py-3.5"
             >
-              <CardHeader className="space-y-4">
-                <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+              <div className="space-y-1.5">
+                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-[11px] text-muted-foreground md:text-xs">
                   <span>{post.date}</span>
+                  <span aria-hidden="true">·</span>
                   <span>{post.readingTime}</span>
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-border/70 px-3 py-1 text-xs font-medium text-foreground"
+                      className="text-[11px] text-muted-foreground md:text-xs"
                     >
-                      {tag}
+                      #{tag}
                     </span>
                   ))}
                 </div>
-                <div className="space-y-3">
-                  <CardTitle className="text-3xl leading-tight">{post.title}</CardTitle>
-                  <CardDescription className="max-w-3xl text-base leading-7">
+
+                <Link to={`/blog/${post.id}`} className="group block">
+                  <h2 className="font-article text-[1.22rem] font-semibold leading-snug tracking-normal text-foreground md:text-[1.45rem]">
+                    {post.title}
+                  </h2>
+                  <p className="mt-1 max-w-4xl text-[13px] leading-5 text-muted-foreground md:text-sm md:leading-6">
                     {post.description}
-                  </CardDescription>
-                </div>
-                <div className="pt-2">
-                  <Link
-                    to={`/blog/${post.id}`}
-                    className="font-medium text-foreground underline underline-offset-4"
-                  >
-                    Read full post
-                  </Link>
-                </div>
-              </CardHeader>
-            </Card>
+                  </p>
+                  <span className="mt-1.5 inline-block text-xs font-medium text-foreground underline underline-offset-4 opacity-80 transition-opacity group-hover:opacity-100 md:text-[13px]">
+                    Read post
+                  </span>
+                </Link>
+              </div>
+            </article>
           ))}
         </motion.div>
       </div>

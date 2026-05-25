@@ -277,15 +277,4 @@ export const activeProjects: ActiveProject[] = [
       "Built around deployment tradeoffs, not just model-size tables.",
     ],
   },
-  {
-    title: "ServingOps",
-    url: "https://servingops.com",
-    status: "Active development",
-    description:
-      "ServingOps is an active project around practical model-serving workflows, operational constraints, and deployment decisions for production systems.",
-    bullets: [
-      "Centered on serving reliability, operational judgment, and infra ergonomics.",
-      "Extends the portfolio beyond competitions into product and systems thinking.",
-    ],
-  },
 ];

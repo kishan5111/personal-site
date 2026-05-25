@@ -3,13 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { ArrowLeft, BookOpen } from "lucide-react";
+import { ArrowLeft, BookOpen, List, PanelLeftOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getBlogPostById } from "@/lib/blog-posts";
 import { cn } from "@/lib/utils";
 
 const articleClassName =
-  "mx-auto w-full max-w-[1100px] min-w-0 font-article text-[1rem] leading-[1.86] tracking-[0.002em] text-foreground/82 md:text-[1.06rem] [&_.sources-list]:mt-8 [&_.sources-list]:text-[0.88rem] [&_.sources-list]:leading-7 md:[&_.sources-list]:text-[0.93rem] [&_blockquote]:my-6 [&_blockquote]:border-l-4 [&_blockquote]:border-primary/25 [&_blockquote]:pl-5 [&_blockquote]:italic [&_code]:rounded-sm [&_code]:bg-stone-200/55 [&_code]:px-1 [&_code]:py-0.5 dark:[&_code]:bg-white/8 [&_em]:italic [&_h2]:mb-4 [&_h2]:mt-14 [&_h2]:scroll-mt-28 [&_h2]:font-sans [&_h2]:text-[1.95rem] [&_h2]:font-semibold [&_h2]:leading-[1.06] [&_h2]:tracking-tight [&_h2]:text-foreground/92 md:[&_h2]:text-[2.2rem] [&_h3]:mb-2 [&_h3]:mt-9 [&_h3]:scroll-mt-28 [&_h3]:font-sans [&_h3]:text-[1.26rem] [&_h3]:font-semibold [&_h3]:leading-[1.18] [&_h3]:text-foreground/90 [&_img]:my-10 [&_img]:w-full [&_img]:rounded-none [&_img]:border-0 [&_img]:bg-transparent [&_img]:p-0 [&_li]:mt-1.5 [&_ol]:my-5 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-4 [&_pre]:my-8 [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-stone-300/70 [&_pre]:bg-stone-100/80 [&_pre]:p-4 [&_pre]:text-[0.92rem] [&_pre]:leading-7 [&_pre]:text-stone-800 dark:[&_pre]:border-white/10 dark:[&_pre]:bg-white/5 dark:[&_pre]:text-white/85 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_strong]:font-medium [&_strong]:text-foreground/90 [&_table]:my-10 [&_table]:w-full [&_table]:border-collapse [&_table]:text-[0.95rem] [&_tbody_tr]:border-b [&_tbody_tr]:border-border/40 [&_td]:align-top [&_td]:border-b [&_td]:border-border/40 [&_td]:px-4 [&_td]:py-3 [&_th]:border-b [&_th]:border-border/55 [&_th]:bg-stone-100/50 [&_th]:px-4 [&_th]:py-3 [&_th]:text-left [&_th]:font-sans [&_th]:text-[0.83rem] [&_th]:font-semibold [&_th]:tracking-[0.04em] dark:[&_th]:bg-white/5 [&_ul]:my-5 [&_ul]:list-disc [&_ul]:pl-6";
+  "mx-auto w-full max-w-[900px] min-w-0 font-article text-[1.06rem] leading-[1.88] tracking-normal text-foreground/86 md:text-[1.13rem] [&_.sources-list]:mt-8 [&_.sources-list]:text-[0.9rem] [&_.sources-list]:leading-7 md:[&_.sources-list]:text-[0.96rem] [&_blockquote]:my-8 [&_blockquote]:border-l-4 [&_blockquote]:border-primary/25 [&_blockquote]:pl-5 [&_blockquote]:text-foreground/74 [&_blockquote]:italic [&_code]:rounded-sm [&_code]:bg-stone-200/55 [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.88em] dark:[&_code]:bg-white/8 [&_em]:italic [&_h2]:mb-5 [&_h2]:mt-16 [&_h2]:scroll-mt-28 [&_h2]:font-article [&_h2]:text-[1.8rem] [&_h2]:font-semibold [&_h2]:leading-[1.16] [&_h2]:tracking-normal [&_h2]:text-foreground/94 md:[&_h2]:text-[2.12rem] [&_h3]:mb-3 [&_h3]:mt-10 [&_h3]:scroll-mt-28 [&_h3]:font-article [&_h3]:text-[1.34rem] [&_h3]:font-semibold [&_h3]:leading-[1.24] [&_h3]:text-foreground/92 [&_img]:my-12 [&_img]:w-full [&_img]:rounded-sm [&_img]:border-0 [&_img]:bg-transparent [&_img]:p-0 [&_li]:mt-2 [&_ol]:my-7 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-6 [&_pre]:my-9 [&_pre]:overflow-x-auto [&_pre]:whitespace-pre-wrap [&_pre]:break-words [&_pre]:rounded-lg [&_pre]:border [&_pre]:border-stone-300/70 [&_pre]:bg-stone-100/80 [&_pre]:p-4 [&_pre]:font-mono [&_pre]:text-[0.9rem] [&_pre]:leading-7 [&_pre]:text-stone-800 dark:[&_pre]:border-white/10 dark:[&_pre]:bg-white/5 dark:[&_pre]:text-white/85 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_strong]:font-semibold [&_strong]:text-foreground/92 [&_table]:my-12 [&_table]:w-full [&_table]:border-collapse [&_table]:font-sans [&_table]:text-[0.9rem] [&_tbody_tr]:border-b [&_tbody_tr]:border-border/40 [&_td]:align-top [&_td]:border-b [&_td]:border-border/40 [&_td]:px-4 [&_td]:py-3 [&_th]:border-b [&_th]:border-border/55 [&_th]:bg-stone-100/50 [&_th]:px-4 [&_th]:py-3 [&_th]:text-left [&_th]:font-sans [&_th]:text-[0.78rem] [&_th]:font-semibold [&_th]:tracking-[0.04em] dark:[&_th]:bg-white/5 [&_ul]:my-7 [&_ul]:list-disc [&_ul]:pl-6";
 
 interface TocItem {
   id: string;
@@ -86,10 +86,6 @@ const getTocDisplayTitle = (title: string) => {
     return "Dataset";
   }
 
-  if (title.toLowerCase() === "the honest summary") {
-    return "Honest Summary";
-  }
-
   return title;
 };
 
@@ -138,6 +134,7 @@ const BlogPost = () => {
   const tocSignature = tocItems.map((item) => `${item.level}:${item.id}`).join("|");
   const markdownComponents = createMarkdownComponents();
   const [activeSectionId, setActiveSectionId] = useState(tocItems[0]?.id ?? "");
+  const [isTocOpen, setIsTocOpen] = useState(false);
   const articleRef = useRef<HTMLElement | null>(null);
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -342,23 +339,30 @@ const BlogPost = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className={cn(
-          "mx-auto max-w-[1560px]",
+          "mx-auto max-w-[1320px]",
           hasTableOfContents
-            ? "lg:grid lg:grid-cols-[220px_minmax(0,1320px)] lg:gap-16 xl:gap-20"
-            : "max-w-[1320px]",
+            ? cn(
+                "lg:grid lg:gap-10 xl:gap-14",
+                isTocOpen
+                  ? "lg:grid-cols-[240px_minmax(0,1fr)]"
+                  : "lg:grid-cols-[48px_minmax(0,1fr)]",
+              )
+            : "max-w-[980px]",
         )}
       >
         <div className="min-w-0 space-y-6 lg:col-start-2">
-          <Button
-            variant="ghost"
-            className="-ml-2 flex items-center gap-2"
-            onClick={() => navigate("/blog")}
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Blog
-          </Button>
+          <div className="mx-auto w-full max-w-[900px]">
+            <Button
+              variant="ghost"
+              className="-ml-2 flex items-center gap-2"
+              onClick={() => navigate("/blog")}
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to Blog
+            </Button>
+          </div>
 
-          <header className="space-y-4 border-b border-border/45 pb-6 dark:border-transparent">
+          <header className="mx-auto w-full max-w-[900px] space-y-5 border-b border-border/45 pb-8 dark:border-transparent">
             <div className="flex flex-wrap items-center gap-3 text-[11px] text-muted-foreground md:text-[13px]">
               <span>{post.date}</span>
               <span>{post.readingTime}</span>
@@ -372,12 +376,12 @@ const BlogPost = () => {
               ))}
             </div>
             <h1
-              className="max-w-none font-article text-[1.9rem] font-semibold leading-[1.04] tracking-tight text-foreground md:text-[2.45rem] lg:text-[2.85rem]"
+              className="max-w-none font-article text-[2rem] font-semibold leading-[1.08] tracking-normal text-foreground md:text-[2.55rem] lg:text-[3rem]"
             >
               {post.title}
             </h1>
             {post.excerpt && (
-              <p className="max-w-4xl text-[0.93rem] leading-7 text-muted-foreground md:text-[1rem]">
+              <p className="max-w-3xl text-[1rem] leading-8 text-muted-foreground md:text-[1.08rem]">
                 {post.excerpt}
               </p>
             )}
@@ -530,33 +534,61 @@ const BlogPost = () => {
         </div>
 
         {hasTableOfContents && (
-          <aside className="hidden lg:col-start-1 lg:row-start-1 lg:-ml-4 lg:block xl:-ml-6">
-            <div className="sticky top-24 pt-1">
-              <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                On this page
-              </p>
-              <nav className="mt-4 space-y-1">
-                {tocItems.map((section) => (
-                  <a
-                    key={section.id}
-                    href={`#${section.id}`}
-                    onClick={(event) => {
-                      event.preventDefault();
-                      setActiveSectionId(section.id);
-                      window.history.replaceState(null, "", `#${section.id}`);
-                      scrollToSection(section.id);
-                    }}
-                    className={cn(
-                      "block border-l border-border/40 pl-4 pr-2 py-1.5 text-[12px] leading-5 text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground",
-                      section.level === 3 && "pl-7 text-[11px]",
-                      activeSectionId === section.id &&
-                        "border-foreground/60 font-medium text-foreground",
-                    )}
-                  >
-                    {getTocDisplayTitle(section.title)}
-                  </a>
-                ))}
-              </nav>
+          <aside className="hidden lg:col-start-1 lg:row-start-1 lg:block">
+            <div
+              className={cn(
+                "sticky top-28 pt-1",
+                isTocOpen ? "w-full" : "flex justify-end",
+              )}
+            >
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon"
+                aria-label={isTocOpen ? "Collapse table of contents" : "Expand table of contents"}
+                aria-expanded={isTocOpen}
+                onClick={() => setIsTocOpen((open) => !open)}
+                className={cn(
+                  "h-9 w-9 rounded-full border border-border/45 bg-background/80 text-muted-foreground shadow-sm backdrop-blur hover:text-foreground",
+                  isTocOpen && "mb-1",
+                )}
+              >
+                {isTocOpen ? (
+                  <PanelLeftOpen className="h-4 w-4" />
+                ) : (
+                  <List className="h-4 w-4" />
+                )}
+              </Button>
+
+              {isTocOpen && (
+                <div className="mt-5">
+                  <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                    On this page
+                  </p>
+                  <nav className="mt-4 space-y-1">
+                    {tocItems.map((section) => (
+                      <a
+                        key={section.id}
+                        href={`#${section.id}`}
+                        onClick={(event) => {
+                          event.preventDefault();
+                          setActiveSectionId(section.id);
+                          window.history.replaceState(null, "", `#${section.id}`);
+                          scrollToSection(section.id);
+                        }}
+                        className={cn(
+                          "block border-l border-border/40 py-1.5 pl-4 pr-2 text-[12px] leading-5 text-muted-foreground transition-colors hover:border-foreground/40 hover:text-foreground",
+                          section.level === 3 && "pl-7 text-[11px]",
+                          activeSectionId === section.id &&
+                            "border-foreground/60 font-medium text-foreground",
+                        )}
+                      >
+                        {getTocDisplayTitle(section.title)}
+                      </a>
+                    ))}
+                  </nav>
+                </div>
+              )}
             </div>
           </aside>
         )}

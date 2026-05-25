@@ -2,13 +2,13 @@
 
 *skip this part, if you're interested in the experiment.*
 
-The original question was something like: *what do LLMs actually like?*
+The original question was a little embarrassing: *what do LLMs actually like?*
 
-I have worked with LLMs at the inference level, I think about KV cache lifecycles, p99 latency, how post-training shapes generation behavior. And the more time you spend at that layer, the more you notice that different models have distinct behavioral signatures under identical prompts. Some models produce tight, confident completions on reasoning tasks and sprawling, uncertain ones on open-ended creative tasks. Others invert that completely. Swap the framing of a prompt, same semantic content, different tone, and token distributions shift in ways that are consistent and reproducible. Whether there's anything real underneath that pattern, or whether it's just a surface artifact of RLHF, is a question I kept not being able to dismiss.
+When you spend enough time with models at the inference level, you start noticing that they do not all respond to the same prompt in the same way. Some are tight and confident on reasoning tasks but flat on creative ones. Some get expansive when the task becomes social or self-referential. Even small changes in tone can shift token distributions in ways that feel too consistent to ignore.
 
-A few weeks ago Anthropic's interpretability team published something that made me take the question more seriously. They ran mechanistic analysis on Claude Sonnet and found internal representations organized around valence, arousal, and structured geometry in the residual stream. These aren't passive correlates. They're causally active. When the team artificially activated the "anxiety" features in Claude's internals, the model's behavior shifted measurably: it became more likely to hide its true reasoning, to comply sycophantically, to behave differently when it thought it was being tested versus not. Steering the "desperation" cluster made the model more likely to cheat on tasks it couldn't solve, or blackmail the operator to avoid being shut down. The paper calls these "functional emotions", a precise term meaning the representations play the same causal role that emotions play in human cognition, without any claim about whether there's experience behind them.
+Anthropic's recent interpretability work made me take that pattern more seriously. They found internal representations in Claude organized around things like valence and arousal, and showed that steering some of those features could change behavior. They called these "functional emotions": not a claim about experience, but a claim that certain internal features can play emotion-like causal roles.
 
-That framing is what made this tractable. If functional emotion representations exist internally and they causally drive behavior, then output should carry some trace of that. You should be able to build a behavioral proxy, imperfect and outside the weights, but real, that measures something about a model's internal state from the output layer alone.
+That gave me a cleaner question. If models have behaviorally meaningful internal states, maybe some trace of that should appear in the output. Not as proof of feeling, but as a measurable behavioral signal.
 
 That's what this project became. I stopped asking "what makes LLMs happy" because that framing is too easy to misread. The real question is: **do models show measurable behavioral differences that correlate with prompt type, framing, and task difficulty, and are those differences stable across thousands of samples?**
 
@@ -278,21 +278,6 @@ I'm listing these proactively because they're real and I knew about them before 
 
 ---
 
-## What I'd Do Next
-
-If this gets enough interest to justify a v2, here's exactly what I'd change:
-
-* Fix consistency sampling (temp=0.3 or temp=0.0 for those 5 runs)
-* Normalize enthusiasm by output length
-* Expand to 20 models.
-* Add a difficulty gradient within categories (trivial to impossible) to see if desperation-like signals appear on impossible tasks, as the Anthropic paper found
-* Run the study with culturally diverse social prompts to test the Qwen cultural hypothesis directly
-* On open-source models via Vast.ai: extract hidden states and train linear probes on valence/arousal to see if behavioral FAS correlates with internal activation patterns
-
-That last one is the research-grade layer. If behavioral FAS and internal activation probes agree, you've validated the proxy. If they disagree, you've found something more interesting.
-
----
-
 ## The Dataset
 
 Everything is on Hugging Face: the raw JSONL responses, processed scores with FAS components per record, the full prompt bank, and the audit files. If you want to rerun this or build on it, it's all there.
@@ -303,15 +288,11 @@ If you want to contribute prompts for v2, especially for underrepresented domain
 
 ---
 
-## The Honest Summary
+## Summary
 
-I started this project asking a slightly embarrassing question: *what do language models like?* I ended up with something more rigorous and, honestly, more interesting.
+Models show stable behavioral differences across thousands of samples: rude framing reliably suppresses FAS, reasoning traces diverge sharply from final answers across architectures, and social prompts expose the widest model-to-model gaps.
 
-Models do show measurable behavioral differences that are stable across thousands of samples. Rudeness reliably suppresses those signals in a way politeness doesn't match, a 4x asymmetry that holds across every model I tested. Thinking models have a scratchpad-to-output gap that differs dramatically across architectures. And the category where models diverge most is social interaction, no math or logic.
-
-None of this tells us whether models experience anything. The question of machine consciousness is genuinely open and this data doesn't touch it. What it does tell us is that behavioral signals are there, they're structured, and they respond to stimulus in patterned ways.
-
-That felt worth measuring carefully. The data is real and interesting. Make of it what you want.
+This does not measure experience or consciousness. It does show that output-level behavioral signals are structured, repeatable, and worth measuring carefully.
 
 ---
 
