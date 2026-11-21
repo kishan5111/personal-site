@@ -16,7 +16,18 @@ export interface PrerenderRoute {
   title: string;
   description: string;
   markdown?: string;
+  // Set for blog posts only.
+  article?: { headline: string; datePublished: string; image?: string };
 }
+
+// First raster image in the post, used as its social preview (most platforms reject SVG).
+const firstRasterImage = (markdown: string) =>
+  markdown.match(/!\[[^\]]*\]\((\/[^)\s]+\.(?:png|jpe?g|webp))\)/i)?.[1];
+
+const isoDate = (date: string) => {
+  const parsed = new Date(`${date} UTC`);
+  return Number.isNaN(parsed.getTime()) ? undefined : parsed.toISOString().slice(0, 10);
+};
 
 const postMarkdown = (post: (typeof blogPosts)[number]) => {
   const body =
@@ -51,6 +62,11 @@ export const routes: PrerenderRoute[] = [
     title: `${post.title} | Kishan Vavdara`,
     description: post.description,
     markdown: postMarkdown(post),
+    article: {
+      headline: post.title,
+      datePublished: isoDate(post.date) ?? "",
+      image: post.coverImage ?? firstRasterImage(postMarkdown(post)),
+    },
   })),
   ...Object.values(competitions).map((competition) => ({
     path: `/competition/${competition.id}`,

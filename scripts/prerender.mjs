@@ -8,6 +8,18 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const distDir = path.join(root, "dist");
 const ssrDir = path.join(root, "dist-ssr");
 const SITE_URL = "https://www.kishanvavdara.ai";
+const PERSON = {
+  "@type": "Person",
+  name: "Kishan Vavdara",
+  url: `${SITE_URL}/`,
+  jobTitle: "ML/LLM Engineer",
+  email: "mailto:kishanvavdara@gmail.com",
+  sameAs: [
+    "https://github.com/kishan5111",
+    "https://www.kaggle.com/kishanvavdara",
+    "https://www.linkedin.com/in/kishan-vavdara-55680b190/",
+  ],
+};
 
 const { render, routes } = await import(
   pathToFileURL(path.join(ssrDir, "entry-server.js")).href
@@ -31,10 +43,31 @@ const markdownPath = (routePath) => `${routePath}.md`;
 
 for (const route of routes) {
   const url = `${SITE_URL}${route.path === "/" ? "/" : route.path}`;
+  const jsonLd = route.article
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: route.article.headline,
+        description: route.description,
+        datePublished: route.article.datePublished || undefined,
+        url,
+        image: route.article.image ? `${SITE_URL}${route.article.image}` : undefined,
+        author: PERSON,
+      }
+    : route.path === "/"
+      ? { "@context": "https://schema.org", ...PERSON }
+      : undefined;
+
   const extraHead = [
     `<link rel="canonical" href="${url}" />`,
     route.markdown
       ? `<link rel="alternate" type="text/markdown" href="${markdownPath(route.path)}" />`
+      : "",
+    route.article?.datePublished
+      ? `<meta property="article:published_time" content="${route.article.datePublished}" />`
+      : "",
+    jsonLd
+      ? `<script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, "\\u003c")}</script>`
       : "",
   ]
     .filter(Boolean)
@@ -49,6 +82,13 @@ for (const route of routes) {
   html = setMeta(html, "property", "og:url", url);
   html = setMeta(html, "property", "og:title", route.title);
   html = setMeta(html, "property", "og:description", route.description);
+  if (route.article) {
+    html = setMeta(html, "property", "og:type", "article");
+    if (route.article.image) {
+      html = setMeta(html, "property", "og:image", `${SITE_URL}${route.article.image}`);
+      html = setMeta(html, "property", "og:image:alt", route.article.headline);
+    }
+  }
 
   const outFile =
     route.path === "/"
@@ -98,6 +138,19 @@ const llmsFull = `${llms}\n---\n\n${postRoutes
   .map((route) => `Source: ${SITE_URL}${route.path}\n\n${route.markdown}`)
   .join("\n---\n\n")}`;
 
+const today = new Date().toISOString().slice(0, 10);
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${routes
+  .map(
+    (route) =>
+      `  <url>\n    <loc>${SITE_URL}${route.path}</loc>\n    <lastmod>${route.article?.datePublished || today}</lastmod>\n  </url>`,
+  )
+  .join("\n")}
+</urlset>
+`;
+
+fs.writeFileSync(path.join(distDir, "sitemap.xml"), sitemap);
 fs.writeFileSync(path.join(distDir, "llms.txt"), llms);
 fs.writeFileSync(path.join(distDir, "llms-full.txt"), llmsFull);
 fs.rmSync(ssrDir, { recursive: true, force: true });

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { blogPosts } from "@/lib/blog-posts";
 
 const Index = () => {
-  const latestPosts = blogPosts.slice(0, 2);
+  const latestPosts = blogPosts;
 
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
@@ -29,7 +29,7 @@ const Index = () => {
             </p>
 
             <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">
-              I'm a <span className="font-semibold text-gray-900 dark:text-white">Kaggle Competition Master and Notebook Master</span>, with multiple medal-winning solutions, including gold in competitions and gold-winning Kaggle notebooks on LLaMA, Gemma, and Qwen fine-tuning and inference. My work combines rigorous experimentation with practical systems thinking, especially where model quality, latency, and compute constraints all matter.
+              I'm a <a href="https://www.kaggle.com/kishanvavdara" target="_blank" rel="noreferrer" className="font-semibold text-gray-900 underline decoration-border underline-offset-4 dark:text-white">Kaggle Competition Master and Notebook Master</a>, with multiple medal-winning solutions, including <Link to="/competition/jigsaw" className="underline decoration-border underline-offset-4">gold in competitions</Link> and <Link to="/portfolio" className="underline decoration-border underline-offset-4">gold-winning Kaggle notebooks</Link> on LLaMA, Gemma, and Qwen fine-tuning and inference. My work combines rigorous experimentation with practical systems thinking, especially where model quality, latency, and compute constraints all matter.
             </p>
 
             {/* <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
@@ -73,7 +73,7 @@ const Index = () => {
 
             {latestPosts.length > 0 && (
               <div className="pt-3 pb-2 md:pt-5 md:pb-4">
-                <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-white-100">Latest Posts</h2>
+                <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-white-100">Writing</h2>
                 <div className="space-y-4">
                   {latestPosts.map((post) => (
                     <div

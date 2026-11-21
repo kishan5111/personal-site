@@ -1,5 +1,12 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/blog/prefill-decode-memory-wall",
+      "destination": "/blog/prefill-decode-and-the-memory-wall",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

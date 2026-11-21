@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ArrowLeft, BookOpen, List, PanelLeftOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getBlogPostById } from "@/lib/blog-posts";
+import { blogPosts, getBlogPostById } from "@/lib/blog-posts";
 import { cn } from "@/lib/utils";
 
 const articleClassName =
@@ -123,6 +123,10 @@ const BlogPost = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const post = id ? getBlogPostById(id) : undefined;
+  // blogPosts is newest-first, so the previous (older) post sits at index + 1.
+  const postIndex = post ? blogPosts.indexOf(post) : -1;
+  const olderPost = postIndex >= 0 ? blogPosts[postIndex + 1] : undefined;
+  const newerPost = postIndex > 0 ? blogPosts[postIndex - 1] : undefined;
   const tocItems: TocItem[] = post?.sections?.length
     ? post.sections.map((section) => ({
         id: section.id,
@@ -352,13 +356,11 @@ const BlogPost = () => {
       >
         <div className="min-w-0 space-y-6 lg:col-start-2">
           <div className="mx-auto w-full max-w-[900px]">
-            <Button
-              variant="ghost"
-              className="-ml-2 flex items-center gap-2"
-              onClick={() => navigate("/blog")}
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back to Blog
+            <Button variant="ghost" className="-ml-2 flex items-center gap-2" asChild>
+              <Link to="/blog">
+                <ArrowLeft className="h-4 w-4" />
+                Back to Blog
+              </Link>
             </Button>
           </div>
 
@@ -531,6 +533,34 @@ const BlogPost = () => {
               </ReactMarkdown>
             )}
           </article>
+
+          {(olderPost || newerPost) && (
+            <nav
+              aria-label="More posts"
+              className="mx-auto grid w-full max-w-[900px] gap-4 border-t border-border/45 pt-8 text-sm sm:grid-cols-2"
+            >
+              <div>
+                {olderPost && (
+                  <Link to={`/blog/${olderPost.id}`} className="group block">
+                    <span className="text-muted-foreground">← Previous</span>
+                    <span className="mt-1 block font-medium text-foreground group-hover:underline">
+                      {olderPost.title}
+                    </span>
+                  </Link>
+                )}
+              </div>
+              <div className="sm:text-right">
+                {newerPost && (
+                  <Link to={`/blog/${newerPost.id}`} className="group block">
+                    <span className="text-muted-foreground">Next →</span>
+                    <span className="mt-1 block font-medium text-foreground group-hover:underline">
+                      {newerPost.title}
+                    </span>
+                  </Link>
+                )}
+              </div>
+            </nav>
+          )}
         </div>
 
         {hasTableOfContents && (

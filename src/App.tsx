@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import Index from "./pages/Index";
 import Portfolio from "./pages/Portfolio";
 import Blog from "./pages/Blog";
@@ -35,6 +36,7 @@ export const AppRoutes = () => (
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
+    <Footer />
   </>
 );
 

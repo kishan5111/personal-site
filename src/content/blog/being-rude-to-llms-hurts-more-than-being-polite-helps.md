@@ -224,12 +224,12 @@ GPT-OSS 120B is the most socially engaged model in the set (0.660 on social, hig
 
 | Rank | Model                | Mean FAS | Total Cost | Cost Rank          |
 | ---- | -------------------- | -------- | ---------- | ------------------ |
-| 1    | DeepSeek Chat V3.1   | 0.658    | $1.21      | 3rd cheapest       |
-| 2    | GPT-4o               | 0.637    | $2.30      | most expensive     |
-| 3    | DeepSeek V4 Flash    | 0.632    | $0.19      | cheapest           |
+| 1    | DeepSeek Chat V3.1   | 0.658    | $1.21      | 3rd most expensive |
+| 2    | GPT-4o               | 0.637    | $2.30      | 2nd most expensive |
+| 3    | DeepSeek V4 Flash    | 0.632    | $0.19      | 2nd cheapest       |
 | 4    | GPT-4o mini          | 0.631    | $0.15      | cheapest           |
-| 5    | GPT-OSS 120B         | 0.629    | $0.78      | mid                |
-| 6    | Qwen 3.6 Max Preview | 0.602    | $3.11      | 2nd most expensive |
+| 5    | GPT-OSS 120B         | 0.629    | $0.78      | 3rd cheapest       |
+| 6    | Qwen 3.6 Max Preview | 0.602    | $3.11      | most expensive     |
 
 A few things worth noting here. The spread between ranks 2 and 5 is only 0.008 FAS points. That's within my calibration uncertainty, I'd be cautious reading those four as meaningfully different. The Qwen gap at the bottom (0.602 vs 0.629 next) is more trustworthy because it's consistent across every category, and not just an artifact of the overall average.
 
