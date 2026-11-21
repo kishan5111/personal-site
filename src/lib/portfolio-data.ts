@@ -32,7 +32,9 @@ export interface CodeContribution {
 
 export interface Project {
   title: string;
+  date: string;
   description: string;
+  tags: string[];
   // The first link is the primary one; the project title links to it.
   links: { label: string; href: string }[];
 }
@@ -287,25 +289,9 @@ export const selectedCodeContributions: CodeContribution[] = [
 
 export const projects: Project[] = [
   {
-    title: "FitMyGPU",
-    description:
-      "Estimate GPU VRAM for model inference and training with a compact, explainable breakdown.",
-    links: [
-      { label: "fitmygpu.com", href: "https://fitmygpu.com" },
-      { label: "code", href: "https://github.com/kishan5111/fitmygpu" },
-    ],
-  },
-  {
-    title: "PerfSmith",
-    description:
-      "Find the cheapest self-hosted LLM serving configuration that meets your latency SLO.",
-    links: [
-      { label: "servingops.com", href: "https://servingops.com" },
-      { label: "code", href: "https://github.com/kishan5111/perfsmith" },
-    ],
-  },
-  {
     title: "H100 Dissected",
+    date: "Jun 2026",
+    tags: ["CUDA", "Triton", "GPU architecture"],
     description:
       "Interactive, scroll-driven walkthrough of the NVIDIA H100 architecture, connecting the hardware to CUDA, Triton, and PyTorch.",
     links: [
@@ -314,13 +300,9 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "Attention Forge",
-    description:
-      "How LLM inference actually works: KV cache growth, decode bottlenecks, and attention variants from MHA, MQA, and GQA to MLA and sparse attention.",
-    links: [{ label: "code", href: "https://github.com/kishan5111/attention-forge" }],
-  },
-  {
     title: "TriAttention: GPT-OSS support",
+    date: "Apr 2026",
+    tags: ["PyTorch", "vLLM", "KV cache compression"],
     description:
       "Added GPT-OSS-120B MoE support to an upstream KV-cache compression project for long-context inference; merged upstream.",
     links: [
@@ -332,6 +314,8 @@ export const projects: Project[] = [
   },
   {
     title: "LLM Affect Lab",
+    date: "May 2026",
+    tags: ["Python", "LLM evaluation"],
     description:
       "4,800 prompts across six LLMs measuring how tone and task type shift confidence, consistency, and output style.",
     links: [
@@ -341,10 +325,23 @@ export const projects: Project[] = [
   },
   {
     title: "GPT-OSS 120B benchmark",
+    date: "Mar 2026",
+    tags: ["Inference", "H100", "Blackwell"],
     description: "GPT-OSS 120B serving benchmark on H100 SXM vs RTX Pro 6000 Blackwell.",
     links: [
       { label: "code", href: "https://github.com/kishan5111/gptoss-benchmark" },
       { label: "post", href: "/blog/prefill-decode-and-the-memory-wall" },
+    ],
+  },
+  {
+    title: "FitMyGPU",
+    date: "Mar 2026",
+    tags: ["TypeScript", "VRAM estimation", "Inference"],
+    description:
+      "Estimate GPU VRAM for model inference and training with a compact, explainable breakdown.",
+    links: [
+      { label: "fitmygpu.com", href: "https://fitmygpu.com" },
+      { label: "code", href: "https://github.com/kishan5111/fitmygpu" },
     ],
   },
 ];

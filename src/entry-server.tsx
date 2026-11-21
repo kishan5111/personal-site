@@ -45,7 +45,7 @@ export const routes: PrerenderRoute[] = [
     path: "/portfolio",
     title: "Portfolio | Kishan Vavdara",
     description:
-      "Kaggle competition results, public notebooks, open-source contributions, and active projects by Kishan Vavdara.",
+      "Kishan Vavdara's Kaggle competition medals, public notebooks, and projects on LLM inference and GPUs.",
   },
   {
     path: "/blog",
