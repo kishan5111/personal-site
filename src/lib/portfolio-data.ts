@@ -82,15 +82,18 @@ export const competitions: Record<string, CompetitionEntry> = {
     dateRange: "Mar 16, 2026 - Jun 15, 2026",
     teamCount: "4185 teams",
     summary:
-      "Improved reasoning with NVIDIA Nemotron open models on a novel benchmark and finished 127th out of 4185 teams as part of team Nemotron in wonderland, earning a silver medal.",
+      "LoRA fine-tuned Nemotron-3-Nano-30B on improved chain-of-thought reasoning traces and finished 127th out of 4185 teams (27th on the public leaderboard), earning a silver medal.",
     challenge:
-      "Advance reasoning techniques using NVIDIA Nemotron open models, evaluated on a novel reasoning benchmark.",
+      "Improve the reasoning accuracy of NVIDIA's Nemotron-3-Nano-30B (hybrid Mamba-2/Transformer MoE) on a novel structured reasoning benchmark of bit manipulation, ciphers, cryptarithms, equations, numeral systems, and unit conversions, submitting only a rank-32 LoRA adapter.",
     bullets: [
-      "Generated synthetic reasoning data to fine-tune Nemotron adapters.",
-      "Experimented with adapter merging and noise-perturbed adapters to improve robustness on the private leaderboard.",
-      "Worked as a three-person team over a three-month competition.",
+      "Led the trace-improvement work: prefixing each chain-of-thought trace with the problem category, a prompt summary, and worked examples gave the largest gains, alongside manual review of 8,341 solved traces.",
+      "Built a 15,900-sample synthetic dataset across nine problem categories, and a 1,200-problem validation set matched to the competition's category and solved/unsolved mix that tracked the leaderboard.",
+      "Trained over 100 rank-32 LoRA adapters; the best single adapter (1,625 steps, lr 3.5e-4) scored 0.87 public / 0.86 private.",
+      "Developed a consensus-nudge adapter merge that applies only the top 0.5% of sign-unanimous directions across 10 adapters to a fixed anchor, instead of naive weight averaging.",
     ],
     notebooks: [],
+    writeupLink:
+      "https://www.kaggle.com/competitions/nvidia-nemotron-model-reasoning-challenge/writeups/public27-private135-approach",
   },
   lmsys: {
     id: "lmsys",
