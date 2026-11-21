@@ -19,6 +19,25 @@ import CompetitionDetail from "./pages/CompetitionDetail";
 
 const queryClient = new QueryClient();
 
+// Shared between the browser app and the build-time prerenderer (src/entry-server.tsx).
+export const AppRoutes = () => (
+  <>
+    <Navigation />
+    <div className="pt-20 min-h-[calc(100vh-5rem)]">
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/competition/:id" element={<CompetitionDetail />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/draft" element={<BlogDraftPreview />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  </>
+);
+
 const App = () => {
   console.log("App component rendering");
   
@@ -106,19 +125,7 @@ const App = () => {
           */}
           
           <BrowserRouter>
-            <Navigation />
-            <div className="pt-20 min-h-[calc(100vh-5rem)]">
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/portfolio" element={<Portfolio />} />
-                <Route path="/competition/:id" element={<CompetitionDetail />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/draft" element={<BlogDraftPreview />} />
-                <Route path="/blog/:id" element={<BlogPost />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </div>
+            <AppRoutes />
           </BrowserRouter>
         </TooltipProvider>
       </ThemeProvider>
