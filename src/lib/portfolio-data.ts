@@ -74,6 +74,24 @@ export const competitions: Record<string, CompetitionEntry> = {
     writeupLink:
       "https://www.kaggle.com/competitions/jigsaw-agile-community-rules/writeups/5th-place-solution-diverse-ensemble",
   },
+  nemotron: {
+    id: "nemotron",
+    title: "NVIDIA Nemotron Model Reasoning Challenge",
+    medal: "Silver",
+    rank: "127th / 4185 teams",
+    dateRange: "Mar 16, 2026 - Jun 15, 2026",
+    teamCount: "4185 teams",
+    summary:
+      "Improved reasoning with NVIDIA Nemotron open models on a novel benchmark and finished 127th out of 4185 teams as part of team Nemotron in wonderland, earning a silver medal.",
+    challenge:
+      "Advance reasoning techniques using NVIDIA Nemotron open models, evaluated on a novel reasoning benchmark.",
+    bullets: [
+      "Generated synthetic reasoning data to fine-tune Nemotron adapters.",
+      "Experimented with adapter merging and noise-perturbed adapters to improve robustness on the private leaderboard.",
+      "Worked as a three-person team over a three-month competition.",
+    ],
+    notebooks: [],
+  },
   lmsys: {
     id: "lmsys",
     title: "LMSYS - Chatbot Arena Human Preference Predictions",
@@ -204,7 +222,7 @@ export const competitions: Record<string, CompetitionEntry> = {
   },
 };
 
-export const featuredCompetitionIds = ["jigsaw", "lmsys", "csiro", "map"];
+export const featuredCompetitionIds = ["jigsaw", "nemotron", "lmsys", "csiro", "map"];
 
 export const additionalCompetitionIds = ["llm-prompt"];
 
