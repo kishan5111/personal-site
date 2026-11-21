@@ -19,20 +19,20 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-left font-sans text-3xl font-semibold tracking-tight text-gray-900 dark:text-white md:text-5xl"
+              className="text-left font-sans text-3xl font-semibold tracking-tight text-gray-900 dark:text-foreground md:text-5xl"
             >
               Kishan Vavdara
             </motion.h1>
 
-            <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">
-              I'm Kishan, an <span className="font-semibold text-gray-900 dark:text-white">ML/LLM engineer</span> working on fine-tuning, evaluation, and inference optimization for large language models.
+            <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-foreground/85">
+              I'm Kishan, an <span className="font-semibold text-gray-900 dark:text-foreground">ML/LLM engineer</span> working on fine-tuning, evaluation, and inference optimization for large language models.
             </p>
 
-            <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">
-              I'm a <a href="https://www.kaggle.com/kishanvavdara" target="_blank" rel="noreferrer" className="font-semibold text-gray-900 underline decoration-border underline-offset-4 dark:text-white">Kaggle Competition Master and Notebook Master</a>, with multiple medal-winning solutions, including <Link to="/competition/jigsaw" className="underline decoration-border underline-offset-4">gold in competitions</Link> and <Link to="/portfolio" className="underline decoration-border underline-offset-4">gold-winning Kaggle notebooks</Link> on LLaMA, Gemma, and Qwen fine-tuning and inference. My work combines rigorous experimentation with practical systems thinking, especially where model quality, latency, and compute constraints all matter.
+            <p className="text-[15px] md:text-[1.02rem] text-gray-700 dark:text-foreground/85">
+              I'm a <a href="https://www.kaggle.com/kishanvavdara" target="_blank" rel="noreferrer" className="font-semibold text-gray-900 underline decoration-border underline-offset-4 dark:text-foreground">Kaggle Competition Master and Notebook Master</a>, with multiple medal-winning solutions, including <Link to="/competition/jigsaw" className="underline decoration-border underline-offset-4">gold in competitions</Link> and <Link to="/portfolio" className="underline decoration-border underline-offset-4">gold-winning Kaggle notebooks</Link> on LLaMA, Gemma, and Qwen fine-tuning and inference. My work combines rigorous experimentation with practical systems thinking, especially where model quality, latency, and compute constraints all matter.
             </p>
 
-            {/* <p className="text-base md:text-lg text-gray-700 dark:text-gray-50">
+            {/* <p className="text-base md:text-lg text-gray-700 dark:text-foreground/85">
               I originally transitioned into ML from biotechnology through self-study and hands-on building. That path shaped how I work today: rigorous experimentation, fast iteration, and a strong bias toward practical results.
             </p> */}
           </motion.div>
@@ -62,8 +62,8 @@ const Index = () => {
         >
           <div className="space-y-4 md:space-y-6">
             <div>
-              <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-white-100">What I Can Help With</h2>
-              <ul className="list-disc ml-5 space-y-2 text-[15px] md:text-[1.02rem] text-gray-700 dark:text-gray-50">
+              <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-900 dark:text-foreground">What I Can Help With</h2>
+              <ul className="list-disc ml-5 space-y-2 text-[15px] md:text-[1.02rem] text-gray-700 dark:text-foreground/85">
                 <li>Fine-tuning, post-training, and reinforcement learning workflows for LLMs using PEFT and full fine-tuning approaches.</li>
                 <li>Evaluation pipelines, benchmarking, and experiment design for model selection and iteration.</li>
                 <li>Inference optimization across GPU setups, including latency, throughput, batching, and memory tradeoffs.</li>
@@ -73,26 +73,26 @@ const Index = () => {
 
             {latestPosts.length > 0 && (
               <div className="pt-3 pb-2 md:pt-5 md:pb-4">
-                <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-white-100">Latest Posts</h2>
+                <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-foreground">Latest Posts</h2>
                 <div className="space-y-3">
                   {latestPosts.map((post) => (
                     <div
                       key={post.id}
                       className="rounded-xl border border-border/50 bg-background/45 px-4 py-3 shadow-sm dark:border-white/15 dark:bg-white/[0.03]"
                     >
-                      <p className="mb-0.5 text-xs text-gray-500 dark:text-gray-400">
+                      <p className="mb-0.5 text-xs text-gray-500 dark:text-muted-foreground">
                         {post.date} · {post.readingTime}
                       </p>
-                      <p className="mb-1 text-[15px] font-semibold text-gray-900 dark:text-white">
+                      <p className="mb-1 text-[15px] font-semibold text-gray-900 dark:text-foreground">
                         {post.title}
                       </p>
-                      <p className="text-sm leading-6 text-gray-700 dark:text-gray-50">
+                      <p className="text-sm leading-6 text-gray-700 dark:text-foreground/85">
                         {post.description}
                       </p>
                       <p className="mt-2">
                         <Link
                           to={`/blog/${post.id}`}
-                          className="text-sm font-semibold text-gray-900 underline decoration-current underline-offset-4 transition-colors hover:text-foreground dark:text-white"
+                          className="text-sm font-semibold text-gray-900 underline decoration-current underline-offset-4 transition-colors hover:text-foreground dark:text-foreground"
                         >
                           Read full post
                         </Link>
@@ -104,7 +104,7 @@ const Index = () => {
                   <p className="mt-4">
                     <Link
                       to="/blog"
-                      className="text-[14px] md:text-[0.96rem] font-medium text-gray-700 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-gray-200"
+                      className="text-[14px] md:text-[0.96rem] font-medium text-gray-700 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-foreground/90"
                     >
                       All posts →
                     </Link>
@@ -114,16 +114,16 @@ const Index = () => {
             )}
 
             <div>
-              <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-white-100">Selected Work</h2>
+              <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-foreground">Selected Work</h2>
               <div className="space-y-3">
                 <div className="rounded-xl border border-border/50 bg-background/45 px-4 py-3 shadow-sm dark:border-white/15 dark:bg-white/[0.03]">
-                  <p className="mb-0.5 text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+                  <p className="mb-0.5 text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-muted-foreground">
                     Personal Project
                   </p>
-                  <p className="mb-1 text-[15px] font-semibold text-gray-900 dark:text-white">
+                  <p className="mb-1 text-[15px] font-semibold text-gray-900 dark:text-foreground">
                     FitMyGPU
                   </p>
-                  <p className="text-sm leading-6 text-gray-700 dark:text-gray-50">
+                  <p className="text-sm leading-6 text-gray-700 dark:text-foreground/85">
                     A tool for reasoning about hardware fit, deployment constraints, and compute tradeoffs before infrastructure decisions become expensive mistakes.
                   </p>
                   <p className="mt-2">
@@ -131,7 +131,7 @@ const Index = () => {
                       href="https://fitmygpu.com"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-sm font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white"
+                      className="text-sm font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-foreground"
                     >
                       Visit project
                     </a>
@@ -139,16 +139,16 @@ const Index = () => {
                 </div>
 
                 <div className="rounded-xl border border-border/50 bg-background/45 px-4 py-3 shadow-sm dark:border-white/15 dark:bg-white/[0.03]">
-                  <p className="mb-0.5 text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+                  <p className="mb-0.5 text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-muted-foreground">
                     Open Source
                   </p>
-                  <p className="mb-1 text-[15px] font-semibold text-gray-900 dark:text-white">
+                  <p className="mb-1 text-[15px] font-semibold text-gray-900 dark:text-foreground">
                     TriAttention
                   </p>
-                  <p className="text-sm leading-6 text-gray-700 dark:text-gray-50">
+                  <p className="text-sm leading-6 text-gray-700 dark:text-foreground/85">
                     Contributed GPT-OSS-120B MoE support to an upstream KV-cache compression project for long-context inference and merged it upstream.
                   </p>
-                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                  <p className="mt-1 text-xs text-gray-500 dark:text-muted-foreground">
                     Python, PyTorch, vLLM, KV cache compression
                   </p>
                   <p className="mt-2">
@@ -156,7 +156,7 @@ const Index = () => {
                       href="https://github.com/WeianMao/triattention/commit/de4ce3907ef69782bc1c3a0015a19758da0e1e11"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-sm font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white"
+                      className="text-sm font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-foreground"
                     >
                       Upstream merge
                     </a>

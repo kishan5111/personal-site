@@ -23,7 +23,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass px-6 py-4 border-b border-gray-200 dark:border-gray-800 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass px-6 py-4 border-b border-gray-200 dark:border-border shadow-sm">
       <div className="container mx-auto">
         {isMobile ? (
           <div className="flex flex-col">
@@ -47,19 +47,19 @@ const Navigation = () => {
                 >
                   {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
                 </Button>
-                <a href="https://github.com/kishan5111" aria-label="GitHub" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-gray-200 hover:text-primary transition-colors">
+                <a href="https://github.com/kishan5111" aria-label="GitHub" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-foreground/90 hover:text-primary transition-colors">
                   <Github className="h-5 w-5" />
                 </a>
-                <a href="https://www.linkedin.com/in/kishan-vavdara-55680b190/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-gray-200 hover:text-primary transition-colors">
+                <a href="https://www.linkedin.com/in/kishan-vavdara-55680b190/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-foreground/90 hover:text-primary transition-colors">
                   <Linkedin className="h-5 w-5" />
                 </a>
-                <a href="https://www.kaggle.com/kishanvavdara" aria-label="Kaggle" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-gray-200 hover:text-primary transition-colors">
+                <a href="https://www.kaggle.com/kishanvavdara" aria-label="Kaggle" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-foreground/90 hover:text-primary transition-colors">
                   <FontAwesomeIcon icon={faKaggle} className="h-5 w-5" />
                 </a>
               </div>
             </div>
             {isMenuOpen && (
-              <div className="flex flex-col space-y-4 mt-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+              <div className="flex flex-col space-y-4 mt-4 bg-white dark:bg-card p-4 rounded-lg shadow-lg">
                 {navItems.map((item) => (
                   <Link
                     key={item.path}
@@ -67,7 +67,7 @@ const Navigation = () => {
                     onClick={() => setIsMenuOpen(false)}
                     className={cn(
                       "flex items-center space-x-2 text-sm font-medium transition-colors hover:text-primary",
-                      location.pathname === item.path ? item.color : "text-gray-700 dark:text-gray-300"
+                      location.pathname === item.path ? item.color : "text-gray-700 dark:text-foreground/80"
                     )}
                   >
                     <item.icon className="h-4 w-4" />
@@ -86,7 +86,7 @@ const Navigation = () => {
                   to={item.path}
                   className={cn(
                     "flex items-center space-x-2 text-sm font-medium transition-colors hover:text-primary",
-                    location.pathname === item.path ? item.color : "text-gray-700 dark:text-gray-300"
+                    location.pathname === item.path ? item.color : "text-gray-700 dark:text-foreground/80"
                   )}
                 >
                   <item.icon className="h-4 w-4" />
@@ -104,13 +104,13 @@ const Navigation = () => {
               >
                 {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               </Button>
-              <a href="https://github.com/kishan5111" aria-label="GitHub" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-gray-200 hover:text-primary transition-colors">
+              <a href="https://github.com/kishan5111" aria-label="GitHub" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-foreground/90 hover:text-primary transition-colors">
                 <Github className="h-5 w-5" />
               </a>
-              <a href="https://www.linkedin.com/in/kishan-vavdara-55680b190/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-gray-200 hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/kishan-vavdara-55680b190/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-foreground/90 hover:text-primary transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="https://www.kaggle.com/kishanvavdara" aria-label="Kaggle" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-gray-200 hover:text-primary transition-colors">
+              <a href="https://www.kaggle.com/kishanvavdara" aria-label="Kaggle" target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-foreground/90 hover:text-primary transition-colors">
                 <FontAwesomeIcon icon={faKaggle} className="h-5 w-5" />
               </a>
             </div>

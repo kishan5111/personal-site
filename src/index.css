@@ -43,31 +43,32 @@
     --timing-fn: cubic-bezier(0.455, 0.190, 0.000, 0.985);
   }
   .dark {
-    --background: 0 0% 0%; /* Pure black background */
-    --foreground: 0 0% 100%; /* Pure white text */
-    --card: 0 0% 0%; /* Pure black card background */
-    --card-foreground: 0 0% 100%; /* Pure white text on cards */
-    --popover: 0 0% 0%; /* Pure black popover background */
-    --popover-foreground: 0 0% 100%; /* Pure white text on popovers */
-    
-    --primary: 250 75% 60%; /* Keep primary color */
-    --primary-foreground: 0 0% 100%; /* Pure white text on primary */
-    --secondary: 0 0% 0%; /* Pure black secondary */
-    --secondary-foreground: 0 0% 100%; /* Pure white text on secondary */
-    --muted: 0 0% 0%; /* Pure black muted background */
-    --muted-foreground: 0 0% 90%; /* Brighter muted text */
-    --accent: 0 0% 0%; /* Pure black accent */
-    --accent-foreground: 0 0% 100%; /* Pure white text on accent */
+    /* Soft charcoal with off-white text: easier on the eyes than pure black/white. */
+    --background: 220 8% 11%;
+    --foreground: 220 10% 86%;
+    --card: 220 8% 13%;
+    --card-foreground: 220 10% 86%;
+    --popover: 220 8% 13%;
+    --popover-foreground: 220 10% 86%;
+
+    --primary: 250 70% 72%;
+    --primary-foreground: 220 8% 11%;
+    --secondary: 220 7% 17%;
+    --secondary-foreground: 220 10% 86%;
+    --muted: 220 7% 17%;
+    --muted-foreground: 220 6% 62%;
+    --accent: 220 7% 17%;
+    --accent-foreground: 220 10% 86%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --border: 0 0% 0%; /* Pure black border */
-    --input: 0 0% 0%; /* Pure black input */
-    --ring: 250 75% 60%;
-    
+    --border: 220 7% 22%;
+    --input: 220 7% 22%;
+    --ring: 250 70% 72%;
+
     /* Light/dark variables for dark mode */
     --light: var(--night);
     --dark: var(--day);
-    --shadow: #000000; /* Pure black shadow */
+    --shadow: #0d0e10;
     --bounce-light: hsla(0, 0%, 0%, 100); /* Pure black bounce light for dark mode */
   }
 }
@@ -98,7 +99,7 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-medium tracking-tight text-gray-800 dark:text-white;
+    @apply font-sans font-medium tracking-tight text-gray-800 dark:text-foreground;
   }
 }
 
@@ -350,50 +351,20 @@
   }
 }
 
-/* Dark mode specific text styles */
-.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-  @apply text-white font-medium;
+/* Dark mode text tiers. Gray utilities written for light mode map to
+   softer foreground shades instead of pure white. */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6,
+.dark .text-gray-900, .dark .text-gray-800 {
+  color: hsl(var(--foreground));
 }
 
-.dark p, .dark span, .dark div {
-  @apply text-white; /* Full white for better readability */
+.dark .text-gray-700, .dark .text-gray-600, .dark .text-gray-300,
+.dark .text-gray-200, .dark .text-gray-100 {
+  color: hsl(var(--foreground) / 0.85);
 }
 
-.dark .text-gray-700 {
-  @apply text-white; /* Full white instead of transparent */
-}
-
-.dark .text-gray-300 {
-  @apply text-white; /* Full white instead of transparent */
-}
-
-.dark .text-gray-600 {
-  @apply text-white; /* Full white instead of transparent */
-}
-
-.dark .text-gray-500 {
-  @apply text-white/95; /* Very slight transparency */
-}
-
-.dark .text-gray-400 {
-  @apply text-white/90; /* Slight transparency */
-}
-
-/* Additional dark mode text overrides */
-.dark .text-gray-800 {
-  @apply text-white;
-}
-
-.dark .text-gray-900 {
-  @apply text-white;
-}
-
-.dark .text-gray-200 {
-  @apply text-white;
-}
-
-.dark .text-gray-100 {
-  @apply text-white;
+.dark .text-gray-500, .dark .text-gray-400 {
+  color: hsl(var(--muted-foreground));
 }
 
 /* Mobile fixes */
