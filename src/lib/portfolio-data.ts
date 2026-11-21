@@ -82,9 +82,9 @@ export const competitions: Record<string, CompetitionEntry> = {
     dateRange: "Mar 16, 2026 - Jun 15, 2026",
     teamCount: "4185 teams",
     summary:
-      "LoRA fine-tuned Nemotron-3-Nano-30B on improved chain-of-thought reasoning traces and finished 127th out of 4185 teams (27th on the public leaderboard), earning a silver medal.",
+      "LoRA fine-tuned Nemotron-3-Nano-30B on improved reasoning traces, finishing 127th of 4185 teams.",
     challenge:
-      "Improve the reasoning accuracy of NVIDIA's Nemotron-3-Nano-30B (hybrid Mamba-2/Transformer MoE) on a novel structured reasoning benchmark of bit manipulation, ciphers, cryptarithms, equations, numeral systems, and unit conversions, submitting only a rank-32 LoRA adapter.",
+      "Improve Nemotron's accuracy on a novel reasoning benchmark using only a rank-32 LoRA adapter.",
     bullets: [
       "Led the trace-improvement work: prefixing each chain-of-thought trace with the problem category, a prompt summary, and worked examples gave the largest gains, alongside manual review of 8,341 solved traces.",
       "Built a 15,900-sample synthetic dataset across nine problem categories, and a 1,200-problem validation set matched to the competition's category and solved/unsolved mix that tracked the leaderboard.",

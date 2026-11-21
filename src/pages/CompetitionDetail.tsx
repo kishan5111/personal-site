@@ -150,7 +150,7 @@ const CompetitionDetail = () => {
             )}
           </div>
 
-          {competition.notebooks.length > 0 ? (
+          {competition.notebooks.length > 0 && (
             <div className="grid gap-4">
               {competition.notebooks.map((notebook) => (
                 <article
@@ -191,11 +191,6 @@ const CompetitionDetail = () => {
                   </div>
                 </article>
               ))}
-            </div>
-          ) : (
-            <div className="rounded-2xl border border-border/55 bg-background/55 p-6 text-sm leading-7 text-muted-foreground shadow-sm">
-              No notebook links are listed for this competition yet. The writeup
-              link above is the main public artifact currently surfaced here.
             </div>
           )}
         </section>
