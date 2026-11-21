@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { blogPosts } from "@/lib/blog-posts";
 
 const Index = () => {
-  const latestPosts = blogPosts;
+  const latestPosts = blogPosts.slice(0, 2);
 
   return (
     <div className="min-h-screen container mx-auto px-4 py-12">
@@ -73,26 +73,26 @@ const Index = () => {
 
             {latestPosts.length > 0 && (
               <div className="pt-3 pb-2 md:pt-5 md:pb-4">
-                <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-white-100">Writing</h2>
-                <div className="space-y-4">
+                <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-white-100">Latest Posts</h2>
+                <div className="space-y-3">
                   {latestPosts.map((post) => (
                     <div
                       key={post.id}
-                      className="space-y-2 rounded-2xl border border-border/50 bg-background/45 p-5 shadow-sm dark:border-white/15 dark:bg-white/[0.03]"
+                      className="rounded-xl border border-border/50 bg-background/45 px-4 py-3 shadow-sm dark:border-white/15 dark:bg-white/[0.03]"
                     >
-                      <p className="text-sm md:text-base text-gray-500 dark:text-gray-400">
+                      <p className="mb-0.5 text-xs text-gray-500 dark:text-gray-400">
                         {post.date} · {post.readingTime}
                       </p>
-                      <p className="text-base md:text-lg text-gray-900 dark:text-white font-semibold">
+                      <p className="mb-1 text-[15px] font-semibold text-gray-900 dark:text-white">
                         {post.title}
                       </p>
-                      <p className="text-[14px] md:text-[0.96rem] leading-7 text-gray-700 dark:text-gray-50">
+                      <p className="text-sm leading-6 text-gray-700 dark:text-gray-50">
                         {post.description}
                       </p>
-                      <p>
+                      <p className="mt-2">
                         <Link
                           to={`/blog/${post.id}`}
-                          className="font-semibold text-gray-900 underline decoration-current underline-offset-4 transition-colors hover:text-foreground dark:text-white"
+                          className="text-sm font-semibold text-gray-900 underline decoration-current underline-offset-4 transition-colors hover:text-foreground dark:text-white"
                         >
                           Read full post
                         </Link>
@@ -100,53 +100,63 @@ const Index = () => {
                     </div>
                   ))}
                 </div>
+                {blogPosts.length > latestPosts.length && (
+                  <p className="mt-4">
+                    <Link
+                      to="/blog"
+                      className="text-[14px] md:text-[0.96rem] font-medium text-gray-700 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-gray-200"
+                    >
+                      All posts →
+                    </Link>
+                  </p>
+                )}
               </div>
             )}
 
             <div>
               <h2 className="text-lg md:text-xl font-bold mb-2 text-gray-900 dark:text-white-100">Selected Work</h2>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-2xl border border-border/50 bg-background/45 p-5 shadow-sm dark:border-white/15 dark:bg-white/[0.03]">
-                  <p className="mb-1 text-sm font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+              <div className="space-y-3">
+                <div className="rounded-xl border border-border/50 bg-background/45 px-4 py-3 shadow-sm dark:border-white/15 dark:bg-white/[0.03]">
+                  <p className="mb-0.5 text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
                     Personal Project
                   </p>
-                  <p className="mb-2 text-base md:text-lg font-semibold text-gray-900 dark:text-white">
+                  <p className="mb-1 text-[15px] font-semibold text-gray-900 dark:text-white">
                     FitMyGPU
                   </p>
-                  <p className="text-[14px] md:text-[0.96rem] text-gray-700 dark:text-gray-50">
+                  <p className="text-sm leading-6 text-gray-700 dark:text-gray-50">
                     A tool for reasoning about hardware fit, deployment constraints, and compute tradeoffs before infrastructure decisions become expensive mistakes.
                   </p>
-                  <p className="mt-3">
+                  <p className="mt-2">
                     <a
                       href="https://fitmygpu.com"
                       target="_blank"
                       rel="noreferrer"
-                      className="font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white"
+                      className="text-sm font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white"
                     >
                       Visit project
                     </a>
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-border/50 bg-background/45 p-5 shadow-sm dark:border-white/15 dark:bg-white/[0.03]">
-                  <p className="mb-1 text-sm font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
+                <div className="rounded-xl border border-border/50 bg-background/45 px-4 py-3 shadow-sm dark:border-white/15 dark:bg-white/[0.03]">
+                  <p className="mb-0.5 text-[11px] font-medium uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
                     Open Source
                   </p>
-                  <p className="mb-2 text-base md:text-lg font-semibold text-gray-900 dark:text-white">
+                  <p className="mb-1 text-[15px] font-semibold text-gray-900 dark:text-white">
                     TriAttention
                   </p>
-                  <p className="text-[14px] md:text-[0.96rem] text-gray-700 dark:text-gray-50">
+                  <p className="text-sm leading-6 text-gray-700 dark:text-gray-50">
                     Contributed GPT-OSS-120B MoE support to an upstream KV-cache compression project for long-context inference and merged it upstream.
                   </p>
-                  <p className="mt-2 text-[13px] md:text-[0.9rem] text-gray-500 dark:text-gray-400">
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                     Python, PyTorch, vLLM, KV cache compression
                   </p>
-                  <p className="mt-3">
+                  <p className="mt-2">
                     <a
                       href="https://github.com/WeianMao/triattention/commit/de4ce3907ef69782bc1c3a0015a19758da0e1e11"
                       target="_blank"
                       rel="noreferrer"
-                      className="font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white"
+                      className="text-sm font-semibold text-gray-900 underline decoration-border underline-offset-4 transition-colors hover:text-foreground dark:text-white"
                     >
                       Upstream merge
                     </a>
