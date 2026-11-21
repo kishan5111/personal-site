@@ -53,7 +53,7 @@ for (const route of routes) {
   const outFile =
     route.path === "/"
       ? path.join(distDir, "index.html")
-      : path.join(distDir, route.path.slice(1), "index.html");
+      : path.join(distDir, `${route.path.slice(1)}.html`);
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, html);
 
