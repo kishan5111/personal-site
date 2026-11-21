@@ -30,12 +30,11 @@ export interface CodeContribution {
   link: string;
 }
 
-export interface ActiveProject {
+export interface Project {
   title: string;
-  url: string;
-  status: string;
   description: string;
-  bullets: string[];
+  // The first link is the primary one; the project title links to it.
+  links: { label: string; href: string }[];
 }
 
 export const competitions: Record<string, CompetitionEntry> = {
@@ -286,16 +285,66 @@ export const selectedCodeContributions: CodeContribution[] = [
   },
 ];
 
-export const activeProjects: ActiveProject[] = [
+export const projects: Project[] = [
   {
     title: "FitMyGPU",
-    url: "https://fitmygpu.com",
-    status: "Active development",
     description:
-      "FitMyGPU helps reason about workload-to-hardware fit before serving decisions turn into expensive deployment mistakes.",
-    bullets: [
-      "Focused on matching real workloads to practical GPU constraints.",
-      "Built around deployment tradeoffs, not just model-size tables.",
+      "Estimate GPU VRAM for model inference and training with a compact, explainable breakdown.",
+    links: [
+      { label: "fitmygpu.com", href: "https://fitmygpu.com" },
+      { label: "code", href: "https://github.com/kishan5111/fitmygpu" },
+    ],
+  },
+  {
+    title: "PerfSmith",
+    description:
+      "Find the cheapest self-hosted LLM serving configuration that meets your latency SLO.",
+    links: [
+      { label: "servingops.com", href: "https://servingops.com" },
+      { label: "code", href: "https://github.com/kishan5111/perfsmith" },
+    ],
+  },
+  {
+    title: "H100 Dissected",
+    description:
+      "Interactive, scroll-driven walkthrough of the NVIDIA H100 architecture, connecting the hardware to CUDA, Triton, and PyTorch.",
+    links: [
+      { label: "site", href: "https://h100dissected.vercel.app/" },
+      { label: "code", href: "https://github.com/kishan5111/H100-Dissected" },
+    ],
+  },
+  {
+    title: "Attention Forge",
+    description:
+      "How LLM inference actually works: KV cache growth, decode bottlenecks, and attention variants from MHA, MQA, and GQA to MLA and sparse attention.",
+    links: [{ label: "code", href: "https://github.com/kishan5111/attention-forge" }],
+  },
+  {
+    title: "TriAttention: GPT-OSS support",
+    description:
+      "Added GPT-OSS-120B MoE support to an upstream KV-cache compression project for long-context inference; merged upstream.",
+    links: [
+      {
+        label: "commit",
+        href: "https://github.com/WeianMao/triattention/commit/de4ce3907ef69782bc1c3a0015a19758da0e1e11",
+      },
+    ],
+  },
+  {
+    title: "LLM Affect Lab",
+    description:
+      "4,800 prompts across six LLMs measuring how tone and task type shift confidence, consistency, and output style.",
+    links: [
+      { label: "code", href: "https://github.com/kishan5111/llm-affect-lab" },
+      { label: "post", href: "/blog/being-rude-to-llms-hurts-more-than-being-polite-helps" },
+    ],
+  },
+  {
+    title: "GPT-OSS 120B benchmark",
+    description: "GPT-OSS 120B serving benchmark on H100 SXM vs RTX Pro 6000 Blackwell.",
+    links: [
+      { label: "code", href: "https://github.com/kishan5111/gptoss-benchmark" },
+      { label: "post", href: "/blog/prefill-decode-and-the-memory-wall" },
     ],
   },
 ];
